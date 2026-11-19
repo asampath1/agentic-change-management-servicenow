@@ -7,7 +7,8 @@ Successor to `../agentic-aiops-servicenow-azure` (frozen at v1.0; do not edit it
 ## Layout
 - `synthetic-data/` generator (`generate_data.py`), hidden outcome model (`change_model.py`), CSVs, load plan,
   ServiceNow loader. See `synthetic-data/README.md`.
-- `agents/`, `evaluation/`: copied from v1.0, being reworked for changes (M2).
+- `agents/` Quality, Impact, History, Schedule, Risk agents + orchestrator (`python -m agents`). See `agents/README.md`.
+- `evaluation/score.py` scores `runs/*/predictions.json`; committed baselines in `evaluation/results/`.
 - `tests/` pytest suite (`python -m pytest -q`).
 
 ## Hard rules
@@ -23,3 +24,10 @@ Successor to `../agentic-aiops-servicenow-azure` (frozen at v1.0; do not edit it
 - Claude via the Anthropic API defaults to `claude-opus-5-5`.
 - Docs are written in the first person singular ("I"): solo project.
 - The user commits and pushes; don't commit unless asked.
+
+## Commands
+```bash
+python -m agents --out runs/latest [--risk-mode point]   # default: conservative && python -m evaluation.score runs/latest/predictions.json
+python -m pytest -q          # needs pytest; ../agentic-aiops-servicenow-azure/.venv has it
+```
+Never inspect individual answer-key entries to debug or tune agents; use only the scorer's aggregate report.

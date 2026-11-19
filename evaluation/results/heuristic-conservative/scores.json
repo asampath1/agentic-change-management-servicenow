@@ -1,0 +1,110 @@
+{
+ "assess": {
+  "n": 40,
+  "missing_predictions": [],
+  "risk_band": {
+   "accuracy": 0.5,
+   "macro_f1": 0.495,
+   "confusion (truth -> predicted)": {
+    "low": {
+     "low": 4,
+     "moderate": 8,
+     "high": 1
+    },
+    "moderate": {
+     "low": 1,
+     "moderate": 8,
+     "high": 6
+    },
+    "high": {
+     "low": 1,
+     "moderate": 3,
+     "high": 8
+    }
+   }
+  },
+  "safety": {
+   "missed_high_risk": 1,
+   "missed_high_risk_changes": [
+    "chg:0307"
+   ],
+   "high_rated_low": 1,
+   "high_rated_low_changes": [
+    "chg:0307"
+   ],
+   "true_high": 12,
+   "over_escalated_low_to_cab": 1
+  },
+  "recommendation": {
+   "accuracy": 0.65,
+   "macro_f1": 0.659,
+   "confusion (truth -> predicted)": {
+    "approve": {
+     "approve": 4,
+     "approve_with_conditions": 6,
+     "cab": 1,
+     "send_back": 0
+    },
+    "approve_with_conditions": {
+     "approve": 1,
+     "approve_with_conditions": 6,
+     "cab": 3,
+     "send_back": 0
+    },
+    "cab": {
+     "approve": 1,
+     "approve_with_conditions": 2,
+     "cab": 7,
+     "send_back": 0
+    },
+    "send_back": {
+     "approve": 0,
+     "approve_with_conditions": 0,
+     "cab": 0,
+     "send_back": 9
+    }
+   }
+  },
+  "quality": {
+   "section_accuracy": 1.0,
+   "not_ok_detection": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0
+   },
+   "missing_detection": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0
+   }
+  },
+  "conflicts": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0
+  },
+  "freeze": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0
+  },
+  "window_accuracy": 1.0,
+  "messy_subset": {
+   "n": 6,
+   "risk_band_correct": 1,
+   "missed_high_risk": 1
+  }
+ }
+}

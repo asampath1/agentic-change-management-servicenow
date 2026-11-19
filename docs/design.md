@@ -126,7 +126,7 @@ Not reused: the incident triage, diagnostics and remediation agents, the Azure A
 | # | Deliverable | Needs |
 |---|---|---|
 | M1 | Data generator v2: change history, schedules, outcome model, eval set, ground truth. **Done 2026-11-19** ([details](../synthetic-data/README.md)) | offline |
-| M2 | Quality, Impact, History, Schedule and Risk agents; scoring; heuristic baseline committed | offline |
+| M2 | Quality, Impact, History, Schedule and Risk agents; scoring; heuristic baseline committed. **Done 2026-11-19** ([results](../evaluation/README.md)) | offline |
 | M3 | Verification agent and its eval | offline |
 | M4 | Load to PDI, live run, work notes on changes | PDI |
 | M5 | (optional) Claude reasoner comparison | API key, about $2–5 |

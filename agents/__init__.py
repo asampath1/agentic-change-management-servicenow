@@ -1,1 +1,1 @@
-"""Multi-agent incident triage for the ShopKart Retails (SKR) Azure + ServiceNow estate."""
+"""Multi-agent change assessment for the ShopKart Retails (SKR) ServiceNow estate."""

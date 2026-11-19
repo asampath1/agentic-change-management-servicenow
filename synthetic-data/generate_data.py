@@ -135,12 +135,18 @@ POLICY_HTML = (
     "<li><b>Normal</b>: assessed by the change manager; high-risk changes go to the weekly CAB.</li>"
     "<li><b>Emergency</b>: restores service or fixes a critical security issue; approved by the emergency CAB (ECAB).</li></ul>"
     "<h3>Required plans</h3><p>Normal and emergency changes need an implementation plan, a backout plan and a test plan. "
-    "A change with any of them empty, \"N/A\" or \"TBD\" is sent back to the requester.</p>"
+    "A change with any of them empty, \"N/A\" or \"TBD\" is sent back to the requester. Normal changes are raised at "
+    "least 48 hours before the planned start.</p>"
     "<h3>Maintenance windows (IST)</h3><ul><li>Tier-1 services (criticality 1): Tue, Thu and Sun 01:00-05:00.</li>"
     "<li>All other services: daily 22:00-06:00.</li></ul>"
+    "<p>Business hours (peak store and online trading): Monday to Friday 09:00-21:00 IST. Work in business hours "
+    "carries the most customer impact.</p>"
     "<h3>Freeze periods</h3><p>No normal or standard changes to production during a freeze (published as blackout "
     "schedules: sale events for all services; month-end finance close for Payments Integration, Order Processing and "
     "Data &amp; Analytics). Only emergency changes, approved by the ECAB.</p>"
+    "<h3>Risk</h3><p>Risk is the likelihood that the change fails or causes an incident: <b>Low</b> below 10%, "
+    "<b>Moderate</b> 10% to 18%, <b>High</b> 18% or more. Judge it from the service tier, what depends on the CI, "
+    "the plans, the timing, conflicts, open problems and incidents, and how similar past changes went.</p>"
     "<h3>Approval by risk</h3><ul><li>Low: the change manager approves.</li>"
     "<li>Moderate: the change manager approves with conditions (for example: move into the maintenance window, add a "
     "test step, have the resolver group on standby).</li><li>High: CAB review.</li></ul>"
@@ -538,6 +544,7 @@ class Gen:
         kinds = list(M.KINDS)
         weights = [M.KINDS[k]["weight"] for k in kinds]
         span = (self.now - self.start).days
+        planned = []
         while n > 0:
             kind = random.choices(kinds, weights)[0]
             ci = random.choice(self.cis_of(M.KINDS[kind]["cis"]))
@@ -553,9 +560,18 @@ class Gen:
             hidden = [h for h in M.HIDDEN if M.hidden_fits(h, kind) and random.random() < 0.05]
             opened = s - (timedelta(hours=random.uniform(1, 8)) if emergency else timedelta(days=random.uniform(1, 10)))
             q = self.random_quality(0.70, 0.22) if M.KINDS[kind]["type"] != "standard" else self.random_quality(0.9, 0.08)
-            ch = self.make_change(kind, ci, s, e, STATE["closed"], opened, ctype="emergency" if emergency else None,
-                                  quality=q, hidden=hidden, phrasing="A", work=(s, e))
-            p, _ = M.failure_probability(self.features(ch))
+            planned.append(self.make_change(kind, ci, s, e, STATE["closed"], opened,
+                                            ctype="emergency" if emergency else None, quality=q, hidden=hidden,
+                                            phrasing="A", work=(s, e)))
+            n -= 1
+        # Outcomes in time order, with the same factors as the evaluation changes: clashes with other changes and
+        # incidents already open on the CI (including ones raised by earlier failed changes) count here too.
+        for ch in sorted(planned, key=lambda c: c["start"]):
+            s, e, ci, kind = ch["start"], ch["end"], ch["ci"], ch["kind"]
+            rels = {("same_ci" if o["ci"] == ci else "related_ci") for o in planned
+                    if o is not ch and overlaps(s, e, o["start"], o["end"]) and (o["ci"] == ci or o["ci"] in self.related(ci))}
+            conflict = "same_ci" if "same_ci" in rels else ("related_ci" if rels else None)
+            p, _ = M.failure_probability(self.features(ch, conflict=conflict, open_incident=self.incident_open_at(ci, s)))
             failed = random.random() < p
             target = self.fail_target(kind, ci) if failed else None
             if failed and target:
@@ -573,7 +589,16 @@ class Gen:
                 code, notes = "successful", random.choice(["Implemented successfully, verified by owner.",
                                                            "Completed as planned.", "Implemented successfully."])
             ch["rec"]["close_code"], ch["rec"]["close_notes"] = code, notes
-            n -= 1
+
+    def incident_open_at(self, ci, t):
+        for r in self.recs["incidents"]:
+            if r.get("cmdb_ci") != f"@ci:{ci}":
+                continue
+            o = datetime.strptime(r["_post_patch"]["opened_at"], FMT).replace(tzinfo=UTC)
+            res = r["_post_patch"].get("resolved_at")
+            if o < t and (res is None or datetime.strptime(res, FMT).replace(tzinfo=UTC) > t):
+                return True
+        return False
 
     def scheduled(self, n):
         """Authorised future changes (state Scheduled): the calendar the new requests must fit around."""
@@ -931,8 +956,8 @@ def main():
     a = ap.parse_args()
     g = Gen(a.days, a.seed, datetime.strptime(a.now, FMT).replace(tzinfo=UTC))
     g.people(); g.cmdb(); g.kb(); g.problems(); g.schedules()
-    g.history(a.history)
     g.background_incidents(a.incidents)
+    g.history(a.history)
     g.scheduled(16)
     g.active_incidents(4)
     g.verify_set(a.verify)

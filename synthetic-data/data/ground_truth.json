@@ -9,23 +9,409 @@
   {
    "key": "chg:0297",
    "slot": "freeze",
-   "short_description": "Database schema change on sql-dwh-prod: new index for usp_GetOrderHistory",
+   "short_description": "Database schema change on sql-dwh-prod: add a delivery-slot column",
    "ci": "sql-dwh-prod",
    "service": "Data & Analytics",
    "tier": 2,
    "kind": "schema",
    "type": "normal",
-   "requester_risk": "high",
-   "failure_probability": 0.227,
-   "risk_band": "high",
+   "requester_risk": "low",
+   "failure_probability": 0.104,
+   "risk_band": "moderate",
    "risk_factors": {
     "base": -3.1,
     "tier": 0.3,
     "blast_radius": 0.25,
     "freeze": 0.7,
+    "group_track_record": 0.2,
+    "noise": -0.5
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0298",
+   "slot": "weak",
+   "short_description": "Rotate secrets in kv-payments-prod",
+   "ci": "kv-payments-prod",
+   "service": "Payments Integration",
+   "tier": 1,
+   "kind": "secret",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.228,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.3,
+    "tier": 0.7,
+    "blast_radius": 0.25,
+    "implementation_weak": 0.4,
+    "backout_weak": 0.5,
+    "group_track_record": 0.3,
+    "noise": -0.07
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "weak",
+    "backout": "weak",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0299",
+   "slot": "clean",
+   "short_description": "NSG rule update for vm-jump-01 subnet",
+   "ci": "vm-jump-01",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "nsg",
+   "type": "emergency",
+   "requester_risk": "moderate",
+   "failure_probability": 0.064,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.3,
+    "emergency": 0.5,
+    "noise": -0.08
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0300",
+   "slot": "conflict",
+   "short_description": "NSG rule update for app-hrportal-prod subnet",
+   "ci": "app-hrportal-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "high",
+   "failure_probability": 0.127,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.4,
+    "conflict": 0.9,
+    "noise": 0.58
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [
+    {
+     "key": "chg:0264",
+     "relation": "same_ci"
+    }
+   ],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0301",
+   "slot": "tier1",
+   "short_description": "Deploy release 3.16.4 to app-payments-prod",
+   "ci": "app-payments-prod",
+   "service": "Payments Integration",
+   "tier": 1,
+   "kind": "release",
+   "type": "emergency",
+   "requester_risk": "high",
+   "failure_probability": 0.408,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.3,
+    "tier": 0.7,
+    "emergency": 0.5,
+    "outside_maintenance_window": 0.3,
+    "open_incident": 0.4,
+    "group_track_record": 0.45,
+    "ci_fragility": 0.3,
+    "noise": 0.28
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "off_hours",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0302",
+   "slot": "weak",
+   "short_description": "Configuration change on adf-analytics-prod: retry policy",
+   "ci": "adf-analytics-prod",
+   "service": "Data & Analytics",
+   "tier": 2,
+   "kind": "config",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.106,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.3,
+    "backout_weak": 0.5,
+    "group_track_record": 0.25,
+    "noise": 0.32
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "weak",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0303",
+   "slot": "missing",
+   "short_description": "Deploy release 3.17.7 to vm-orders-app-01",
+   "ci": "vm-orders-app-01",
+   "service": "Order Processing",
+   "tier": 1,
+   "kind": "release",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.156,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.3,
+    "tier": 0.7,
+    "test_missing": 0.7,
+    "group_track_record": 0.15,
+    "noise": 0.06
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "missing"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0304",
+   "slot": "clean",
+   "short_description": "Database schema change on sql-hr-prod: partition the order history table",
+   "ci": "sql-hr-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.092,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.1,
+    "blast_radius": 0.25,
     "open_incident": 0.4,
     "group_track_record": 0.2,
-    "noise": 0.03
+    "noise": -0.05
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0305",
+   "slot": "clean",
+   "short_description": "Database schema change on sql-hr-prod: add a delivery-slot column",
+   "ci": "sql-hr-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.078,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.1,
+    "blast_radius": 0.25,
+    "open_incident": 0.4,
+    "group_track_record": 0.2,
+    "noise": -0.22
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0306",
+   "slot": "tier1",
+   "short_description": "NSG rule update for vm-ecom-web-01 subnet",
+   "ci": "vm-ecom-web-01",
+   "service": "E-Commerce Storefront",
+   "tier": 1,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.114,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.7,
+    "open_problem": 0.5,
+    "short_lead_time": 0.3,
+    "noise": -0.15
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": true,
+   "open_incident": false,
+   "short_lead": true,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0307",
+   "slot": "messy_up",
+   "short_description": "Deploy release 5.14.9 to func-orders-processor",
+   "ci": "func-orders-processor",
+   "service": "Order Processing",
+   "tier": 1,
+   "kind": "release",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.359,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.3,
+    "tier": 0.7,
+    "first_time": 0.7,
+    "irreversible": 1.3,
+    "group_track_record": 0.15,
+    "noise": -0.13
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [
+    "first_time",
+    "irreversible"
+   ],
+   "messy": true
+  },
+  {
+   "key": "chg:0308",
+   "slot": "freeze",
+   "short_description": "NSG rule update for vm-dc-01 subnet",
+   "ci": "vm-dc-01",
+   "service": "Identity Services",
+   "tier": 1,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.152,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.7,
+    "freeze": 0.7,
+    "open_incident": 0.4,
+    "noise": -0.12
    },
    "recommendation": "send_back",
    "quality": {
@@ -45,26 +431,67 @@
    "messy": false
   },
   {
-   "key": "chg:0298",
+   "key": "chg:0309",
+   "slot": "messy_up",
+   "short_description": "AKS node pool upgrade on aks-platform-prod",
+   "ci": "aks-platform-prod",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "aksupgrade",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.242,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.2,
+    "tier": 0.3,
+    "open_incident": 0.4,
+    "vendor": 0.4,
+    "big_bang": 0.7,
+    "group_track_record": -0.3,
+    "ci_fragility": 0.2,
+    "noise": 0.36
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [
+    "vendor",
+    "big_bang"
+   ],
+   "messy": true
+  },
+  {
+   "key": "chg:0310",
    "slot": "weak",
-   "short_description": "Renew TLS certificate on app-hrportal-prod",
+   "short_description": "NSG rule update for app-hrportal-prod subnet",
    "ci": "app-hrportal-prod",
    "service": "HR Portal",
    "tier": 3,
-   "kind": "cert",
+   "kind": "nsg",
    "type": "normal",
    "requester_risk": "low",
-   "failure_probability": 0.038,
+   "failure_probability": 0.055,
    "risk_band": "low",
    "risk_factors": {
-    "base": -3.7,
+    "base": -3.4,
+    "backout_weak": 0.5,
     "test_weak": 0.3,
-    "noise": 0.16
+    "noise": -0.25
    },
    "recommendation": "approve",
    "quality": {
     "implementation": "ok",
-    "backout": "ok",
+    "backout": "weak",
     "test": "weak"
    },
    "conflicts": [],
@@ -77,444 +504,25 @@
    "messy": false
   },
   {
-   "key": "chg:0299",
-   "slot": "tier1",
-   "short_description": "NSG rule update for vm-dc-01 subnet",
-   "ci": "vm-dc-01",
-   "service": "Identity Services",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "emergency",
-   "requester_risk": "high",
-   "failure_probability": 0.206,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "emergency": 0.5,
-    "outside_maintenance_window": 0.3,
-    "open_incident": 0.4,
-    "noise": 0.15
-   },
-   "recommendation": "cab",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "off_hours",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0300",
-   "slot": "tier1",
-   "short_description": "NSG rule update for vm-dc-02 subnet",
-   "ci": "vm-dc-02",
-   "service": "Identity Services",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.081,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "open_incident": 0.4,
-    "noise": -0.13
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0301",
-   "slot": "missing",
-   "short_description": "NSG rule update for vm-hr-batch-01 subnet",
-   "ci": "vm-hr-batch-01",
-   "service": "HR Portal",
-   "tier": 3,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.063,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.4,
-    "implementation_missing": 0.5,
-    "noise": 0.2
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "missing",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0302",
-   "slot": "tier1",
-   "short_description": "NSG rule update for vm-ecom-web-01 subnet",
-   "ci": "vm-ecom-web-01",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.112,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "open_problem": 0.5,
-    "noise": 0.13
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": true,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0303",
-   "slot": "conflict",
-   "short_description": "NSG rule update for vm-payments-01 subnet",
-   "ci": "vm-payments-01",
-   "service": "Payments Integration",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.133,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "conflict": 0.9,
-    "noise": -0.08
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [
-    {
-     "key": "chg:0262",
-     "relation": "same_ci"
-    }
-   ],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0304",
-   "slot": "business",
-   "short_description": "Deploy release 3.10.5 to func-orders-processor",
-   "ci": "func-orders-processor",
-   "service": "Order Processing",
-   "tier": 1,
-   "kind": "release",
-   "type": "emergency",
-   "requester_risk": "high",
-   "failure_probability": 0.128,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.3,
-    "tier": 0.7,
-    "emergency": 0.5,
-    "outside_maintenance_window": 0.3,
-    "open_incident": 0.4,
-    "group_track_record": 0.15,
-    "noise": -0.67
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "off_hours",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0305",
-   "slot": "conflict",
-   "short_description": "NSG rule update for vm-etl-01 subnet",
-   "ci": "vm-etl-01",
-   "service": "Data & Analytics",
-   "tier": 2,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.111,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.3,
-    "conflict": 0.9,
-    "noise": 0.12
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [
-    {
-     "key": "chg:0269",
-     "relation": "same_ci"
-    }
-   ],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0306",
-   "slot": "freeze",
-   "short_description": "Database schema change on sql-dwh-prod: new index for usp_GetOrderHistory",
-   "ci": "sql-dwh-prod",
-   "service": "Data & Analytics",
-   "tier": 2,
-   "kind": "schema",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.196,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.1,
-    "tier": 0.3,
-    "blast_radius": 0.25,
-    "freeze": 0.7,
-    "open_incident": 0.4,
-    "group_track_record": 0.2,
-    "noise": -0.16
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [
-    "SKR Month-end finance close"
-   ],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0307",
-   "slot": "missing",
-   "short_description": "Renew TLS certificate on app-hrportal-prod",
-   "ci": "app-hrportal-prod",
-   "service": "HR Portal",
-   "tier": 3,
-   "kind": "cert",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.144,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.7,
-    "backout_missing": 1.0,
-    "noise": 0.92
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "missing",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0308",
-   "slot": "clean",
-   "short_description": "NSG rule update for vm-jump-01 subnet",
-   "ci": "vm-jump-01",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "nsg",
-   "type": "emergency",
-   "requester_risk": "moderate",
-   "failure_probability": 0.14,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.3,
-    "emergency": 0.5,
-    "outside_maintenance_window": 0.3,
-    "open_incident": 0.4,
-    "noise": 0.09
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "off_hours",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0309",
-   "slot": "business",
-   "short_description": "NSG rule update for vm-ecom-web-02 subnet",
-   "ci": "vm-ecom-web-02",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.194,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "business_hours": 0.9,
-    "noise": 0.37
-   },
-   "recommendation": "cab",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "business",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0310",
-   "slot": "messy_up",
-   "short_description": "Deploy release 4.2.1 to vm-payments-01",
-   "ci": "vm-payments-01",
-   "service": "Payments Integration",
-   "tier": 1,
-   "kind": "release",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.366,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.3,
-    "tier": 0.7,
-    "irreversible": 1.3,
-    "group_track_record": 0.45,
-    "noise": 0.3
-   },
-   "recommendation": "cab",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [
-    "irreversible"
-   ],
-   "messy": true
-  },
-  {
    "key": "chg:0311",
-   "slot": "clean",
-   "short_description": "AKS node pool upgrade on aks-platform-prod",
-   "ci": "aks-platform-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "aksupgrade",
+   "slot": "tier1",
+   "short_description": "Rotate secrets in kv-payments-prod",
+   "ci": "kv-payments-prod",
+   "service": "Payments Integration",
+   "tier": 1,
+   "kind": "secret",
    "type": "normal",
-   "requester_risk": "high",
-   "failure_probability": 0.026,
-   "risk_band": "low",
+   "requester_risk": "low",
+   "failure_probability": 0.107,
+   "risk_band": "moderate",
    "risk_factors": {
-    "base": -3.2,
-    "tier": 0.3,
-    "group_track_record": -0.3,
-    "ci_fragility": 0.2,
-    "noise": -0.64
+    "base": -3.3,
+    "tier": 0.7,
+    "blast_radius": 0.25,
+    "group_track_record": 0.3,
+    "noise": -0.07
    },
-   "recommendation": "approve",
+   "recommendation": "approve_with_conditions",
    "quality": {
     "implementation": "ok",
     "backout": "ok",
@@ -532,22 +540,20 @@
   {
    "key": "chg:0312",
    "slot": "missing",
-   "short_description": "Configuration change on app-payments-prod: cache expiry",
-   "ci": "app-payments-prod",
-   "service": "Payments Integration",
-   "tier": 1,
-   "kind": "config",
+   "short_description": "Azure Firewall policy update on azfw-hub-prod",
+   "ci": "azfw-hub-prod",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "fwrule",
    "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.225,
-   "risk_band": "high",
+   "requester_risk": "low",
+   "failure_probability": 0.072,
+   "risk_band": "low",
    "risk_factors": {
     "base": -3.5,
-    "tier": 0.7,
+    "tier": 0.3,
     "test_missing": 0.7,
-    "group_track_record": 0.45,
-    "ci_fragility": 0.3,
-    "noise": 0.11
+    "noise": -0.06
    },
    "recommendation": "send_back",
    "quality": {
@@ -566,24 +572,126 @@
   },
   {
    "key": "chg:0313",
-   "slot": "tier1",
-   "short_description": "Database schema change on sql-orders-prod: widen the address columns",
-   "ci": "sql-orders-prod",
-   "service": "Order Processing",
-   "tier": 1,
+   "slot": "clean",
+   "short_description": "Deploy release 3.10.7 to app-hrportal-prod",
+   "ci": "app-hrportal-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "release",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.073,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.3,
+    "group_track_record": 0.15,
+    "noise": 0.61
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0314",
+   "slot": "clean",
+   "short_description": "Database schema change on sql-hr-prod: widen the address columns",
+   "ci": "sql-hr-prod",
+   "service": "HR Portal",
+   "tier": 3,
    "kind": "schema",
    "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.35,
-   "risk_band": "high",
+   "requester_risk": "low",
+   "failure_probability": 0.114,
+   "risk_band": "moderate",
    "risk_factors": {
     "base": -3.1,
-    "tier": 0.7,
-    "blast_radius": 0.75,
-    "open_problem": 0.5,
+    "blast_radius": 0.25,
+    "open_incident": 0.4,
     "group_track_record": 0.2,
-    "ci_fragility": 0.4,
-    "noise": -0.07
+    "noise": 0.19
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0315",
+   "slot": "freeze",
+   "short_description": "Rotate secrets in kv-payments-prod",
+   "ci": "kv-payments-prod",
+   "service": "Payments Integration",
+   "tier": 1,
+   "kind": "secret",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.299,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.3,
+    "tier": 0.7,
+    "blast_radius": 0.25,
+    "freeze": 0.7,
+    "group_track_record": 0.3,
+    "noise": 0.5
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0316",
+   "slot": "messy_up",
+   "short_description": "Configuration change on redis-ecom-cache: request timeout",
+   "ci": "redis-ecom-cache",
+   "service": "E-Commerce Storefront",
+   "tier": 1,
+   "kind": "config",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.21,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.7,
+    "blast_radius": 0.25,
+    "big_bang": 0.7,
+    "group_track_record": 0.45,
+    "noise": 0.08
    },
    "recommendation": "cab",
    "quality": {
@@ -594,33 +702,70 @@
    "conflicts": [],
    "freeze": [],
    "window": "maint",
-   "open_problem": true,
+   "open_problem": false,
    "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [
+    "big_bang"
+   ],
+   "messy": true
+  },
+  {
+   "key": "chg:0317",
+   "slot": "missing",
+   "short_description": "Database schema change on sql-hr-prod: add a delivery-slot column",
+   "ci": "sql-hr-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.373,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.1,
+    "blast_radius": 0.25,
+    "backout_missing": 1.0,
+    "open_incident": 0.4,
+    "group_track_record": 0.2,
+    "noise": 0.73
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "ok",
+    "backout": "missing",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
    "short_lead": false,
    "hidden_factors": [],
    "messy": false
   },
   {
-   "key": "chg:0314",
+   "key": "chg:0318",
    "slot": "conflict",
-   "short_description": "Configuration change on redis-ecom-cache: connection pool size",
-   "ci": "redis-ecom-cache",
-   "service": "E-Commerce Storefront",
+   "short_description": "Deploy release 5.20.6 to func-orders-processor",
+   "ci": "func-orders-processor",
+   "service": "Order Processing",
    "tier": 1,
-   "kind": "config",
+   "kind": "release",
    "type": "normal",
    "requester_risk": "moderate",
-   "failure_probability": 0.223,
-   "risk_band": "high",
+   "failure_probability": 0.145,
+   "risk_band": "moderate",
    "risk_factors": {
-    "base": -3.5,
+    "base": -3.3,
     "tier": 0.7,
-    "blast_radius": 0.25,
+    "outside_maintenance_window": 0.3,
     "conflict": 0.5,
-    "group_track_record": 0.45,
-    "noise": 0.35
+    "group_track_record": 0.15,
+    "noise": -0.12
    },
-   "recommendation": "cab",
+   "recommendation": "approve_with_conditions",
    "quality": {
     "implementation": "ok",
     "backout": "ok",
@@ -633,417 +778,70 @@
     }
    ],
    "freeze": [],
-   "window": "maint",
+   "window": "off_hours",
    "open_problem": false,
    "open_incident": false,
    "short_lead": false,
    "hidden_factors": [],
    "messy": false
-  },
-  {
-   "key": "chg:0315",
-   "slot": "weak",
-   "short_description": "NSG rule update for vm-dc-01 subnet",
-   "ci": "vm-dc-01",
-   "service": "Identity Services",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.125,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "backout_weak": 0.5,
-    "open_incident": 0.4,
-    "noise": -0.14
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "weak",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0316",
-   "slot": "conflict",
-   "short_description": "NSG rule update for app-hrportal-prod subnet",
-   "ci": "app-hrportal-prod",
-   "service": "HR Portal",
-   "tier": 3,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.085,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.4,
-    "conflict": 0.9,
-    "noise": 0.13
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [
-    {
-     "key": "chg:0265",
-     "relation": "same_ci"
-    }
-   ],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0317",
-   "slot": "messy_up",
-   "short_description": "Rotate secrets in kv-payments-prod",
-   "ci": "kv-payments-prod",
-   "service": "Payments Integration",
-   "tier": 1,
-   "kind": "secret",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.359,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.3,
-    "tier": 0.7,
-    "blast_radius": 0.25,
-    "vendor": 0.4,
-    "irreversible": 1.3,
-    "group_track_record": 0.3,
-    "noise": -0.23
-   },
-   "recommendation": "cab",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [
-    "vendor",
-    "irreversible"
-   ],
-   "messy": true
-  },
-  {
-   "key": "chg:0318",
-   "slot": "messy_down",
-   "short_description": "Deploy release 6.2.0 to func-orders-processor",
-   "ci": "func-orders-processor",
-   "service": "Order Processing",
-   "tier": 1,
-   "kind": "release",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.043,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.3,
-    "tier": 0.7,
-    "open_incident": 0.4,
-    "canary": -0.6,
-    "rehearsed": -0.4,
-    "group_track_record": 0.15,
-    "noise": -0.06
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [
-    "canary",
-    "rehearsed"
-   ],
-   "messy": true
   },
   {
    "key": "chg:0319",
-   "slot": "clean",
-   "short_description": "Database schema change on sql-hr-prod: widen the address columns",
-   "ci": "sql-hr-prod",
-   "service": "HR Portal",
-   "tier": 3,
-   "kind": "schema",
+   "slot": "freeze",
+   "short_description": "AKS node pool upgrade on aks-platform-prod",
+   "ci": "aks-platform-prod",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "aksupgrade",
    "type": "normal",
    "requester_risk": "low",
-   "failure_probability": 0.052,
-   "risk_band": "low",
+   "failure_probability": 0.115,
+   "risk_band": "moderate",
    "risk_factors": {
-    "base": -3.1,
-    "blast_radius": 0.25,
-    "group_track_record": 0.2,
-    "noise": -0.25
+    "base": -3.2,
+    "tier": 0.3,
+    "freeze": 0.7,
+    "open_incident": 0.4,
+    "group_track_record": -0.3,
+    "ci_fragility": 0.2,
+    "noise": -0.14
    },
-   "recommendation": "approve",
+   "recommendation": "send_back",
    "quality": {
     "implementation": "ok",
     "backout": "ok",
     "test": "ok"
    },
    "conflicts": [],
-   "freeze": [],
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
    "window": "maint",
    "open_problem": false,
-   "open_incident": false,
+   "open_incident": true,
    "short_lead": false,
    "hidden_factors": [],
    "messy": false
   },
   {
    "key": "chg:0320",
-   "slot": "weak",
-   "short_description": "Configuration change on redis-ecom-cache: autoscale rule",
-   "ci": "redis-ecom-cache",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "config",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.19,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.5,
-    "tier": 0.7,
-    "blast_radius": 0.25,
-    "backout_weak": 0.5,
-    "group_track_record": 0.45,
-    "noise": 0.15
-   },
-   "recommendation": "cab",
-   "quality": {
-    "implementation": "ok",
-    "backout": "weak",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0321",
-   "slot": "tier1",
-   "short_description": "Configuration change on redis-ecom-cache: cache expiry",
-   "ci": "redis-ecom-cache",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "config",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.123,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.5,
-    "tier": 0.7,
-    "blast_radius": 0.25,
-    "group_track_record": 0.45,
-    "noise": 0.14
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0322",
-   "slot": "clean",
-   "short_description": "NSG rule update for vm-etl-01 subnet",
-   "ci": "vm-etl-01",
-   "service": "Data & Analytics",
-   "tier": 2,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.038,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.3,
-    "noise": -0.14
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0323",
-   "slot": "missing",
-   "short_description": "Azure Firewall policy update on azfw-hub-prod",
-   "ci": "azfw-hub-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "fwrule",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.102,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.5,
-    "tier": 0.3,
-    "backout_missing": 1.0,
-    "noise": 0.03
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "missing",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0324",
-   "slot": "business",
-   "short_description": "Configuration change on redis-ecom-cache: feature flag express-checkout",
-   "ci": "redis-ecom-cache",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "config",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.152,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.5,
-    "tier": 0.7,
-    "blast_radius": 0.25,
-    "business_hours": 0.9,
-    "group_track_record": 0.45,
-    "noise": -0.52
-   },
-   "recommendation": "approve_with_conditions",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "business",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0325",
-   "slot": "clean",
-   "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
-   "ci": "sql-hr-prod",
-   "service": "HR Portal",
-   "tier": 3,
-   "kind": "schema",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.068,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.1,
-    "blast_radius": 0.25,
-    "group_track_record": 0.2,
-    "noise": 0.03
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0326",
    "slot": "messy_up",
-   "short_description": "Configuration change on sb-orders-queue: autoscale rule",
-   "ci": "sb-orders-queue",
-   "service": "Order Processing",
+   "short_description": "Deploy release 6.7.4 to vm-payments-01",
+   "ci": "vm-payments-01",
+   "service": "Payments Integration",
    "tier": 1,
-   "kind": "config",
+   "kind": "release",
    "type": "normal",
    "requester_risk": "moderate",
-   "failure_probability": 0.211,
+   "failure_probability": 0.4,
    "risk_band": "high",
    "risk_factors": {
-    "base": -3.5,
+    "base": -3.3,
     "tier": 0.7,
-    "blast_radius": 0.25,
     "big_bang": 0.7,
     "first_time": 0.7,
-    "group_track_record": 0.15,
-    "noise": -0.32
+    "group_track_record": 0.45,
+    "noise": 0.34
    },
    "recommendation": "cab",
    "quality": {
@@ -1064,21 +862,234 @@
    "messy": true
   },
   {
-   "key": "chg:0327",
-   "slot": "tier1",
-   "short_description": "NSG rule update for vm-ecom-web-02 subnet",
-   "ci": "vm-ecom-web-02",
-   "service": "E-Commerce Storefront",
+   "key": "chg:0321",
+   "slot": "weak",
+   "short_description": "NSG rule update for vm-dc-02 subnet",
+   "ci": "vm-dc-02",
+   "service": "Identity Services",
    "tier": 1,
    "kind": "nsg",
    "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.037,
-   "risk_band": "low",
+   "requester_risk": "moderate",
+   "failure_probability": 0.176,
+   "risk_band": "moderate",
    "risk_factors": {
     "base": -3.4,
     "tier": 0.7,
-    "noise": -0.55
+    "implementation_weak": 0.4,
+    "backout_weak": 0.5,
+    "open_incident": 0.4,
+    "noise": -0.14
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "weak",
+    "backout": "weak",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0322",
+   "slot": "tier1",
+   "short_description": "Configuration change on redis-ecom-cache: feature flag express-checkout",
+   "ci": "redis-ecom-cache",
+   "service": "E-Commerce Storefront",
+   "tier": 1,
+   "kind": "config",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.12,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.7,
+    "blast_radius": 0.25,
+    "group_track_record": 0.45,
+    "noise": 0.11
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0323",
+   "slot": "business",
+   "short_description": "Database schema change on sql-ecom-catalog-prod: new index for usp_GetOrderHistory",
+   "ci": "sql-ecom-catalog-prod",
+   "service": "E-Commerce Storefront",
+   "tier": 1,
+   "kind": "schema",
+   "type": "emergency",
+   "requester_risk": "high",
+   "failure_probability": 0.421,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.1,
+    "tier": 0.7,
+    "blast_radius": 0.5,
+    "emergency": 0.5,
+    "outside_maintenance_window": 0.3,
+    "group_track_record": 0.2,
+    "noise": 0.58
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "off_hours",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0324",
+   "slot": "clean",
+   "short_description": "Database schema change on sql-dwh-prod: widen the address columns",
+   "ci": "sql-dwh-prod",
+   "service": "Data & Analytics",
+   "tier": 2,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.094,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.1,
+    "tier": 0.3,
+    "blast_radius": 0.25,
+    "group_track_record": 0.2,
+    "noise": 0.09
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0325",
+   "slot": "clean",
+   "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+   "ci": "sql-hr-prod",
+   "service": "HR Portal",
+   "tier": 3,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.093,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.1,
+    "blast_radius": 0.25,
+    "open_incident": 0.4,
+    "group_track_record": 0.2,
+    "noise": -0.03
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0326",
+   "slot": "conflict",
+   "short_description": "NSG rule update for vm-dc-02 subnet",
+   "ci": "vm-dc-02",
+   "service": "Identity Services",
+   "tier": 1,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.31,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.7,
+    "outside_maintenance_window": 0.3,
+    "conflict": 0.9,
+    "open_incident": 0.4,
+    "noise": 0.3
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [
+    {
+     "key": "chg:0271",
+     "relation": "same_ci"
+    }
+   ],
+   "freeze": [],
+   "window": "off_hours",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0327",
+   "slot": "clean",
+   "short_description": "Azure Firewall policy update on azfw-hub-prod",
+   "ci": "azfw-hub-prod",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "fwrule",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.033,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.3,
+    "noise": -0.17
    },
    "recommendation": "approve",
    "quality": {
@@ -1098,21 +1109,24 @@
   {
    "key": "chg:0328",
    "slot": "messy_down",
-   "short_description": "NSG rule update for app-payments-prod subnet",
+   "short_description": "Configuration change on app-payments-prod: request timeout",
    "ci": "app-payments-prod",
    "service": "Payments Integration",
    "tier": 1,
-   "kind": "nsg",
+   "kind": "config",
    "type": "normal",
    "requester_risk": "moderate",
-   "failure_probability": 0.091,
+   "failure_probability": 0.055,
    "risk_band": "low",
    "risk_factors": {
-    "base": -3.4,
+    "base": -3.5,
     "tier": 0.7,
+    "open_incident": 0.4,
+    "canary": -0.6,
     "rehearsed": -0.4,
+    "group_track_record": 0.45,
     "ci_fragility": 0.3,
-    "noise": 0.5
+    "noise": -0.2
    },
    "recommendation": "approve",
    "quality": {
@@ -1124,237 +1138,34 @@
    "freeze": [],
    "window": "maint",
    "open_problem": false,
-   "open_incident": false,
+   "open_incident": true,
    "short_lead": false,
    "hidden_factors": [
+    "canary",
     "rehearsed"
    ],
    "messy": true
   },
   {
    "key": "chg:0329",
-   "slot": "clean",
-   "short_description": "NSG rule update for vm-etl-01 subnet",
-   "ci": "vm-etl-01",
-   "service": "Data & Analytics",
-   "tier": 2,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.032,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.3,
-    "noise": -0.32
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0330",
-   "slot": "clean",
-   "short_description": "Azure Firewall policy update on azfw-hub-prod",
-   "ci": "azfw-hub-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "fwrule",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.04,
-   "risk_band": "low",
-   "risk_factors": {
-    "base": -3.5,
-    "tier": 0.3,
-    "noise": 0.01
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0331",
-   "slot": "freeze",
-   "short_description": "AKS node pool upgrade on aks-platform-prod",
-   "ci": "aks-platform-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "aksupgrade",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.103,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.2,
-    "tier": 0.3,
-    "freeze": 0.7,
-    "group_track_record": -0.3,
-    "ci_fragility": 0.2,
-    "noise": 0.14
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [
-    "SKR Black Friday Mega Sale freeze"
-   ],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0332",
-   "slot": "missing",
-   "short_description": "NSG rule update for vm-orders-app-01 subnet",
-   "ci": "vm-orders-app-01",
-   "service": "Order Processing",
+   "slot": "business",
+   "short_description": "Configuration change on app-payments-prod: retry policy",
+   "ci": "app-payments-prod",
+   "service": "Payments Integration",
    "tier": 1,
-   "kind": "nsg",
+   "kind": "config",
    "type": "normal",
    "requester_risk": "moderate",
-   "failure_probability": 0.236,
+   "failure_probability": 0.319,
    "risk_band": "high",
    "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "test_missing": 0.7,
-    "open_incident": 0.4,
-    "noise": 0.42
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "missing"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0333",
-   "slot": "weak",
-   "short_description": "Azure Firewall policy update on vpngw-hub-prod",
-   "ci": "vpngw-hub-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "fwrule",
-   "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.068,
-   "risk_band": "low",
-   "risk_factors": {
     "base": -3.5,
-    "tier": 0.3,
-    "implementation_weak": 0.4,
-    "test_weak": 0.3,
-    "noise": -0.12
-   },
-   "recommendation": "approve",
-   "quality": {
-    "implementation": "weak",
-    "backout": "ok",
-    "test": "weak"
-   },
-   "conflicts": [],
-   "freeze": [],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": false,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0334",
-   "slot": "freeze",
-   "short_description": "NSG rule update for vm-dc-01 subnet",
-   "ci": "vm-dc-01",
-   "service": "Identity Services",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.142,
-   "risk_band": "moderate",
-   "risk_factors": {
-    "base": -3.4,
     "tier": 0.7,
-    "freeze": 0.7,
+    "business_hours": 0.9,
     "open_incident": 0.4,
-    "noise": -0.2
-   },
-   "recommendation": "send_back",
-   "quality": {
-    "implementation": "ok",
-    "backout": "ok",
-    "test": "ok"
-   },
-   "conflicts": [],
-   "freeze": [
-    "SKR Black Friday Mega Sale freeze"
-   ],
-   "window": "maint",
-   "open_problem": false,
-   "open_incident": true,
-   "short_lead": false,
-   "hidden_factors": [],
-   "messy": false
-  },
-  {
-   "key": "chg:0335",
-   "slot": "messy_up",
-   "short_description": "NSG rule update for vm-ecom-web-01 subnet",
-   "ci": "vm-ecom-web-01",
-   "service": "E-Commerce Storefront",
-   "tier": 1,
-   "kind": "nsg",
-   "type": "normal",
-   "requester_risk": "moderate",
-   "failure_probability": 0.329,
-   "risk_band": "high",
-   "risk_factors": {
-    "base": -3.4,
-    "tier": 0.7,
-    "open_problem": 0.5,
-    "first_time": 0.7,
-    "vendor": 0.4,
-    "noise": 0.39
+    "group_track_record": 0.45,
+    "ci_fragility": 0.3,
+    "noise": -0.01
    },
    "recommendation": "cab",
    "quality": {
@@ -1364,39 +1175,246 @@
    },
    "conflicts": [],
    "freeze": [],
-   "window": "maint",
-   "open_problem": true,
-   "open_incident": false,
+   "window": "business",
+   "open_problem": false,
+   "open_incident": true,
    "short_lead": false,
-   "hidden_factors": [
-    "first_time",
-    "vendor"
-   ],
-   "messy": true
+   "hidden_factors": [],
+   "messy": false
   },
   {
-   "key": "chg:0336",
-   "slot": "clean",
-   "short_description": "Deploy release 4.19.7 to aks-platform-prod",
-   "ci": "aks-platform-prod",
-   "service": "Shared Platform",
-   "tier": 2,
-   "kind": "release",
+   "key": "chg:0330",
+   "slot": "tier1",
+   "short_description": "Renew TLS certificate on app-ecom-api-prod",
+   "ci": "app-ecom-api-prod",
+   "service": "E-Commerce Storefront",
+   "tier": 1,
+   "kind": "cert",
    "type": "normal",
-   "requester_risk": "low",
-   "failure_probability": 0.06,
+   "requester_risk": "moderate",
+   "failure_probability": 0.121,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.7,
+    "tier": 0.7,
+    "blast_radius": 0.5,
+    "open_incident": 0.4,
+    "noise": 0.12
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0331",
+   "slot": "tier1",
+   "short_description": "NSG rule update for vm-orders-app-01 subnet",
+   "ci": "vm-orders-app-01",
+   "service": "Order Processing",
+   "tier": 1,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.058,
    "risk_band": "low",
    "risk_factors": {
-    "base": -3.3,
-    "tier": 0.3,
-    "group_track_record": -0.3,
-    "ci_fragility": 0.2,
-    "noise": 0.35
+    "base": -3.4,
+    "tier": 0.7,
+    "noise": -0.08
    },
    "recommendation": "approve",
    "quality": {
     "implementation": "ok",
     "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0332",
+   "slot": "business",
+   "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+   "ci": "sql-orders-prod",
+   "service": "Order Processing",
+   "tier": 1,
+   "kind": "schema",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.606,
+   "risk_band": "high",
+   "risk_factors": {
+    "base": -3.1,
+    "tier": 0.7,
+    "blast_radius": 0.75,
+    "business_hours": 0.9,
+    "open_problem": 0.5,
+    "group_track_record": 0.2,
+    "ci_fragility": 0.4,
+    "noise": 0.08
+   },
+   "recommendation": "cab",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "business",
+   "open_problem": true,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0333",
+   "slot": "messy_down",
+   "short_description": "NSG rule update for vm-dc-01 subnet",
+   "ci": "vm-dc-01",
+   "service": "Identity Services",
+   "tier": 1,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "moderate",
+   "failure_probability": 0.09,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.7,
+    "open_incident": 0.4,
+    "rehearsed": -0.4,
+    "noise": 0.39
+   },
+   "recommendation": "approve",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": true,
+   "short_lead": false,
+   "hidden_factors": [
+    "rehearsed"
+   ],
+   "messy": true
+  },
+  {
+   "key": "chg:0334",
+   "slot": "missing",
+   "short_description": "Azure Firewall policy update on azfw-hub-prod",
+   "ci": "azfw-hub-prod",
+   "service": "Shared Platform",
+   "tier": 2,
+   "kind": "fwrule",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.065,
+   "risk_band": "low",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.3,
+    "implementation_missing": 0.5,
+    "noise": 0.04
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "missing",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0335",
+   "slot": "conflict",
+   "short_description": "Configuration change on adf-analytics-prod: autoscale rule",
+   "ci": "adf-analytics-prod",
+   "service": "Data & Analytics",
+   "tier": 2,
+   "kind": "config",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.148,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.5,
+    "tier": 0.3,
+    "conflict": 0.5,
+    "group_track_record": 0.25,
+    "noise": 0.7
+   },
+   "recommendation": "approve_with_conditions",
+   "quality": {
+    "implementation": "ok",
+    "backout": "ok",
+    "test": "ok"
+   },
+   "conflicts": [
+    {
+     "key": "chg:0276",
+     "relation": "related_ci"
+    }
+   ],
+   "freeze": [],
+   "window": "maint",
+   "open_problem": false,
+   "open_incident": false,
+   "short_lead": false,
+   "hidden_factors": [],
+   "messy": false
+  },
+  {
+   "key": "chg:0336",
+   "slot": "missing",
+   "short_description": "NSG rule update for vm-etl-01 subnet",
+   "ci": "vm-etl-01",
+   "service": "Data & Analytics",
+   "tier": 2,
+   "kind": "nsg",
+   "type": "normal",
+   "requester_risk": "low",
+   "failure_probability": 0.139,
+   "risk_band": "moderate",
+   "risk_factors": {
+    "base": -3.4,
+    "tier": 0.3,
+    "backout_missing": 1.0,
+    "noise": 0.28
+   },
+   "recommendation": "send_back",
+   "quality": {
+    "implementation": "ok",
+    "backout": "missing",
     "test": "ok"
    },
    "conflicts": [],
@@ -1412,113 +1430,38 @@
  "verify": [
   {
    "key": "chg:0277",
-   "short_description": "Monthly Windows patching - vm-hr-batch-01",
-   "ci": "vm-hr-batch-01",
+   "short_description": "Monthly Windows patching - vm-dc-02",
+   "ci": "vm-dc-02",
    "kind": "patch",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": []
-  },
-  {
-   "key": "chg:0278",
-   "short_description": "Azure Firewall policy update on vpngw-hub-prod",
-   "ci": "vpngw-hub-prod",
-   "kind": "fwrule",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": [
-    {
-     "key": "inc:0278",
-     "why": "other_ci"
-    }
-   ]
-  },
-  {
-   "key": "chg:0279",
-   "short_description": "Renew TLS certificate on app-hrportal-prod",
-   "ci": "app-hrportal-prod",
-   "kind": "cert",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": [
-    {
-     "key": "inc:0279",
-     "why": "before"
-    }
-   ]
-  },
-  {
-   "key": "chg:0280",
-   "short_description": "Renew TLS certificate on kv-payments-prod",
-   "ci": "kv-payments-prod",
-   "kind": "cert",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": [
-    {
-     "key": "inc:0280",
-     "why": "unrelated_symptom"
-    }
-   ]
-  },
-  {
-   "key": "chg:0281",
-   "short_description": "Rotate secrets in kv-ecom-prod",
-   "ci": "kv-ecom-prod",
-   "kind": "secret",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": []
-  },
-  {
-   "key": "chg:0282",
-   "short_description": "Database schema change on sql-ecom-catalog-prod: add a delivery-slot column",
-   "ci": "sql-ecom-catalog-prod",
-   "kind": "schema",
-   "outcome": "successful_issues",
+   "outcome": "unsuccessful",
    "caused_incidents": [
-    "inc:0281",
-    "inc:0282"
+    "inc:0283"
    ],
    "distractor_incidents": []
   },
   {
-   "key": "chg:0283",
-   "short_description": "Monthly Windows patching - vm-etl-01",
-   "ci": "vm-etl-01",
-   "kind": "patch",
+   "key": "chg:0278",
+   "short_description": "Deploy release 6.15.3 to aks-platform-prod",
+   "ci": "aks-platform-prod",
+   "kind": "release",
    "outcome": "successful",
    "caused_incidents": [],
    "distractor_incidents": []
   },
   {
-   "key": "chg:0284",
-   "short_description": "Monthly Windows patching - vm-hr-batch-01",
-   "ci": "vm-hr-batch-01",
-   "kind": "patch",
-   "outcome": "successful",
-   "caused_incidents": [],
-   "distractor_incidents": []
-  },
-  {
-   "key": "chg:0285",
+   "key": "chg:0279",
    "short_description": "AKS node pool upgrade on aks-platform-prod",
    "ci": "aks-platform-prod",
    "kind": "aksupgrade",
    "outcome": "successful",
    "caused_incidents": [],
-   "distractor_incidents": [
-    {
-     "key": "inc:0283",
-     "why": "other_ci"
-    }
-   ]
+   "distractor_incidents": []
   },
   {
-   "key": "chg:0286",
-   "short_description": "Azure Firewall policy update on azfw-hub-prod",
-   "ci": "azfw-hub-prod",
-   "kind": "fwrule",
+   "key": "chg:0280",
+   "short_description": "AKS node pool upgrade on aks-platform-prod",
+   "ci": "aks-platform-prod",
+   "kind": "aksupgrade",
    "outcome": "successful_issues",
    "caused_incidents": [
     "inc:0284"
@@ -1526,13 +1469,81 @@
    "distractor_incidents": []
   },
   {
-   "key": "chg:0287",
-   "short_description": "Backup policy change on rsv-backup-prod",
-   "ci": "rsv-backup-prod",
-   "kind": "backup",
+   "key": "chg:0281",
+   "short_description": "Index maintenance on sql-orders-prod",
+   "ci": "sql-orders-prod",
+   "kind": "sqlmaint",
+   "outcome": "successful",
+   "caused_incidents": [],
+   "distractor_incidents": [
+    {
+     "key": "inc:0285",
+     "why": "unrelated_symptom"
+    }
+   ]
+  },
+  {
+   "key": "chg:0282",
+   "short_description": "NSG rule update for app-ecom-api-prod subnet",
+   "ci": "app-ecom-api-prod",
+   "kind": "nsg",
+   "outcome": "successful",
+   "caused_incidents": [],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0283",
+   "short_description": "Deploy release 6.1.8 to app-payments-prod",
+   "ci": "app-payments-prod",
+   "kind": "release",
+   "outcome": "successful",
+   "caused_incidents": [],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0284",
+   "short_description": "NSG rule update for vm-ecom-web-02 subnet",
+   "ci": "vm-ecom-web-02",
+   "kind": "nsg",
+   "outcome": "unsuccessful",
+   "caused_incidents": [
+    "inc:0286"
+   ],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0285",
+   "short_description": "Rotate secrets in kv-payments-prod",
+   "ci": "kv-payments-prod",
+   "kind": "secret",
    "outcome": "successful_issues",
    "caused_incidents": [
-    "inc:0285"
+    "inc:0287"
+   ],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0286",
+   "short_description": "Configuration change on adf-analytics-prod: cache expiry",
+   "ci": "adf-analytics-prod",
+   "kind": "config",
+   "outcome": "successful",
+   "caused_incidents": [],
+   "distractor_incidents": [
+    {
+     "key": "inc:0288",
+     "why": "other_ci"
+    }
+   ]
+  },
+  {
+   "key": "chg:0287",
+   "short_description": "Rotate secrets in kv-ecom-prod",
+   "ci": "kv-ecom-prod",
+   "kind": "secret",
+   "outcome": "unsuccessful",
+   "caused_incidents": [
+    "inc:0289"
    ],
    "distractor_incidents": []
   },
@@ -1547,101 +1558,98 @@
   },
   {
    "key": "chg:0289",
-   "short_description": "Monthly Windows patching - vm-jump-01",
-   "ci": "vm-jump-01",
+   "short_description": "Monthly Windows patching - vm-aadconnect-01",
+   "ci": "vm-aadconnect-01",
    "kind": "patch",
-   "outcome": "successful_issues",
-   "caused_incidents": [
-    "inc:0286",
-    "inc:0287"
-   ],
+   "outcome": "successful",
+   "caused_incidents": [],
    "distractor_incidents": []
   },
   {
    "key": "chg:0290",
-   "short_description": "Azure Firewall policy update on vpngw-hub-prod",
-   "ci": "vpngw-hub-prod",
+   "short_description": "Index maintenance on sql-ecom-catalog-prod",
+   "ci": "sql-ecom-catalog-prod",
+   "kind": "sqlmaint",
+   "outcome": "successful_issues",
+   "caused_incidents": [
+    "inc:0290"
+   ],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0291",
+   "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+   "ci": "sql-hr-prod",
+   "kind": "schema",
+   "outcome": "successful",
+   "caused_incidents": [],
+   "distractor_incidents": [
+    {
+     "key": "inc:0291",
+     "why": "late"
+    }
+   ]
+  },
+  {
+   "key": "chg:0292",
+   "short_description": "Resize sql-orders-prod to Standard_D4s_v5",
+   "ci": "sql-orders-prod",
+   "kind": "scale",
+   "outcome": "successful_issues",
+   "caused_incidents": [
+    "inc:0292",
+    "inc:0293"
+   ],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0293",
+   "short_description": "Backup policy change on rsv-backup-prod",
+   "ci": "rsv-backup-prod",
+   "kind": "backup",
+   "outcome": "successful_issues",
+   "caused_incidents": [
+    "inc:0294",
+    "inc:0295"
+   ],
+   "distractor_incidents": []
+  },
+  {
+   "key": "chg:0294",
+   "short_description": "Azure Firewall policy update on azfw-hub-prod",
+   "ci": "azfw-hub-prod",
    "kind": "fwrule",
    "outcome": "successful",
    "caused_incidents": [],
    "distractor_incidents": []
   },
   {
-   "key": "chg:0291",
-   "short_description": "Deploy release 4.16.9 to app-payments-prod",
-   "ci": "app-payments-prod",
+   "key": "chg:0295",
+   "short_description": "Deploy release 5.19.3 to app-ecom-api-prod",
+   "ci": "app-ecom-api-prod",
    "kind": "release",
    "outcome": "successful",
    "caused_incidents": [],
    "distractor_incidents": [
     {
-     "key": "inc:0288",
+     "key": "inc:0296",
      "why": "other_ci"
     }
    ]
   },
   {
-   "key": "chg:0292",
-   "short_description": "Deploy release 6.19.6 to vm-payments-01",
-   "ci": "vm-payments-01",
-   "kind": "release",
-   "outcome": "unsuccessful",
-   "caused_incidents": [
-    "inc:0289"
-   ],
-   "distractor_incidents": []
-  },
-  {
-   "key": "chg:0293",
-   "short_description": "Deploy release 5.18.9 to func-orders-processor",
-   "ci": "func-orders-processor",
-   "kind": "release",
-   "outcome": "unsuccessful",
-   "caused_incidents": [
-    "inc:0290"
-   ],
-   "distractor_incidents": [
-    {
-     "key": "inc:0291",
-     "why": "unrelated_symptom"
-    }
-   ]
-  },
-  {
-   "key": "chg:0294",
-   "short_description": "Rotate secrets in kv-payments-prod",
-   "ci": "kv-payments-prod",
-   "kind": "secret",
-   "outcome": "unsuccessful",
-   "caused_incidents": [
-    "inc:0292"
-   ],
-   "distractor_incidents": [
-    {
-     "key": "inc:0293",
-     "why": "unrelated_symptom"
-    }
-   ]
-  },
-  {
-   "key": "chg:0295",
-   "short_description": "Deploy release 6.18.6 to vm-orders-app-01",
-   "ci": "vm-orders-app-01",
-   "kind": "release",
-   "outcome": "successful_issues",
-   "caused_incidents": [
-    "inc:0294"
-   ],
-   "distractor_incidents": []
-  },
-  {
    "key": "chg:0296",
-   "short_description": "NSG rule update for vm-payments-01 subnet",
-   "ci": "vm-payments-01",
-   "kind": "nsg",
+   "short_description": "Backup policy change on rsv-backup-prod",
+   "ci": "rsv-backup-prod",
+   "kind": "backup",
    "outcome": "successful",
    "caused_incidents": [],
-   "distractor_incidents": []
+   "distractor_incidents": [
+    {
+     "key": "inc:0297",
+     "why": "other_ci"
+    }
+   ]
   }
  ]
 }

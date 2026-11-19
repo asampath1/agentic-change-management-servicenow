@@ -15,7 +15,7 @@ python3 generate_data.py --now "2026-12-01 06:00:00"    # re-anchor all dates, e
 | Table (CSV) | Rows | Notes |
 |---|---|---|
 | changes | 336 | 260 closed (history), 16 scheduled (the future calendar), 40 to assess, 20 to verify |
-| incidents | 294 | background incidents, incidents caused by failed changes, and recent incidents near the verify changes |
+| incidents | 297 | background incidents, incidents caused by failed changes, and recent incidents near the verify changes |
 | schedules / schedule_spans | 6 / 14 | freeze periods (sale events; month-end close for Payments, Orders, Data) and maintenance windows |
 | kb | 21 | 20 troubleshooting articles plus the **SKR Change Management Policy** (windows, freezes, approval rules) |
 | users, groups, cis, services, relationships, problems | | as in v1.0; CMDB dependencies give each change its blast radius |
@@ -31,7 +31,8 @@ observe:
 - the timing (business hours, outside the maintenance window, freeze),
 - conflicts, open problems or incidents on the CI, and short lead time.
 
-It also includes free-text clues and some noise. For history changes, the outcome is drawn from that probability.
+It also includes free-text clues and some noise. For history changes, the outcome is drawn from that probability, in time order, so clashes with other
+changes and incidents already open on the CI count in the history as well.
 Failed changes raise the incidents that follow them, and about 85% of those incidents are linked back to the change.
 
 Risk bands come from the true probability: low < 0.10, moderate < 0.18, high ≥ 0.18. The expected recommendation
@@ -46,12 +47,13 @@ changes have clean structured fields: their risk band changes only because of wh
 ## Evaluation sets (`data/ground_truth.json`, scoring code only)
 
 - **assess** (40 changes in state Assess):
-  - risk band (15 low, 12 moderate, 13 high), the factors behind it, and the expected recommendation;
+  - risk band (13 low, 15 moderate, 12 high), the factors behind it, and the expected recommendation
+    (11 approve, 10 with conditions, 10 CAB, 9 send back);
   - plan quality per section, conflicts with other changes, freeze overlaps and window class.
 - **verify** (20 changes in state Review):
   - the outcome: 12 successful, 5 successful with issues, 3 unsuccessful;
   - the incidents each change caused;
-  - 7 distractor incidents: raised before the change, on another CI, more than 24 h later, or with an unrelated
+  - 5 distractor incidents: raised before the change, on another CI, more than 24 h later, or with an unrelated
     symptom.
 
 Nothing that holds an answer reaches the CSVs or the load plan (see `tests/test_answer_key_isolation.py`).

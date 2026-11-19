@@ -1,0 +1,18 @@
+{
+ "source": "local",
+ "reasoner": "heuristic",
+ "risk_mode": "point",
+ "changes": 40,
+ "seconds": 0.7,
+ "bands": {
+  "moderate": 14,
+  "low": 20,
+  "high": 6
+ },
+ "recommendations": {
+  "send_back": 9,
+  "approve_with_conditions": 7,
+  "approve": 18,
+  "cab": 6
+ }
+}

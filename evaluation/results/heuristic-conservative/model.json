@@ -1,0 +1,33 @@
+{
+ "trained_on": 260,
+ "failed": 31,
+ "weights": {
+  "intercept": -2.955,
+  "family_logit": 0.151,
+  "group_dev": 0.589,
+  "ci_dev": 0.356,
+  "criticality": 0.205,
+  "dependents": 0.206,
+  "emergency": 0.196,
+  "implementation_weak": 0.458,
+  "implementation_missing": 0.548,
+  "backout_weak": 0.424,
+  "backout_missing": 0.548,
+  "test_weak": 0.467,
+  "test_missing": 0.576,
+  "business_hours": 0.446,
+  "outside_window": 0.308,
+  "freeze": 0.529,
+  "conflict_same_ci": 1.089,
+  "conflict_related_ci": 0.394,
+  "open_problem": 0.502,
+  "open_incident": 0.211,
+  "short_lead": 0.199,
+  "irreversible": 1.038,
+  "first_time": 0.206,
+  "vendor": 0.751,
+  "big_bang": 0.908,
+  "canary": -0.639,
+  "rehearsed": -0.42
+ }
+}

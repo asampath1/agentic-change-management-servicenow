@@ -12,11 +12,11 @@ schedules           6
 schedule_spans     14
 problems            4
 changes           336
-incidents         294
+incidents         297
 
-Change history: 260 closed, 27 with a recorded failure or caused incident
+Change history: 260 closed, 31 with a recorded failure or caused incident
 Scheduled (authorised, future): 16
-Eval assess: 40  bands {'high': 13, 'low': 15, 'moderate': 12}
-             recommendations {'send_back': 9, 'approve': 14, 'cab': 9, 'approve_with_conditions': 8}
+Eval assess: 40  bands {'moderate': 15, 'high': 12, 'low': 13}
+             recommendations {'send_back': 9, 'cab': 10, 'approve': 11, 'approve_with_conditions': 10}
              messy 6, with conflicts 4, in freeze 4
-Eval verify: 20  outcomes {'successful': 12, 'successful_issues': 5, 'unsuccessful': 3}, distractor incidents 7
+Eval verify: 20  outcomes {'unsuccessful': 3, 'successful': 12, 'successful_issues': 5}, distractor incidents 5

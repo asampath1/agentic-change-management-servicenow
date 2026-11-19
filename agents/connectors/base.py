@@ -1,76 +1,61 @@
-"""Interfaces the agents depend on. Swap the implementation, keep the agents.
+"""The interface the agents depend on. Swap the implementation (local CSVs, ServiceNow), keep the agents.
 
-* ``ITSMClient``        - ServiceNow (live) or the local synthetic dataset (offline)
-* ``LogAnalyticsClient``- Azure Monitor Log Analytics (live) or a synthetic workspace
-* ``AutomationClient``  - Azure Automation runbooks (live) or a recording mock
-
-Open incidents returned by any ``ITSMClient`` MUST be redacted (see ``REDACTED_OPEN_FIELDS``):
-the evaluation set is generated with answer-bearing fields (``caused_by``, ``problem_id``)
-already filled in, and agents must work those out themselves.
+Changes still to be decided or verified MUST be redacted (see ``REDACTED_OPEN_FIELDS``): only closed changes may
+carry an outcome. The evaluation answer key itself is never read by any connector.
 """
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from datetime import datetime
-from typing import Any, Iterable, Optional
+from typing import Any, Optional
 
-from ..models import Change, ConfigItem, Incident, KBArticle, Problem
+from ..models import Change, ConfigItem, Incident, KBArticle, Problem, ScheduleSpan
 
-# Fields an agent must never see on an OPEN incident. They are either the answer
-# (caused_by, problem_id, assignment_group) or only exist after resolution.
-REDACTED_OPEN_FIELDS = ("assignment_group", "work_notes", "close_notes", "caused_by",
-                        "problem_id", "resolved_at")
+REDACTED_OPEN_FIELDS = ("close_code", "close_notes")
 
 
-def redact_open(inc: Incident) -> Incident:
-    for f in REDACTED_OPEN_FIELDS:
-        setattr(inc, f, "" if f in ("work_notes", "close_notes") else None)
-    return inc
+def redact_open(ch: Change) -> Change:
+    if ch.state != "3":
+        ch.close_code, ch.close_notes = None, ""
+    return ch
 
 
 class ITSMClient(ABC):
-    """Read context from, and write triage results back to, the ITSM tool."""
+    """Read context from, and write assessments back to, the ITSM tool."""
 
     @abstractmethod
-    def open_incidents(self) -> list[Incident]:
-        """New/unassigned incidents to triage (redacted)."""
+    def changes(self) -> list[Change]:
+        """Every change request (history, calendar and the ones to decide), open ones redacted."""
 
     @abstractmethod
-    def resolved_incidents(self) -> list[Incident]:
-        """Historical resolved/closed incidents (with work notes) for retrieval."""
-
-    @abstractmethod
-    def kb_articles(self) -> list[KBArticle]: ...
+    def incidents(self) -> list[Incident]: ...
 
     @abstractmethod
     def problems(self) -> list[Problem]: ...
 
     @abstractmethod
-    def changes(self, cis: Iterable[str], start: datetime, end: datetime) -> list[Change]: ...
+    def kb_articles(self) -> list[KBArticle]: ...
+
+    @abstractmethod
+    def schedules(self) -> list[ScheduleSpan]: ...
 
     @abstractmethod
     def config_item(self, name: str) -> Optional[ConfigItem]: ...
 
     @abstractmethod
-    def related_cis(self, name: str) -> list[str]:
-        """CIs directly upstream/downstream of ``name`` in the CMDB (excluding services)."""
+    def dependents(self, name: str) -> list[str]:
+        """CIs that depend on ``name`` (they are affected if it breaks)."""
 
     @abstractmethod
-    def groups(self) -> list[str]: ...
+    def dependencies(self, name: str) -> list[str]:
+        """CIs that ``name`` depends on."""
 
     @abstractmethod
-    def update_incident(self, inc: Incident, fields: dict[str, Any], work_note: str) -> dict[str, Any]:
-        """Write the triage result back. Returns a record of what was (or would be) written."""
+    def update_change(self, ch: Change, fields: dict[str, Any], work_note: str) -> dict[str, Any]:
+        """Write the assessment back. Returns a record of what was (or would be) written."""
 
+    # ------------------------------------------------------------------ conveniences
+    def changes_in_state(self, *states: str) -> list[Change]:
+        return [c for c in self.changes() if c.state in states]
 
-class LogAnalyticsClient(ABC):
-    @abstractmethod
-    def query(self, kql: str, resource: Optional[str], hours: int = 24,
-              end: Optional[datetime] = None) -> list[dict[str, Any]]:
-        """Run a KQL query over the ``hours`` before ``end`` (default: now)."""
-
-
-class AutomationClient(ABC):
-    @abstractmethod
-    def start_runbook(self, runbook: str, parameters: dict[str, Any]) -> dict[str, Any]:
-        """Start an Azure Automation runbook job. Returns ``{"job_id", "status", ...}``."""
+    def related(self, name: str) -> set[str]:
+        return set(self.dependents(name)) | set(self.dependencies(name))

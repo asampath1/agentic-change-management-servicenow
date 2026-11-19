@@ -1,4 +1,4 @@
-"""The agents must never read the evaluation answer key, and must never see answers on open incidents."""
+"""The agents must never read the evaluation answer key, and must never see outcomes on open changes."""
 import builtins
 import io
 from pathlib import Path
@@ -6,8 +6,7 @@ from pathlib import Path
 import pytest
 
 from agents.connectors.base import REDACTED_OPEN_FIELDS
-from agents.connectors.local import AnswerKeyAccessError, DEFAULT_DATA_DIR, LocalITSM, MockAutomation, \
-    SyntheticLogAnalytics, guarded_open
+from agents.connectors.local import AnswerKeyAccessError, DEFAULT_DATA_DIR, LocalITSM, guarded_open
 
 AGENTS_DIR = Path(__file__).resolve().parents[1] / "agents"
 
@@ -19,7 +18,6 @@ def test_guarded_open_refuses_answer_key():
         guarded_open(DEFAULT_DATA_DIR / "ground_truth.loaded.json")
 
 
-@pytest.mark.skip(reason="v1.0 triage run; replaced by a change-orchestrator run in M2")
 def test_full_run_never_opens_answer_key(monkeypatch, tmp_path):
     opened = []
     real_open, real_io_open = builtins.open, io.open
@@ -32,13 +30,11 @@ def test_full_run_never_opens_answer_key(monkeypatch, tmp_path):
 
     monkeypatch.setattr(builtins, "open", spy)
     monkeypatch.setattr(io, "open", spy)
-    from agents.orchestrator import TriageOrchestrator
-    from agents.remediation import SimulatedApprover
+    from agents.orchestrator import ChangeOrchestrator
     itsm = LocalITSM(outbox=tmp_path / "out.jsonl")
-    orch = TriageOrchestrator(itsm, SyntheticLogAnalytics(itsm), MockAutomation(), approver=SimulatedApprover())
-    results = orch.run()
-    assert len(results) == 24
-    assert any("incidents.csv" in p for p in opened)          # the spy really was in place
+    results = ChangeOrchestrator(itsm).run()
+    assert len(results) == 40
+    assert any("changes.csv" in p for p in opened)            # the spy really was in place
     assert not any("ground_truth" in p for p in opened)
 
 
@@ -54,6 +50,13 @@ def test_no_agent_module_references_answer_key():
     local = (AGENTS_DIR / "connectors" / "local.py").read_text()
     assert 'FORBIDDEN_NAME_PARTS = ("ground_truth",)' in local
     assert local.count("ground_truth") == 1
+
+
+def test_open_changes_are_redacted():
+    for ch in LocalITSM().changes():
+        if ch.state != "3":
+            for f in REDACTED_OPEN_FIELDS:
+                assert not getattr(ch, f), f"{ch.key}.{f} visible on an open change"
 
 
 def _csv(name):
