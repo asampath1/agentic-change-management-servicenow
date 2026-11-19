@@ -1,0 +1,140 @@
+[
+ {
+  "key": "chg:0277",
+  "number": null,
+  "outcome": "unsuccessful",
+  "caused_incidents": [
+   "inc:0283"
+  ]
+ },
+ {
+  "key": "chg:0278",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0279",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0280",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0284"
+  ]
+ },
+ {
+  "key": "chg:0281",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0285"
+  ]
+ },
+ {
+  "key": "chg:0282",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0283",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0287"
+  ]
+ },
+ {
+  "key": "chg:0284",
+  "number": null,
+  "outcome": "unsuccessful",
+  "caused_incidents": [
+   "inc:0286"
+  ]
+ },
+ {
+  "key": "chg:0285",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0287"
+  ]
+ },
+ {
+  "key": "chg:0286",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0287",
+  "number": null,
+  "outcome": "unsuccessful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0288",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0289",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0290",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0290"
+  ]
+ },
+ {
+  "key": "chg:0291",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0292",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0292"
+  ]
+ },
+ {
+  "key": "chg:0293",
+  "number": null,
+  "outcome": "successful_issues",
+  "caused_incidents": [
+   "inc:0294"
+  ]
+ },
+ {
+  "key": "chg:0294",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0295",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ },
+ {
+  "key": "chg:0296",
+  "number": null,
+  "outcome": "successful",
+  "caused_incidents": []
+ }
+]

@@ -1,4 +1,6 @@
-# Change assessment scores
+# Change management scores
+
+## Change assessment
 
 Assessed 40 changes.
 
@@ -35,3 +37,23 @@ Recommendation confusion:
 | send_back | 0 | 0 | 0 | 9 |
 
 Missed high-risk changes: chg:0307, chg:0309, chg:0316
+
+## Post-implementation verification
+
+Reviewed 20 implemented changes.
+
+| Metric | Result |
+|---|---|
+| **Missed failures** (failed or caused incidents, suggested Successful) | **0 of 8** |
+| False alarms (went fine, flagged as a problem) | 2 |
+| Close code accuracy | 90% |
+| Caused-incident links (P / R) | 0.778 / 0.7 |
+| Distractor incidents wrongly linked | 1 of 5 |
+
+Close code confusion:
+
+| truth \ predicted | successful | successful_issues | unsuccessful |
+|---|---|---|---|
+| successful | 10 | 2 | 0 |
+| successful_issues | 0 | 5 | 0 |
+| unsuccessful | 0 | 0 | 3 |

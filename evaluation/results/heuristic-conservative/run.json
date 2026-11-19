@@ -3,7 +3,7 @@
  "reasoner": "heuristic",
  "risk_mode": "conservative",
  "changes": 40,
- "seconds": 0.7,
+ "seconds": 1.2,
  "bands": {
   "high": 15,
   "low": 6,
@@ -14,5 +14,24 @@
   "cab": 11,
   "approve": 6,
   "approve_with_conditions": 14
+ },
+ "reviewed": 20,
+ "suggested_close_codes": {
+  "unsuccessful": 3,
+  "successful": 10,
+  "successful_issues": 7
+ },
+ "verification_calibration": {
+  "history_candidates": 68,
+  "history_linked": 32,
+  "f1_on_history": 0.8,
+  "threshold": 0.459,
+  "weights": {
+   "intercept": -0.409,
+   "symptom_same_kind": 0.929,
+   "symptom_any_change": 0.582,
+   "same_ci": 0.566,
+   "hours_after_end_per_24h": -1.96
+  }
  }
 }

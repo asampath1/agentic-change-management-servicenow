@@ -27,7 +27,8 @@ Successor to `../agentic-aiops-servicenow-azure` (frozen at v1.0; do not edit it
 
 ## Commands
 ```bash
-python -m agents --out runs/latest [--risk-mode point]   # default: conservative && python -m evaluation.score runs/latest/predictions.json
+python -m agents --out runs/latest [--risk-mode point]   # default: conservative; also runs verification
+python -m evaluation.score runs/latest
 python -m pytest -q          # needs pytest; ../agentic-aiops-servicenow-azure/.venv has it
 ```
 Never inspect individual answer-key entries to debug or tune agents; use only the scorer's aggregate report.

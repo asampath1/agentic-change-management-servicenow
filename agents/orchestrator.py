@@ -16,6 +16,7 @@ from .policy import recommend
 from .quality import QualityAgent
 from .risk import RiskAgent, RiskModel, features
 from .schedule import ScheduleAgent
+from .verification import REVIEW_STATE, VerificationAgent
 
 ASSESS_STATE = "-4"
 WINDOW_TEXT = {"tier1": "Tue, Thu or Sun 01:00-05:00 IST", "other": "daily 22:00-06:00 IST"}
@@ -32,6 +33,7 @@ class ChangeOrchestrator:
         self.schedule = ScheduleAgent(itsm)
         self.model = model or self.train()
         self.risk = RiskAgent(self.model, mode=risk_mode)
+        self.verification = VerificationAgent(itsm, self.history)
 
     # ------------------------------------------------------------------ learning from history
     def training_rows(self) -> list[tuple[dict, int]]:
@@ -127,6 +129,25 @@ class ChangeOrchestrator:
                                         self.work_note(a))
             out.append(a)
         return out
+
+
+    def verify(self, write: bool = True, keys: Optional[set[str]] = None) -> list[tuple[Change, dict]]:
+        """Post-implementation review of every change in state Review."""
+        out = []
+        for ch in self.itsm.changes_in_state(REVIEW_STATE):
+            if keys and ch.key not in keys:
+                continue
+            v = self.verification.run(ch)
+            if write:
+                self.itsm.update_change(ch, {"u_ai_close_code": v["suggested_close_code"]},
+                                        self.verification.work_note(ch, v))
+            out.append((ch, v))
+        return out
+
+
+def verify_prediction(ch: Change, v: dict) -> dict:
+    return {"key": ch.key, "number": ch.number, "outcome": v["suggested_close_code"],
+            "caused_incidents": [i["key"] for i in v["linked_incidents"]]}
 
 
 def prediction(a: Assessment) -> dict:

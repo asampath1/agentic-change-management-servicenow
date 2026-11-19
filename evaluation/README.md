@@ -4,8 +4,8 @@
 code that reads the answer key.
 
 ```bash
-python -m agents --out runs/latest                       # assess the 40 open changes (offline)
-python -m evaluation.score runs/latest/predictions.json  # writes scores.json + report.md next to it
+python -m agents --out runs/latest           # assess the 40 open changes, review the 20 implemented ones (offline)
+python -m evaluation.score runs/latest       # writes scores.json + report.md into the run folder
 ```
 
 ## Metrics
@@ -52,6 +52,36 @@ What this shows:
 - **Estimates lean low.** The history under-records failures: some failed changes were closed as "successful" and
   their incidents never linked. A model trained on it inherits that optimism, which is a realistic problem.
 
+## Post-implementation verification
+
+The 20 changes in state Review. The answer key holds each one's real outcome and the incidents it caused, plus 5
+distractor incidents: raised before the change, more than 24 h later, on an unrelated CI, or with an unrelated symptom.
+
+| Metric | Result |
+|---|---|
+| **Missed failures** (failed or caused incidents, suggested Successful) | **0 of 8** |
+| False alarms (went fine, flagged Successful with issues) | 2 of 12 |
+| Close code accuracy | 90% (18 of 20) |
+| Caused-incident links (precision / recall) | 0.78 / 0.70 |
+| Distractor incidents wrongly linked | 1 of 5 |
+
+How it decides:
+- **Time and CMDB rules** rule out most distractors. Only incidents between the start of the work and 24 h after it,
+  on the changed CI or a directly related one, are considered.
+- **A link model learned from the history** decides the rest. It is a logistic regression over four signals:
+  - symptom similarity to past failures of the same kind of change;
+  - similarity to any change-caused incident;
+  - same CI;
+  - hours after the change.
+- **The close code** is "Unsuccessful" when the implementation notes say a backout was executed.
+
+**Disclosure:** the first version used a single similarity threshold. It scored 2 missed failures and links of
+0.44 / 0.40, and reached only 0.68 F1 on the history it was calibrated on. I diagnosed the problem on history data
+only: with 1-3 past failures per kind of change, leaving a change's own incidents out left nothing to compare with.
+I replaced the threshold with the link model, which reached 0.80 F1 on the history, and stopped there. The test set
+was scored once before and once after this change.
+
 Full results: [`results/heuristic-point/`](results/heuristic-point/report.md) and
 [`results/heuristic-conservative/`](results/heuristic-conservative/report.md). Each folder has the predictions, the
-work notes the agents would post, and the learned weights (`model.json`).
+work notes the agents would post, and the learned weights (`model.json`; the link model is in `run.json`). The two
+modes differ only in assessment; verification is the same.

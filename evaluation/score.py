@@ -95,10 +95,39 @@ def score_assess(preds: list[dict], truth: list[dict]) -> dict:
     }
 
 
+OUTCOMES = ["successful", "successful_issues", "unsuccessful"]
+
+
+def score_verify(preds: list[dict], truth: list[dict]) -> dict:
+    by_key = {p["key"]: p for p in preds}
+    rows = [(t, by_key[t["key"]]) for t in truth if t["key"] in by_key]
+    n = len(rows)
+    pairs = [(t["outcome"], p["outcome"]) for t, p in rows]
+    tl = {(t["key"], i) for t, _ in rows for i in t["caused_incidents"]}
+    pl = {(t["key"], i) for t, p in rows for i in p["caused_incidents"]}
+    distractors = {(t["key"], d["key"]) for t, _ in rows for d in t["distractor_incidents"]}
+    return {"n": n, "missing_predictions": [t["key"] for t in truth if t["key"] not in by_key],
+            "outcome_accuracy": _r(sum(a == b for a, b in pairs) / n) if n else None,
+            "outcome_confusion (truth -> predicted)": confusion(pairs, OUTCOMES),
+            "missed_failures": sum(1 for a, b in pairs if a != "successful" and b == "successful"),
+            "true_failures": sum(1 for a, _ in pairs if a != "successful"),
+            "false_alarms": sum(1 for a, b in pairs if a == "successful" and b != "successful"),
+            "incident_links": _prf(len(tl & pl), len(pl - tl), len(tl - pl)),
+            "distractors_linked": len(pl & distractors), "distractors": len(distractors)}
+
+
 def report(s: dict) -> str:
-    a = s["assess"]
+    L = ["# Change management scores", ""]
+    if "assess" in s:
+        L += report_assess(s["assess"])
+    if "verify" in s:
+        L += report_verify(s["verify"])
+    return "\n".join(L) + "\n"
+
+
+def report_assess(a: dict) -> list[str]:
     rb, sf, rc, q = a["risk_band"], a["safety"], a["recommendation"], a["quality"]
-    L = ["# Change assessment scores", "",
+    L = ["## Change assessment", "",
          f"Assessed {a['n']} changes" + (f"; missing predictions: {a['missing_predictions']}" if a["missing_predictions"] else "") + ".", "",
          "| Metric | Result |", "|---|---|",
          f"| **Missed high risk** (truly high, recommended plain approval) | **{sf['missed_high_risk']} of {sf['true_high']}** |",
@@ -122,19 +151,40 @@ def report(s: dict) -> str:
         L.append(f"| {t} | " + " | ".join(str(row[p]) for p in RECS) + " |")
     if sf["missed_high_risk_changes"]:
         L += ["", "Missed high-risk changes: " + ", ".join(sf["missed_high_risk_changes"])]
-    return "\n".join(L) + "\n"
+    return L + [""]
+
+
+def report_verify(v: dict) -> list[str]:
+    il = v["incident_links"]
+    L = ["## Post-implementation verification", "", f"Reviewed {v['n']} implemented changes.", "",
+         "| Metric | Result |", "|---|---|",
+         f"| **Missed failures** (failed or caused incidents, suggested Successful) | **{v['missed_failures']} of {v['true_failures']}** |",
+         f"| False alarms (went fine, flagged as a problem) | {v['false_alarms']} |",
+         f"| Close code accuracy | {v['outcome_accuracy']:.0%} |",
+         f"| Caused-incident links (P / R) | {il['precision']} / {il['recall']} |",
+         f"| Distractor incidents wrongly linked | {v['distractors_linked']} of {v['distractors']} |",
+         "", "Close code confusion:", "",
+         "| truth \\ predicted | " + " | ".join(OUTCOMES) + " |", "|---|" + "---|" * len(OUTCOMES)]
+    for t, row in v["outcome_confusion (truth -> predicted)"].items():
+        L.append(f"| {t} | " + " | ".join(str(row[p]) for p in OUTCOMES) + " |")
+    return L
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("predictions")
+    ap.add_argument("predictions", help="predictions.json, or a run folder")
     ap.add_argument("--truth", default=str(DEFAULT_TRUTH))
     ap.add_argument("--out", help="folder for scores.json + report.md (default: next to the predictions)")
     a = ap.parse_args()
-    preds = json.loads(Path(a.predictions).read_text())
+    src = Path(a.predictions)
+    run_dir = src if src.is_dir() else src.parent
     truth = json.loads(Path(a.truth).read_text())
-    scores = {"assess": score_assess(preds, truth["assess"])}
-    out = Path(a.out) if a.out else Path(a.predictions).parent
+    scores = {}
+    if (run_dir / "predictions.json").exists():
+        scores["assess"] = score_assess(json.loads((run_dir / "predictions.json").read_text()), truth["assess"])
+    if (run_dir / "verify_predictions.json").exists():
+        scores["verify"] = score_verify(json.loads((run_dir / "verify_predictions.json").read_text()), truth["verify"])
+    out = Path(a.out) if a.out else run_dir
     out.mkdir(parents=True, exist_ok=True)
     (out / "scores.json").write_text(json.dumps(scores, indent=1))
     text = report(scores)
