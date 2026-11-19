@@ -1,29 +1,29 @@
 _key,name,short_description,operational_status,install_status,used_for,support_group,assignment_group,ip_address,os,cpu_count,ram,sys_class_name
-ci:vm-ecom-web-01,vm-ecom-web-01,[SYNTH-SKR] Storefront IIS web node 1 (Windows 2019),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.15,Windows 2019 Datacenter,4,32768,cmdb_ci_win_server
-ci:vm-ecom-web-02,vm-ecom-web-02,[SYNTH-SKR] Storefront IIS web node 2 (Windows 2019),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.16,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
-ci:app-ecom-api-prod,app-ecom-api-prod,"[SYNTH-SKR] Storefront REST API (App Service, .NET 8)",1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
-ci:sql-ecom-catalog-prod,sql-ecom-catalog-prod,[SYNTH-SKR] Product catalog Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
-ci:redis-ecom-cache,redis-ecom-cache,[SYNTH-SKR] Azure Cache for Redis - sessions,1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
-ci:kv-ecom-prod,kv-ecom-prod,[SYNTH-SKR] Key Vault - storefront secrets & TLS,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
-ci:vm-orders-app-01,vm-orders-app-01,[SYNTH-SKR] Order management app server (Ubuntu 22.04),1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,10.20.0.21,Linux Ubuntu,16,32768,cmdb_ci_linux_server
-ci:func-orders-processor,func-orders-processor,[SYNTH-SKR] Azure Function - order confirmation processor,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
-ci:sql-orders-prod,sql-orders-prod,[SYNTH-SKR] Orders Azure SQL DB (S3),1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
-ci:sb-orders-queue,sb-orders-queue,[SYNTH-SKR] Service Bus namespace - orders-queue,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
-ci:app-payments-prod,app-payments-prod,[SYNTH-SKR] Payments gateway adapter (App Service),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
-ci:vm-payments-01,vm-payments-01,[SYNTH-SKR] Payments reconciliation batch (RHEL 9),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.26,Linux Ubuntu,8,32768,cmdb_ci_linux_server
-ci:kv-payments-prod,kv-payments-prod,[SYNTH-SKR] Key Vault - payment API keys,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
-ci:app-hrportal-prod,app-hrportal-prod,[SYNTH-SKR] Employee HR self-service portal,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
-ci:sql-hr-prod,sql-hr-prod,[SYNTH-SKR] HR Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
-ci:vm-hr-batch-01,vm-hr-batch-01,[SYNTH-SKR] HR payroll export batch server,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,10.20.0.30,Windows 2019 Datacenter,16,16384,cmdb_ci_win_server
-ci:vm-etl-01,vm-etl-01,[SYNTH-SKR] Legacy SSIS ETL server,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,10.20.0.31,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
-ci:adf-analytics-prod,adf-analytics-prod,[SYNTH-SKR] Azure Data Factory - analytics pipelines,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,,,,,cmdb_ci_appl
-ci:st-datalake-prod,st-datalake-prod,[SYNTH-SKR] ADLS Gen2 data lake storage,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,,,,,cmdb_ci_appl
-ci:sql-dwh-prod,sql-dwh-prod,[SYNTH-SKR] Data warehouse Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
-ci:vm-aadconnect-01,vm-aadconnect-01,[SYNTH-SKR] Entra Connect sync server,1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.35,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
-ci:vm-dc-01,vm-dc-01,[SYNTH-SKR] Domain controller 1 (Azure),1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.36,Windows 2019 Datacenter,16,16384,cmdb_ci_win_server
-ci:vm-dc-02,vm-dc-02,[SYNTH-SKR] Domain controller 2 (Azure),1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.37,Windows 2019 Datacenter,16,32768,cmdb_ci_win_server
-ci:azfw-hub-prod,azfw-hub-prod,[SYNTH-SKR] Azure Firewall - hub VNet,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_ip_firewall
-ci:vpngw-hub-prod,vpngw-hub-prod,[SYNTH-SKR] VPN gateway - site-to-site links,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
-ci:aks-platform-prod,aks-platform-prod,[SYNTH-SKR] AKS cluster - inventory/pricing microservices,1,1,Production,group:Cloud Platform Engineering,group:Cloud Platform Engineering,,,,,cmdb_ci_appl
-ci:rsv-backup-prod,rsv-backup-prod,[SYNTH-SKR] Recovery Services vault - VM & SQL backups,1,1,Production,group:Backup & DR,group:Backup & DR,,,,,cmdb_ci_appl
-ci:vm-jump-01,vm-jump-01,[SYNTH-SKR] Jump host for operations,1,1,Production,group:Azure Infra Ops,group:Azure Infra Ops,10.20.0.42,Windows 2019 Datacenter,4,16384,cmdb_ci_win_server
+ci:vm-ecom-web-01,vm-ecom-web-01,[SYNTH-SKR-CHG] Storefront IIS web node 1 (Windows 2019),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.15,Windows 2019 Datacenter,8,32768,cmdb_ci_win_server
+ci:vm-ecom-web-02,vm-ecom-web-02,[SYNTH-SKR-CHG] Storefront IIS web node 2 (Windows 2019),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.16,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
+ci:app-ecom-api-prod,app-ecom-api-prod,"[SYNTH-SKR-CHG] Storefront REST API (App Service, .NET 8)",1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
+ci:sql-ecom-catalog-prod,sql-ecom-catalog-prod,[SYNTH-SKR-CHG] Product catalog Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
+ci:redis-ecom-cache,redis-ecom-cache,[SYNTH-SKR-CHG] Azure Cache for Redis - sessions,1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
+ci:kv-ecom-prod,kv-ecom-prod,[SYNTH-SKR-CHG] Key Vault - storefront secrets & TLS,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
+ci:vm-orders-app-01,vm-orders-app-01,[SYNTH-SKR-CHG] Order management app server (Ubuntu 22.04),1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,10.20.0.21,Linux Ubuntu,8,32768,cmdb_ci_linux_server
+ci:func-orders-processor,func-orders-processor,[SYNTH-SKR-CHG] Azure Function - order confirmation processor,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
+ci:sql-orders-prod,sql-orders-prod,[SYNTH-SKR-CHG] Orders Azure SQL DB (S3),1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
+ci:sb-orders-queue,sb-orders-queue,[SYNTH-SKR-CHG] Service Bus namespace - orders-queue,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
+ci:app-payments-prod,app-payments-prod,[SYNTH-SKR-CHG] Payments gateway adapter (App Service),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,,,,,cmdb_ci_appl
+ci:vm-payments-01,vm-payments-01,[SYNTH-SKR-CHG] Payments reconciliation batch (RHEL 9),1,1,Production,group:App Support - eCommerce,group:App Support - eCommerce,10.20.0.26,Linux Ubuntu,4,32768,cmdb_ci_linux_server
+ci:kv-payments-prod,kv-payments-prod,[SYNTH-SKR-CHG] Key Vault - payment API keys,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
+ci:app-hrportal-prod,app-hrportal-prod,[SYNTH-SKR-CHG] Employee HR self-service portal,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,,,,,cmdb_ci_appl
+ci:sql-hr-prod,sql-hr-prod,[SYNTH-SKR-CHG] HR Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
+ci:vm-hr-batch-01,vm-hr-batch-01,[SYNTH-SKR-CHG] HR payroll export batch server,1,1,Production,group:App Support - Enterprise Apps,group:App Support - Enterprise Apps,10.20.0.30,Windows 2019 Datacenter,16,32768,cmdb_ci_win_server
+ci:vm-etl-01,vm-etl-01,[SYNTH-SKR-CHG] Legacy SSIS ETL server,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,10.20.0.31,Windows 2019 Datacenter,16,32768,cmdb_ci_win_server
+ci:adf-analytics-prod,adf-analytics-prod,[SYNTH-SKR-CHG] Azure Data Factory - analytics pipelines,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,,,,,cmdb_ci_appl
+ci:st-datalake-prod,st-datalake-prod,[SYNTH-SKR-CHG] ADLS Gen2 data lake storage,1,1,Production,group:Data Platform Ops,group:Data Platform Ops,,,,,cmdb_ci_appl
+ci:sql-dwh-prod,sql-dwh-prod,[SYNTH-SKR-CHG] Data warehouse Azure SQL DB,1,1,Production,group:Azure Database Ops,group:Azure Database Ops,,,,,cmdb_ci_db_mssql_instance
+ci:vm-aadconnect-01,vm-aadconnect-01,[SYNTH-SKR-CHG] Entra Connect sync server,1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.35,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
+ci:vm-dc-01,vm-dc-01,[SYNTH-SKR-CHG] Domain controller 1 (Azure),1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.36,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server
+ci:vm-dc-02,vm-dc-02,[SYNTH-SKR-CHG] Domain controller 2 (Azure),1,1,Production,group:Identity & Access Mgmt,group:Identity & Access Mgmt,10.20.0.37,Windows 2019 Datacenter,16,32768,cmdb_ci_win_server
+ci:azfw-hub-prod,azfw-hub-prod,[SYNTH-SKR-CHG] Azure Firewall - hub VNet,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_ip_firewall
+ci:vpngw-hub-prod,vpngw-hub-prod,[SYNTH-SKR-CHG] VPN gateway - site-to-site links,1,1,Production,group:Network & Security Ops,group:Network & Security Ops,,,,,cmdb_ci_appl
+ci:aks-platform-prod,aks-platform-prod,[SYNTH-SKR-CHG] AKS cluster - inventory/pricing microservices,1,1,Production,group:Cloud Platform Engineering,group:Cloud Platform Engineering,,,,,cmdb_ci_appl
+ci:rsv-backup-prod,rsv-backup-prod,[SYNTH-SKR-CHG] Recovery Services vault - VM & SQL backups,1,1,Production,group:Backup & DR,group:Backup & DR,,,,,cmdb_ci_appl
+ci:vm-jump-01,vm-jump-01,[SYNTH-SKR-CHG] Jump host for operations,1,1,Production,group:Azure Infra Ops,group:Azure Infra Ops,10.20.0.42,Windows 2019 Datacenter,8,16384,cmdb_ci_win_server

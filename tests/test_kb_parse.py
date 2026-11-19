@@ -21,5 +21,5 @@ def test_resolver_group_html_entities_unescaped():
 
 def test_dataset_kb():
     kb = LocalITSM().kb_articles()
-    assert len(kb) == 20
+    assert len(kb) == 21                       # 20 troubleshooting articles + the change policy
     assert sum(a.safe_to_automate for a in kb) == 12

@@ -7,7 +7,8 @@ and checks afterwards whether the change caused incidents. A person makes every 
 > **Disclaimer:** *ShopKart Retails (SKR)* is a fictional company. All people, systems and tickets are synthetic.
 > No client or employer data is used.
 
-> **Status: design stage.** See [docs/design.md](docs/design.md).
+> **Status: in progress.** M1 (synthetic dataset) done; agents next. Plan: [docs/design.md](docs/design.md).
+> Dataset: [synthetic-data/README.md](synthetic-data/README.md).
 
 Follows on from [agentic-aiops-servicenow-azure](https://github.com/asampath1/agentic-aiops-servicenow-azure)
 (v1.0, incident triage and auto-remediation).

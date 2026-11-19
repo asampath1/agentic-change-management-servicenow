@@ -42,19 +42,13 @@ def test_full_run_never_opens_answer_key(monkeypatch, tmp_path):
     assert not any("ground_truth" in p for p in opened)
 
 
-def test_open_incidents_are_redacted():
-    incs = LocalITSM().open_incidents()
-    assert len(incs) == 24
-    for inc in incs:
-        for f in REDACTED_OPEN_FIELDS:
-            assert not getattr(inc, f), f"{inc.key}.{f} leaked to agents"
-
-
 def test_no_agent_module_references_answer_key():
     offenders = []
     for py in AGENTS_DIR.rglob("*.py"):
         text = py.read_text()
         if "ground_truth" in text and py.name != "local.py":   # local.py only names it to block it
+            offenders.append(str(py))
+        if "change_model" in text:                              # the hidden outcome model
             offenders.append(str(py))
     assert not offenders, offenders
     local = (AGENTS_DIR / "connectors" / "local.py").read_text()
@@ -62,18 +56,24 @@ def test_no_agent_module_references_answer_key():
     assert local.count("ground_truth") == 1
 
 
-def test_dataset_itself_has_no_answers_on_open_incidents():
-    """What the loader pushes into ServiceNow must not carry the eval answers either."""
+def _csv(name):
     import csv
+    with open(DEFAULT_DATA_DIR / "csv" / f"{name}.csv", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def test_dataset_has_no_answers_on_eval_changes():
+    """What agents (and the PDI) can read must not carry outcomes for the changes being evaluated."""
     import json
-    with open(DEFAULT_DATA_DIR / "csv" / "incidents.csv", newline="") as f:
-        open_rows = [r for r in csv.DictReader(f) if r["state"] == "1"]
-    assert len(open_rows) == 24
-    for r in open_rows:
-        for field in ("caused_by", "problem_id", "assignment_group", "assigned_to", "work_notes", "close_notes"):
-            assert not r[field], f"{r['_key']}.{field} is set in incidents.csv"
-    plan = json.loads((DEFAULT_DATA_DIR / "load_plan.json").read_text())
-    for stage in plan["stages"]:
-        for rec in stage["records"]:
-            if rec.get("_table") == "incident" and rec.get("state") == "1":
-                assert "caused_by" not in rec and "problem_id" not in rec, rec["_key"]
+    truth = json.loads((DEFAULT_DATA_DIR / "ground_truth.json").read_text())   # test code may read it
+    eval_keys = {t["key"] for t in truth["assess"]} | {t["key"] for t in truth["verify"]}
+    changes = {r["_key"]: r for r in _csv("changes")}
+    for k in eval_keys:
+        assert not changes[k]["close_code"] and not changes[k]["close_notes"], k
+    caused = {i for t in truth["verify"] for i in t["caused_incidents"]}
+    for r in _csv("incidents"):
+        if r["_key"] in caused:
+            assert not r["caused_by"] and not r["work_notes"], r["_key"]
+    header = " ".join(open(DEFAULT_DATA_DIR / "csv" / "changes.csv").readline().split(","))
+    for leak in ("failure_probability", "risk_band", "hidden", "outcome", "recommendation"):
+        assert leak not in header

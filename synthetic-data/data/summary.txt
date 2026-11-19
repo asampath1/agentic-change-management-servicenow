@@ -1,5 +1,5 @@
-ShopKart Retails synthetic ITSM dataset  (tag SYNTH-SKR)
-Window: 2026-05-23 08:33:08 -> 2026-11-19 08:33:08 UTC
+ShopKart Retails synthetic change-management dataset  (tag SYNTH-SKR-CHG)
+Window: 2026-05-24 06:00:00 -> 2026-11-20 06:00:00 UTC
 
 users              75
 groups             10
@@ -7,11 +7,16 @@ group_members      34
 services            7
 cis                28
 relationships      42
-kb                 20
-changes            81
+kb                 21
+schedules           6
+schedule_spans     14
 problems            4
-incidents         320
+changes           336
+incidents         294
 
-Incidents: resolved/closed=296, open (eval set)=24
-Change-caused incidents (history only; eval links are in ground_truth.json): 36
-Incidents linked to problems (history only): 56
+Change history: 260 closed, 27 with a recorded failure or caused incident
+Scheduled (authorised, future): 16
+Eval assess: 40  bands {'high': 13, 'low': 15, 'moderate': 12}
+             recommendations {'send_back': 9, 'approve': 14, 'cab': 9, 'approve_with_conditions': 8}
+             messy 6, with conflicts 4, in freeze 4
+Eval verify: 20  outcomes {'successful': 12, 'successful_issues': 5, 'unsuccessful': 3}, distractor incidents 7

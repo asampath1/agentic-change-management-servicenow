@@ -125,7 +125,7 @@ Not reused: the incident triage, diagnostics and remediation agents, the Azure A
 
 | # | Deliverable | Needs |
 |---|---|---|
-| M1 | Data generator v2: change history, schedules, outcome model, eval set, ground truth | offline |
+| M1 | Data generator v2: change history, schedules, outcome model, eval set, ground truth. **Done 2026-11-19** ([details](../synthetic-data/README.md)) | offline |
 | M2 | Quality, Impact, History, Schedule and Risk agents; scoring; heuristic baseline committed | offline |
 | M3 | Verification agent and its eval | offline |
 | M4 | Load to PDI, live run, work notes on changes | PDI |
