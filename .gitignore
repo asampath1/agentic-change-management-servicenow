@@ -1,0 +1,18 @@
+# secrets
+.env
+*.env
+
+# loader state (contains your instance's sys_ids)
+synthetic-data/data/manifest*.json
+synthetic-data/data/ground_truth.loaded*.json
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# triage runs (commit selected results under evaluation/results/ instead)
+runs/
+.pytest_cache/
+.DS_Store

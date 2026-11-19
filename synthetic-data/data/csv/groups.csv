@@ -1,0 +1,11 @@
+_key,name,description,manager,email,active
+group:Service Desk L1,SKR Service Desk L1,"[SYNTH-SKR] First-line support; password, access, end-user issues; initial triage",user:synth.nisha.muller,service-desk-l1@shopkart-demo.example,true
+group:Azure Infra Ops,SKR Azure Infra Ops,"[SYNTH-SKR] Azure IaaS: VMs, disks, patching, monitoring agents",user:synth.fatima.thomas,azure-infra-ops@shopkart-demo.example,true
+group:Azure Database Ops,SKR Azure Database Ops,"[SYNTH-SKR] Azure SQL / SQL MI performance, blocking, backups",user:synth.yuki.brown,azure-database-ops@shopkart-demo.example,true
+group:App Support - eCommerce,SKR App Support - eCommerce,"[SYNTH-SKR] Storefront, ordering and payments applications",user:synth.liam.chopra,app-support---ecommerce@shopkart-demo.example,true
+group:App Support - Enterprise Apps,SKR App Support - Enterprise Apps,"[SYNTH-SKR] HR portal, order integration functions, Service Bus",user:synth.sowmya.walker,app-support---enterprise-apps@shopkart-demo.example,true
+group:Identity & Access Mgmt,SKR Identity & Access Mgmt,"[SYNTH-SKR] Entra ID, Entra Connect, Key Vault access, service principals",user:synth.noah.fernandes,identity-and-access-mgmt@shopkart-demo.example,true
+group:Network & Security Ops,SKR Network & Security Ops,"[SYNTH-SKR] NSG, Azure Firewall, VPN, certificates",user:synth.fatima.mishra,network-and-security-ops@shopkart-demo.example,true
+group:Cloud Platform Engineering,SKR Cloud Platform Engineering,"[SYNTH-SKR] AKS, landing zone, policy, IaC",user:synth.ganesh.reddy,cloud-platform-engineering@shopkart-demo.example,true
+group:Backup & DR,SKR Backup & DR,"[SYNTH-SKR] Recovery Services vaults, restore tests, DR",user:synth.rahul.mishra,backup-and-dr@shopkart-demo.example,true
+group:Data Platform Ops,SKR Data Platform Ops,"[SYNTH-SKR] Data Factory, data lake, data warehouse",user:synth.ajay.garcia,data-platform-ops@shopkart-demo.example,true

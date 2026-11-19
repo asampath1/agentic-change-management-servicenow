@@ -1,0 +1,35 @@
+_key,group,user
+grm:Service Desk L1:user:synth.nisha.muller,group:Service Desk L1,user:synth.nisha.muller
+grm:Service Desk L1:user:synth.tomasz.silva,group:Service Desk L1,user:synth.tomasz.silva
+grm:Service Desk L1:user:synth.lakshmi.dsouza,group:Service Desk L1,user:synth.lakshmi.dsouza
+grm:Service Desk L1:user:synth.james.rao,group:Service Desk L1,user:synth.james.rao
+grm:Service Desk L1:user:synth.anna.walker,group:Service Desk L1,user:synth.anna.walker
+grm:Azure Infra Ops:user:synth.fatima.thomas,group:Azure Infra Ops,user:synth.fatima.thomas
+grm:Azure Infra Ops:user:synth.ethan.taylor,group:Azure Infra Ops,user:synth.ethan.taylor
+grm:Azure Infra Ops:user:synth.lucia.wong,group:Azure Infra Ops,user:synth.lucia.wong
+grm:Azure Infra Ops:user:synth.rahul.nair,group:Azure Infra Ops,user:synth.rahul.nair
+grm:Azure Infra Ops:user:synth.imran.rossi,group:Azure Infra Ops,user:synth.imran.rossi
+grm:Azure Database Ops:user:synth.yuki.brown,group:Azure Database Ops,user:synth.yuki.brown
+grm:Azure Database Ops:user:synth.mei.pillai,group:Azure Database Ops,user:synth.mei.pillai
+grm:Azure Database Ops:user:synth.sophia.taylor,group:Azure Database Ops,user:synth.sophia.taylor
+grm:App Support - eCommerce:user:synth.liam.chopra,group:App Support - eCommerce,user:synth.liam.chopra
+grm:App Support - eCommerce:user:synth.nisha.kumar,group:App Support - eCommerce,user:synth.nisha.kumar
+grm:App Support - eCommerce:user:synth.ethan.garcia,group:App Support - eCommerce,user:synth.ethan.garcia
+grm:App Support - eCommerce:user:synth.bhavna.sato,group:App Support - eCommerce,user:synth.bhavna.sato
+grm:App Support - Enterprise Apps:user:synth.sowmya.walker,group:App Support - Enterprise Apps,user:synth.sowmya.walker
+grm:App Support - Enterprise Apps:user:synth.lucas.walker,group:App Support - Enterprise Apps,user:synth.lucas.walker
+grm:App Support - Enterprise Apps:user:synth.tomasz.banerjee,group:App Support - Enterprise Apps,user:synth.tomasz.banerjee
+grm:Identity & Access Mgmt:user:synth.noah.fernandes,group:Identity & Access Mgmt,user:synth.noah.fernandes
+grm:Identity & Access Mgmt:user:synth.nisha.wong,group:Identity & Access Mgmt,user:synth.nisha.wong
+grm:Identity & Access Mgmt:user:synth.nisha.joshi,group:Identity & Access Mgmt,user:synth.nisha.joshi
+grm:Network & Security Ops:user:synth.fatima.mishra,group:Network & Security Ops,user:synth.fatima.mishra
+grm:Network & Security Ops:user:synth.suresh.wong,group:Network & Security Ops,user:synth.suresh.wong
+grm:Network & Security Ops:user:synth.karthik.hughes,group:Network & Security Ops,user:synth.karthik.hughes
+grm:Cloud Platform Engineering:user:synth.ganesh.reddy,group:Cloud Platform Engineering,user:synth.ganesh.reddy
+grm:Cloud Platform Engineering:user:synth.priya.reddy,group:Cloud Platform Engineering,user:synth.priya.reddy
+grm:Cloud Platform Engineering:user:synth.kavya.krishnan,group:Cloud Platform Engineering,user:synth.kavya.krishnan
+grm:Backup & DR:user:synth.rahul.mishra,group:Backup & DR,user:synth.rahul.mishra
+grm:Backup & DR:user:synth.lucas.chen,group:Backup & DR,user:synth.lucas.chen
+grm:Data Platform Ops:user:synth.ajay.garcia,group:Data Platform Ops,user:synth.ajay.garcia
+grm:Data Platform Ops:user:synth.sophia.das,group:Data Platform Ops,user:synth.sophia.das
+grm:Data Platform Ops:user:synth.lucia.subramanian,group:Data Platform Ops,user:synth.lucia.subramanian

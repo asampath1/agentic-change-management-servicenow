@@ -1,0 +1,9 @@
+# Offline run + scoring: standard library only.
+# Tests
+pytest>=8
+# Optional: Claude as the reasoner (python -m agents --reasoner claude)
+anthropic>=2.8
+# Optional: live ServiceNow PDI / Azure (python -m agents --source servicenow --telemetry azure --automation azure)
+requests>=2.31
+azure-identity>=1.17
+azure-monitor-query>=1.4

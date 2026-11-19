@@ -1,0 +1,8 @@
+_key,name,short_description,busines_criticality,operational_status,used_for
+svc:E-Commerce Storefront,SKR E-Commerce Storefront,[SYNTH-SKR] Business service: E-Commerce Storefront,1 - most critical,1,Production
+svc:Order Processing,SKR Order Processing,[SYNTH-SKR] Business service: Order Processing,1 - most critical,1,Production
+svc:Payments Integration,SKR Payments Integration,[SYNTH-SKR] Business service: Payments Integration,1 - most critical,1,Production
+svc:HR Portal,SKR HR Portal,[SYNTH-SKR] Business service: HR Portal,3 - less critical,1,Production
+svc:Data & Analytics,SKR Data & Analytics,[SYNTH-SKR] Business service: Data & Analytics,2 - somewhat critical,1,Production
+svc:Identity Services,SKR Identity Services,[SYNTH-SKR] Business service: Identity Services,1 - most critical,1,Production
+svc:Shared Platform,SKR Shared Platform,[SYNTH-SKR] Business service: Shared Platform,2 - somewhat critical,1,Production

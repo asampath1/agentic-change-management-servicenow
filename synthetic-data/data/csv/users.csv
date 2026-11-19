@@ -1,0 +1,76 @@
+_key,user_name,first_name,last_name,email,title,active,u_synthetic_department
+user:synth.svc.azuremonitor,synth.svc.azuremonitor,Azure Monitor,Integration,azuremonitor@shopkart-demo.example,Service account - event integration,true,
+user:synth.nisha.muller,synth.nisha.muller,Nisha,Muller,nisha.muller@shopkart-demo.example,Team Lead - Service Desk L1,true,IT Managed Services
+user:synth.tomasz.silva,synth.tomasz.silva,Tomasz,Silva,tomasz.silva@shopkart-demo.example,Engineer - Service Desk L1,true,IT Managed Services
+user:synth.lakshmi.dsouza,synth.lakshmi.dsouza,Lakshmi,Dsouza,lakshmi.dsouza@shopkart-demo.example,Engineer - Service Desk L1,true,IT Managed Services
+user:synth.james.rao,synth.james.rao,James,Rao,james.rao@shopkart-demo.example,Engineer - Service Desk L1,true,IT Managed Services
+user:synth.anna.walker,synth.anna.walker,Anna,Walker,anna.walker@shopkart-demo.example,Engineer - Service Desk L1,true,IT Managed Services
+user:synth.fatima.thomas,synth.fatima.thomas,Fatima,Thomas,fatima.thomas@shopkart-demo.example,Team Lead - Azure Infra Ops,true,IT Managed Services
+user:synth.ethan.taylor,synth.ethan.taylor,Ethan,Taylor,ethan.taylor@shopkart-demo.example,Engineer - Azure Infra Ops,true,IT Managed Services
+user:synth.lucia.wong,synth.lucia.wong,Lucia,Wong,lucia.wong@shopkart-demo.example,Engineer - Azure Infra Ops,true,IT Managed Services
+user:synth.rahul.nair,synth.rahul.nair,Rahul,Nair,rahul.nair@shopkart-demo.example,Engineer - Azure Infra Ops,true,IT Managed Services
+user:synth.imran.rossi,synth.imran.rossi,Imran,Rossi,imran.rossi@shopkart-demo.example,Engineer - Azure Infra Ops,true,IT Managed Services
+user:synth.yuki.brown,synth.yuki.brown,Yuki,Brown,yuki.brown@shopkart-demo.example,Team Lead - Azure Database Ops,true,IT Managed Services
+user:synth.mei.pillai,synth.mei.pillai,Mei,Pillai,mei.pillai@shopkart-demo.example,Engineer - Azure Database Ops,true,IT Managed Services
+user:synth.sophia.taylor,synth.sophia.taylor,Sophia,Taylor,sophia.taylor@shopkart-demo.example,Engineer - Azure Database Ops,true,IT Managed Services
+user:synth.liam.chopra,synth.liam.chopra,Liam,Chopra,liam.chopra@shopkart-demo.example,Team Lead - App Support - eCommerce,true,IT Managed Services
+user:synth.nisha.kumar,synth.nisha.kumar,Nisha,Kumar,nisha.kumar@shopkart-demo.example,Engineer - App Support - eCommerce,true,IT Managed Services
+user:synth.ethan.garcia,synth.ethan.garcia,Ethan,Garcia,ethan.garcia@shopkart-demo.example,Engineer - App Support - eCommerce,true,IT Managed Services
+user:synth.bhavna.sato,synth.bhavna.sato,Bhavna,Sato,bhavna.sato@shopkart-demo.example,Engineer - App Support - eCommerce,true,IT Managed Services
+user:synth.sowmya.walker,synth.sowmya.walker,Sowmya,Walker,sowmya.walker@shopkart-demo.example,Team Lead - App Support - Enterprise Apps,true,IT Managed Services
+user:synth.lucas.walker,synth.lucas.walker,Lucas,Walker,lucas.walker@shopkart-demo.example,Engineer - App Support - Enterprise Apps,true,IT Managed Services
+user:synth.tomasz.banerjee,synth.tomasz.banerjee,Tomasz,Banerjee,tomasz.banerjee@shopkart-demo.example,Engineer - App Support - Enterprise Apps,true,IT Managed Services
+user:synth.noah.fernandes,synth.noah.fernandes,Noah,Fernandes,noah.fernandes@shopkart-demo.example,Team Lead - Identity & Access Mgmt,true,IT Managed Services
+user:synth.nisha.wong,synth.nisha.wong,Nisha,Wong,nisha.wong@shopkart-demo.example,Engineer - Identity & Access Mgmt,true,IT Managed Services
+user:synth.nisha.joshi,synth.nisha.joshi,Nisha,Joshi,nisha.joshi@shopkart-demo.example,Engineer - Identity & Access Mgmt,true,IT Managed Services
+user:synth.fatima.mishra,synth.fatima.mishra,Fatima,Mishra,fatima.mishra@shopkart-demo.example,Team Lead - Network & Security Ops,true,IT Managed Services
+user:synth.suresh.wong,synth.suresh.wong,Suresh,Wong,suresh.wong@shopkart-demo.example,Engineer - Network & Security Ops,true,IT Managed Services
+user:synth.karthik.hughes,synth.karthik.hughes,Karthik,Hughes,karthik.hughes@shopkart-demo.example,Engineer - Network & Security Ops,true,IT Managed Services
+user:synth.ganesh.reddy,synth.ganesh.reddy,Ganesh,Reddy,ganesh.reddy@shopkart-demo.example,Team Lead - Cloud Platform Engineering,true,IT Managed Services
+user:synth.priya.reddy,synth.priya.reddy,Priya,Reddy,priya.reddy@shopkart-demo.example,Engineer - Cloud Platform Engineering,true,IT Managed Services
+user:synth.kavya.krishnan,synth.kavya.krishnan,Kavya,Krishnan,kavya.krishnan@shopkart-demo.example,Engineer - Cloud Platform Engineering,true,IT Managed Services
+user:synth.rahul.mishra,synth.rahul.mishra,Rahul,Mishra,rahul.mishra@shopkart-demo.example,Team Lead - Backup & DR,true,IT Managed Services
+user:synth.lucas.chen,synth.lucas.chen,Lucas,Chen,lucas.chen@shopkart-demo.example,Engineer - Backup & DR,true,IT Managed Services
+user:synth.ajay.garcia,synth.ajay.garcia,Ajay,Garcia,ajay.garcia@shopkart-demo.example,Team Lead - Data Platform Ops,true,IT Managed Services
+user:synth.sophia.das,synth.sophia.das,Sophia,Das,sophia.das@shopkart-demo.example,Engineer - Data Platform Ops,true,IT Managed Services
+user:synth.lucia.subramanian,synth.lucia.subramanian,Lucia,Subramanian,lucia.subramanian@shopkart-demo.example,Engineer - Data Platform Ops,true,IT Managed Services
+user:synth.yuki.menon,synth.yuki.menon,Yuki,Menon,yuki.menon@shopkart-demo.example,Finance Associate,true,Finance
+user:synth.james.khan,synth.james.khan,James,Khan,james.khan@shopkart-demo.example,Supply Chain Associate,true,Supply Chain
+user:synth.james.dsouza,synth.james.dsouza,James,Dsouza,james.dsouza@shopkart-demo.example,Customer Care Associate,true,Customer Care
+user:synth.ethan.nair,synth.ethan.nair,Ethan,Nair,ethan.nair@shopkart-demo.example,Warehouse Associate,true,Warehouse
+user:synth.deepa.brown,synth.deepa.brown,Deepa,Brown,deepa.brown@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.suresh.wilson,synth.suresh.wilson,Suresh,Wilson,suresh.wilson@shopkart-demo.example,Supply Chain Associate,true,Supply Chain
+user:synth.shalini.wong,synth.shalini.wong,Shalini,Wong,shalini.wong@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.manoj.rossi,synth.manoj.rossi,Manoj,Rossi,manoj.rossi@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.james.reddy,synth.james.reddy,James,Reddy,james.reddy@shopkart-demo.example,Warehouse Associate,true,Warehouse
+user:synth.james.garcia,synth.james.garcia,James,Garcia,james.garcia@shopkart-demo.example,Supply Chain Associate,true,Supply Chain
+user:synth.wei.das,synth.wei.das,Wei,Das,wei.das@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.shalini.silva,synth.shalini.silva,Shalini,Silva,shalini.silva@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.ravi.shetty,synth.ravi.shetty,Ravi,Shetty,ravi.shetty@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.ganesh.muller,synth.ganesh.muller,Ganesh,Muller,ganesh.muller@shopkart-demo.example,Customer Care Associate,true,Customer Care
+user:synth.shalini.muller,synth.shalini.muller,Shalini,Muller,shalini.muller@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.sowmya.patel,synth.sowmya.patel,Sowmya,Patel,sowmya.patel@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.ananya.mishra,synth.ananya.mishra,Ananya,Mishra,ananya.mishra@shopkart-demo.example,Finance Associate,true,Finance
+user:synth.sneha.verma,synth.sneha.verma,Sneha,Verma,sneha.verma@shopkart-demo.example,Customer Care Associate,true,Customer Care
+user:synth.chloe.iyer,synth.chloe.iyer,Chloe,Iyer,chloe.iyer@shopkart-demo.example,Finance Associate,true,Finance
+user:synth.arjun.garcia,synth.arjun.garcia,Arjun,Garcia,arjun.garcia@shopkart-demo.example,HR Associate,true,HR
+user:synth.karthik.rossi,synth.karthik.rossi,Karthik,Rossi,karthik.rossi@shopkart-demo.example,Supply Chain Associate,true,Supply Chain
+user:synth.ravi.brown,synth.ravi.brown,Ravi,Brown,ravi.brown@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.imran.gupta,synth.imran.gupta,Imran,Gupta,imran.gupta@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.zara.garcia,synth.zara.garcia,Zara,Garcia,zara.garcia@shopkart-demo.example,HR Associate,true,HR
+user:synth.carlos.kowalski,synth.carlos.kowalski,Carlos,Kowalski,carlos.kowalski@shopkart-demo.example,Finance Associate,true,Finance
+user:synth.rohan.wilson,synth.rohan.wilson,Rohan,Wilson,rohan.wilson@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.karthik.clarke,synth.karthik.clarke,Karthik,Clarke,karthik.clarke@shopkart-demo.example,Supply Chain Associate,true,Supply Chain
+user:synth.vikram.patel,synth.vikram.patel,Vikram,Patel,vikram.patel@shopkart-demo.example,Finance Associate,true,Finance
+user:synth.divya.muller,synth.divya.muller,Divya,Muller,divya.muller@shopkart-demo.example,Customer Care Associate,true,Customer Care
+user:synth.harish.subramanian,synth.harish.subramanian,Harish,Subramanian,harish.subramanian@shopkart-demo.example,Customer Care Associate,true,Customer Care
+user:synth.karthik.das,synth.karthik.das,Karthik,Das,karthik.das@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.noah.menon,synth.noah.menon,Noah,Menon,noah.menon@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.meera.thomas,synth.meera.thomas,Meera,Thomas,meera.thomas@shopkart-demo.example,HR Associate,true,HR
+user:synth.manoj.fernandes,synth.manoj.fernandes,Manoj,Fernandes,manoj.fernandes@shopkart-demo.example,Store Operations Associate,true,Store Operations
+user:synth.mohammed.chen,synth.mohammed.chen,Mohammed,Chen,mohammed.chen@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.karthik.subramanian,synth.karthik.subramanian,Karthik,Subramanian,karthik.subramanian@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.suresh.sato,synth.suresh.sato,Suresh,Sato,suresh.sato@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.imran.thomas,synth.imran.thomas,Imran,Thomas,imran.thomas@shopkart-demo.example,Warehouse Associate,true,Warehouse
+user:synth.sowmya.gupta,synth.sowmya.gupta,Sowmya,Gupta,sowmya.gupta@shopkart-demo.example,Marketing Associate,true,Marketing
+user:synth.emma.sato,synth.emma.sato,Emma,Sato,emma.sato@shopkart-demo.example,Marketing Associate,true,Marketing
