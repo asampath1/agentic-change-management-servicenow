@@ -16,3 +16,8 @@ venv/
 runs/
 .pytest_cache/
 .DS_Store
+
+# PDI probe output (instance details)
+synthetic-data/data/pdi_probe.json
+synthetic-data/data/pdi_trial.json
+synthetic-data/data/fix_change_states*.js

@@ -16,6 +16,17 @@ Usage:
   python3 load_to_snow.py --cleanup          # delete everything recorded in data/manifest.json
   python3 load_to_snow.py --relink           # (re)write incident problem/change links; on instances
                                              # without incident.problem_id / caused_by, adds u_ fields
+  python3 load_to_snow.py --setup            # add the AI fields to change_request (u_ai_risk, ...)
+  python3 load_to_snow.py --verify-states    # compare each loaded change's state/type with the plan
+
+Change-management dataset notes:
+  * Records that already exist on the instance (from the v1.0 incident dataset: groups, CIs, services,
+    relationships, KB articles, problems, and any user with the same user_name) are REUSED, not duplicated.
+    They are marked "reused" in the manifest and --cleanup leaves them alone.
+  * The Change model's business rules force new changes to state New and type normal, and block jumping to
+    Closed / Review over the API. After the load, data/fix_change_states.js sets the planned state and type
+    for this dataset's changes; run it once in System Definition > Scripts - Background, then --verify-states.
+  * Schedule spans are written in IST (the schedules' time zone); the CSVs keep UTC.
 
 How references work: a value "@user:synth.arjun.iyer" means "the sys_id of the record
 created with that _key"; "@lookup:table:field=value" is queried once from the instance.
@@ -28,6 +39,7 @@ import os
 import sys
 import time
 import uuid
+from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -212,6 +224,44 @@ class Snow:
         return r.status_code in (200, 204, 404)
 
 
+IST = timedelta(hours=5, minutes=30)
+TAG = "SYNTH-SKR-CHG"
+AI_FIELDS = (("u_ai_risk", "AI risk"), ("u_ai_recommendation", "AI recommendation"),
+             ("u_ai_close_code", "AI suggested close code"))
+CI_TABLES = ("cmdb_ci_win_server", "cmdb_ci_linux_server", "cmdb_ci_appl", "cmdb_ci_db_mssql_instance",
+             "cmdb_ci_ip_firewall")
+
+
+def reuse_query(table, body):
+    """Encoded query that finds an existing copy of this record (v1.0 data), or None if it is always new."""
+    if table == "sys_user":
+        return f"user_name={body['user_name']}"
+    if table == "sys_user_group" or table == "cmdb_ci_service":
+        return f"name={body['name']}"
+    if table in CI_TABLES:
+        return f"name={body['name']}"
+    if table == "sys_user_grmember":
+        return f"group={body.get('group')}^user={body.get('user')}"
+    if table == "cmdb_rel_ci":
+        return f"parent={body.get('parent')}^child={body.get('child')}^type={body.get('type')}"
+    if table == "kb_knowledge":
+        return f"short_description={body['short_description']}^metaLIKESYNTH-SKR"
+    if table == "problem":
+        return f"short_description={body['short_description']}^correlation_idSTARTSWITHSYNTH-SKR"
+    return None
+
+
+def to_ist_span(body):
+    """cmn_schedule_span: our UTC 'YYYY-MM-DD HH:MM:SS' -> IST 'YYYYMMDDTHHMMSS'; weekday digits follow."""
+    s = datetime.strptime(body["start_date_time"], "%Y-%m-%d %H:%M:%S")
+    e = datetime.strptime(body["end_date_time"], "%Y-%m-%d %H:%M:%S")
+    shift = ((s + IST).date() - s.date()).days
+    out = dict(body, start_date_time=(s + IST).strftime("%Y%m%dT%H%M%S"), end_date_time=(e + IST).strftime("%Y%m%dT%H%M%S"))
+    if body.get("days_of_week"):
+        out["days_of_week"] = "".join(sorted(str((int(d) - 1 + shift) % 7 + 1) for d in body["days_of_week"]))
+    return out
+
+
 def load(args):
     data_dir = Path(args.data)
     plan = json.loads((data_dir / "load_plan.json").read_text())
@@ -222,9 +272,10 @@ def load(args):
     sn = Snow(args.dry_run)
     sn.check()
     only = set(args.only.split(",")) if args.only else None
-    errors = 0
+    errors = reused = 0
     close_map = None
     ref_map = None
+    intended = manifest.setdefault("intended_change_state", {})
 
     def resolve(v):
         if not (isinstance(v, str) and v.startswith("@")):
@@ -260,6 +311,17 @@ def load(args):
                 print(f"  x {key}: skipped, {e.args[0]} (that record was not created)")
                 continue
             body = {k: v for k, v in body.items() if v not in (None, "")}
+            q = reuse_query(table, body)
+            if q and not args.dry_run:
+                found = sn._get("cmdb_ci" if table in CI_TABLES else table, q, "sys_id")
+                if found:
+                    created[key] = {"table": table, "sys_id": found[0]["sys_id"], "number": None, "reused": True}
+                    reused += 1
+                    continue
+            if table == "cmn_schedule_span":
+                body = to_ist_span(body)
+            if table == "change_request":
+                intended[key] = {"state": rec.get("state"), "type": rec.get("type")}
             if table == "incident" and any(f in body for f in Snow.REF_FIELDS):
                 if ref_map is None:
                     ref_map = sn.incident_ref_fields()
@@ -301,19 +363,105 @@ def load(args):
                 time.sleep(args.delay)
         print(f"  created {done}")
     man_path.write_text(json.dumps(manifest, indent=1))
-    # map eval keys -> real incident numbers for convenience
-    gt_path = data_dir / "ground_truth.json"
-    if gt_path.exists():
-        gt = json.loads(gt_path.read_text())
-        for g in gt:
-            g["number"] = created.get(g["key"], {}).get("number")
-            if g.get("related_change"):
-                g["related_change_number"] = created.get(g["related_change"], {}).get("number")
-            if g.get("related_problem"):
-                g["related_problem_number"] = created.get(g["related_problem"], {}).get("number")
-        (data_dir / ("ground_truth.loaded.dryrun.json" if args.dry_run else "ground_truth.loaded.json")).write_text(json.dumps(gt, indent=1))
-    print(f"\nDone. {len(created)} records in manifest, {errors} errors. Manifest: {man_path}")
+    suffix = ".dryrun" if args.dry_run else ""
+    write_loaded_truth(data_dir, created, suffix)
+    js = fix_states_script(created, intended)
+    (data_dir / f"fix_change_states{suffix}.js").write_text(js)
+    print(f"\nDone. {len(created)} records in manifest ({reused} reused from earlier loads), {errors} errors. "
+          f"Manifest: {man_path}")
+    print(f"Next: run data/fix_change_states{suffix}.js in System Definition > Scripts - Background, then "
+          f"python3 load_to_snow.py --verify-states")
     return errors
+
+
+def write_loaded_truth(data_dir, created, suffix=""):
+    """The answer key with local keys replaced by the instance's CHG/INC numbers (for scoring live runs)."""
+    gt_path = data_dir / "ground_truth.json"
+    if not gt_path.exists():
+        return
+    gt = json.loads(gt_path.read_text())
+    num = lambda k: (created.get(k) or {}).get("number") or k          # noqa: E731
+    for a in gt["assess"]:
+        a["local_key"], a["key"] = a["key"], num(a["key"])
+        for c in a["conflicts"]:
+            c["local_key"], c["key"] = c["key"], num(c["key"])
+    for v in gt["verify"]:
+        v["local_key"], v["key"] = v["key"], num(v["key"])
+        v["caused_incidents"] = [num(i) for i in v["caused_incidents"]]
+        for d in v["distractor_incidents"]:
+            d["local_key"], d["key"] = d["key"], num(d["key"])
+    (data_dir / f"ground_truth.loaded{suffix}.json").write_text(json.dumps(gt, indent=1))
+
+
+def fix_states_script(created, intended):
+    want = {created[k]["sys_id"]: [v["state"], v["type"]] for k, v in intended.items() if k in created}
+    return f"""// Generated by load_to_snow.py for the {TAG} change dataset.
+// The Change model's business rules force inserted changes to New / normal and block jumping to Closed or Review
+// over the API. This sets the planned state and type on THIS dataset's changes only, without running business rules.
+// Run once in System Definition > Scripts - Background.
+var want = {json.dumps(want)};
+var fixed = 0, ok = 0;
+var gr = new GlideRecord('change_request');
+gr.addQuery('correlation_id', '{TAG}');
+gr.query();
+while (gr.next()) {{
+  var w = want[gr.getUniqueValue()];
+  if (!w) continue;
+  if (gr.getValue('state') == w[0] && gr.getValue('type') == w[1]) {{ ok++; continue; }}
+  gr.setWorkflow(false);      // skip business rules (state model, approvals, notifications)
+  gr.autoSysFields(false);
+  gr.setValue('state', w[0]);
+  gr.setValue('type', w[1]);
+  gr.update();
+  fixed++;
+}}
+gs.info('{TAG}: fixed ' + fixed + ' change(s), ' + ok + ' already right, ' + Object.keys(want).length + ' planned');
+"""
+
+
+def setup(args):
+    """Add the AI output fields to change_request (a schema change on the instance)."""
+    sn = Snow(args.dry_run)
+    sn.check()
+    for element, label in AI_FIELDS:
+        if not args.dry_run and sn._get("sys_dictionary", f"name=change_request^element={element}", "element"):
+            print(f"  = change_request.{element} exists")
+            continue
+        if args.dry_run:
+            print(f"  would create change_request.{element} ({label})")
+            continue
+        r = sn._req("POST", f"{sn.base}/api/now/table/sys_dictionary", json={
+            "name": "change_request", "element": element, "column_label": label, "internal_type": "string",
+            "max_length": "40", "active": "true"})
+        if r.status_code >= 300:
+            sys.exit(f"Could not create change_request.{element}: HTTP {r.status_code} {r.text[:300]}")
+        print(f"  + created change_request.{element} ({label})")
+
+
+def verify_states(args):
+    data_dir = Path(args.data)
+    manifest = json.loads((data_dir / "manifest.json").read_text())
+    created, intended = manifest["records"], manifest.get("intended_change_state", {})
+    sn = Snow(False)
+    sn.check()
+    rows = {}
+    for page in range(0, 2000, 200):
+        r = sn._req("GET", f"{sn.base}/api/now/table/change_request",
+                    params={"sysparm_query": f"correlation_id={TAG}", "sysparm_fields": "sys_id,number,state,type",
+                            "sysparm_limit": 200, "sysparm_offset": page})
+        batch = r.json().get("result", [])
+        rows.update({x["sys_id"]: x for x in batch})
+        if len(batch) < 200:
+            break
+    bad = []
+    for k, want in intended.items():
+        got = rows.get((created.get(k) or {}).get("sys_id"))
+        if not got or got["state"] != want["state"] or got["type"] != want["type"]:
+            bad.append((k, want, got and {"state": got["state"], "type": got["type"], "number": got["number"]}))
+    print(f"{len(intended) - len(bad)} of {len(intended)} changes have the planned state and type.")
+    for k, want, got in bad[:20]:
+        print(f"  x {k}: want {want}, instance has {got}")
+    return len(bad)
 
 
 def relink(args):
@@ -380,6 +528,8 @@ def cleanup(args):
     print(f"Deleting {len(items)} records ...")
     left = {}
     for i, (key, m) in enumerate(items, 1):
+        if m.get("reused"):
+            continue                       # belongs to an earlier load (v1.0); never delete it from here
         if not sn.delete(m["table"], m["sys_id"]):
             left[key] = m
         if i % 50 == 0:
@@ -397,11 +547,17 @@ if __name__ == "__main__":
     ap.add_argument("--delay", type=float, default=0.0, help="seconds to sleep between records")
     ap.add_argument("--cleanup", action="store_true", help="delete everything listed in the manifest")
     ap.add_argument("--check", action="store_true", help="only test the connection and credentials")
+    ap.add_argument("--setup", action="store_true", help="add the AI fields to change_request")
+    ap.add_argument("--verify-states", action="store_true", help="compare loaded change states with the plan")
     ap.add_argument("--relink", action="store_true",
                     help="(re)write incident problem/change links; adds u_ fields if the instance lacks them")
     a = ap.parse_args()
     if a.check:
         Snow(False).check()
+    elif a.setup:
+        setup(a)
+    elif a.verify_states:
+        sys.exit(1 if verify_states(a) else 0)
     elif a.relink:
         sys.exit(1 if relink(a) else 0)
     elif a.cleanup:

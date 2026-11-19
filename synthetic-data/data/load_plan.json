@@ -2080,7 +2080,7 @@
      "name": "SKR Black Friday Mega Sale freeze",
      "type": "blackout",
      "time_zone": "Asia/Kolkata",
-     "description": "[SYNTH-SKR-CHG] Change freeze",
+     "description": "[SYNTH-SKR-CHG] Change freeze. Applies to: all",
      "u_applies_to": "all"
     },
     {
@@ -2089,7 +2089,7 @@
      "name": "SKR Diwali Sale freeze",
      "type": "blackout",
      "time_zone": "Asia/Kolkata",
-     "description": "[SYNTH-SKR-CHG] Change freeze",
+     "description": "[SYNTH-SKR-CHG] Change freeze. Applies to: all",
      "u_applies_to": "all"
     },
     {
@@ -2098,7 +2098,7 @@
      "name": "SKR Independence Day Sale freeze",
      "type": "blackout",
      "time_zone": "Asia/Kolkata",
-     "description": "[SYNTH-SKR-CHG] Change freeze",
+     "description": "[SYNTH-SKR-CHG] Change freeze. Applies to: all",
      "u_applies_to": "all"
     },
     {
@@ -2107,7 +2107,7 @@
      "name": "SKR Month-end finance close",
      "type": "blackout",
      "time_zone": "Asia/Kolkata",
-     "description": "[SYNTH-SKR-CHG] Change freeze",
+     "description": "[SYNTH-SKR-CHG] Change freeze. Applies to: SKR Data & Analytics;SKR Order Processing;SKR Payments Integration",
      "u_applies_to": "SKR Data & Analytics;SKR Order Processing;SKR Payments Integration"
     },
     {
@@ -2117,7 +2117,7 @@
      "type": "maintenance",
      "time_zone": "Asia/Kolkata",
      "u_applies_to": "tier 1",
-     "description": "[SYNTH-SKR-CHG] Tue, Thu, Sun 01:00-05:00 IST"
+     "description": "[SYNTH-SKR-CHG] Tue, Thu, Sun 01:00-05:00 IST. Applies to: tier 1"
     },
     {
      "_table": "cmn_schedule",
@@ -2126,7 +2126,7 @@
      "type": "maintenance",
      "time_zone": "Asia/Kolkata",
      "u_applies_to": "tier 2;tier 3",
-     "description": "[SYNTH-SKR-CHG] Daily 22:00-06:00 IST"
+     "description": "[SYNTH-SKR-CHG] Daily 22:00-06:00 IST. Applies to: tier 2;tier 3"
     }
    ]
   },

@@ -444,7 +444,8 @@ class Gen:
                 applies = "all" if f["applies"] is None else ";".join(f"SKR {s}" for s in sorted(f["applies"]))
                 scheds[f["name"]] = key
                 self.recs["schedules"].append({"_table": "cmn_schedule", "_key": key, "name": f["name"], "type": "blackout",
-                                               "time_zone": "Asia/Kolkata", "description": f"[{TAG}] Change freeze",
+                                               "time_zone": "Asia/Kolkata",
+                                               "description": f"[{TAG}] Change freeze. Applies to: {applies}",
                                                "u_applies_to": applies})
             self.recs["schedule_spans"].append({
                 "_table": "cmn_schedule_span", "_key": f"span:{f['name']}:{ts(f['start'])}", "schedule": "@" + scheds[f["name"]],
@@ -462,7 +463,8 @@ class Gen:
             self.recs["schedules"].append({"_table": "cmn_schedule", "_key": key, "name": name, "type": "maintenance",
                                            "time_zone": "Asia/Kolkata", "u_applies_to": applies,
                                            "description": f"[{TAG}] " + ("Tue, Thu, Sun 01:00-05:00 IST" if rep == "weekly"
-                                                                         else "Daily 22:00-06:00 IST")})
+                                                                         else "Daily 22:00-06:00 IST")
+                                                          + f". Applies to: {applies}"})
             self.recs["schedule_spans"].append({"_table": "cmn_schedule_span", "_key": f"span:{name}", "schedule": "@" + key,
                                                 "name": name, "start_date_time": ts(s), "end_date_time": ts(e),
                                                 "repeat_type": rep, "days_of_week": dow})

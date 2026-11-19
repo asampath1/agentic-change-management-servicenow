@@ -1,7 +1,7 @@
 _key,name,type,time_zone,description,u_applies_to
-sch:SKR Black Friday Mega Sale freeze,SKR Black Friday Mega Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze,all
-sch:SKR Diwali Sale freeze,SKR Diwali Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze,all
-sch:SKR Independence Day Sale freeze,SKR Independence Day Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze,all
-sch:SKR Month-end finance close,SKR Month-end finance close,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze,SKR Data & Analytics;SKR Order Processing;SKR Payments Integration
-sch:SKR Tier-1 maintenance window,SKR Tier-1 maintenance window,maintenance,Asia/Kolkata,"[SYNTH-SKR-CHG] Tue, Thu, Sun 01:00-05:00 IST",tier 1
-sch:SKR Standard maintenance window,SKR Standard maintenance window,maintenance,Asia/Kolkata,[SYNTH-SKR-CHG] Daily 22:00-06:00 IST,tier 2;tier 3
+sch:SKR Black Friday Mega Sale freeze,SKR Black Friday Mega Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze. Applies to: all,all
+sch:SKR Diwali Sale freeze,SKR Diwali Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze. Applies to: all,all
+sch:SKR Independence Day Sale freeze,SKR Independence Day Sale freeze,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze. Applies to: all,all
+sch:SKR Month-end finance close,SKR Month-end finance close,blackout,Asia/Kolkata,[SYNTH-SKR-CHG] Change freeze. Applies to: SKR Data & Analytics;SKR Order Processing;SKR Payments Integration,SKR Data & Analytics;SKR Order Processing;SKR Payments Integration
+sch:SKR Tier-1 maintenance window,SKR Tier-1 maintenance window,maintenance,Asia/Kolkata,"[SYNTH-SKR-CHG] Tue, Thu, Sun 01:00-05:00 IST. Applies to: tier 1",tier 1
+sch:SKR Standard maintenance window,SKR Standard maintenance window,maintenance,Asia/Kolkata,[SYNTH-SKR-CHG] Daily 22:00-06:00 IST. Applies to: tier 2;tier 3,tier 2;tier 3

@@ -2,6 +2,8 @@
 
   python -m agents --out runs/latest            # offline: synthetic dataset, work notes to a local outbox
   python -m agents --task verify                # only the post-implementation review
+  python -m agents --source servicenow --out runs/pdi            # live PDI, dry-run (nothing written)
+  python -m agents --source servicenow --write --out runs/pdi    # live PDI, posts work notes + AI fields
   python -m agents --out runs/latest -v         # also print each assessment
   python -m agents --only chg:0301,chg:0302     # just these changes
 """
@@ -23,6 +25,9 @@ def main() -> None:
     ap.add_argument("--out", default="runs/latest", help="output folder")
     ap.add_argument("--only", help="comma-separated change keys")
     ap.add_argument("--task", choices=["assess", "verify", "all"], default="all")
+    ap.add_argument("--source", choices=["local", "servicenow"], default="local")
+    ap.add_argument("--write", action="store_true",
+                    help="servicenow only: really post work notes and AI fields (default: dry-run)")
     ap.add_argument("--risk-mode", choices=["point", "conservative"], default="conservative",
                     help="band from the 80%% upper bound (default) or the most likely probability")
     ap.add_argument("-v", "--verbose", action="store_true")
@@ -33,7 +38,11 @@ def main() -> None:
     outbox = out / "work_notes.jsonl"
     outbox.unlink(missing_ok=True)
     t0 = time.time()
-    itsm = LocalITSM(outbox=outbox)
+    if a.source == "servicenow":
+        from .connectors.servicenow import ServiceNowITSM
+        itsm = ServiceNowITSM(write=a.write)
+    else:
+        itsm = LocalITSM(outbox=outbox)
     orch = ChangeOrchestrator(itsm, risk_mode=a.risk_mode)
     keys = set(a.only.split(",")) if a.only else None
     results = orch.run(write=True, keys=keys) if a.task in ("assess", "all") else []
@@ -46,10 +55,17 @@ def main() -> None:
         (out / "verify_predictions.json").write_text(json.dumps([verify_prediction(c, v) for c, v in reviews], indent=1))
         (out / "verifications.json").write_text(json.dumps([dict(key=c.key, short_description=c.short_description, **v)
                                                             for c, v in reviews], indent=1))
+    if a.source == "servicenow":
+        with open(outbox, "w", encoding="utf-8") as f:
+            for w in itsm.writes:
+                f.write(json.dumps(w) + "\n")
+        failed = [w for w in itsm.writes if a.write and not w["sent"]]
+        if failed:
+            print(f"! {len(failed)} write(s) failed, e.g. {failed[0].get('status')} {failed[0].get('error', '')[:150]}")
     m = orch.model
     (out / "model.json").write_text(json.dumps({"trained_on": m.n_train, "failed": m.n_failed,
                                                 "weights": {n: round(m.w[n], 3) for n in NAMES}}, indent=1))
-    run = {"source": "local", "reasoner": "heuristic", "risk_mode": a.risk_mode, "changes": len(results), "seconds": round(time.time() - t0, 1),
+    run = {"source": a.source, "written": bool(a.write and a.source == "servicenow"), "reasoner": "heuristic", "risk_mode": a.risk_mode, "changes": len(results), "seconds": round(time.time() - t0, 1),
            "bands": dict(Counter(r.risk["band"] for r in results)),
            "recommendations": dict(Counter(r.recommendation for r in results)),
            "reviewed": len(reviews), "suggested_close_codes": dict(Counter(v["suggested_close_code"] for _, v in reviews)),
