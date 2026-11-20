@@ -7,7 +7,8 @@ and checks afterwards whether the change caused incidents. A person makes every 
 > **Disclaimer:** *ShopKart Retails (SKR)* is a fictional company. All people, systems and tickets are synthetic.
 > No client or employer data is used.
 
-> **Status: in progress.** M1 (dataset), M2 (assessment agents) and M3 (verification) done; live ServiceNow run next.
+> **Status: in progress.** M1 (dataset), M2 (assessment agents), M3 (verification) and M4 (live ServiceNow run,
+> [write-up](docs/live-pdi.md)) done; optional Claude comparison next.
 > Plan: [docs/design.md](docs/design.md).
 
 **New here or not technical?** Start with the plain-language overview: [docs/overview.md](docs/overview.md).

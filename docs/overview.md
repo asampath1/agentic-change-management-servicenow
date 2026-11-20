@@ -68,7 +68,8 @@ records struggle with this; it is the kind of reading a language model such as C
 that is the next step.
 
 It also ran against a **real ServiceNow system** with the same data loaded (about 900 records) and made exactly the
-same recommendations as the offline test.
+same recommendations as the offline test. It wrote its assessment as a note on each of the 60 change requests,
+where a change manager would see it ([screenshots](live-pdi.md)).
 
 ## What is real and what is made up
 
