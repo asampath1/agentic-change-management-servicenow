@@ -11,7 +11,10 @@ and checks afterwards whether the change caused incidents. A person makes every 
 > ([write-up](docs/live-pdi.md)) and the Claude comparison are done. Plan: [docs/design.md](docs/design.md).
 
 **Video (1:47):** the agents' notes on the live ServiceNow changes, Claude reading the text, and the results:
-[docs/demo/change-demo.mp4](docs/demo/change-demo.mp4).
+
+https://github.com/user-attachments/assets/2c86c177-ef63-46e6-9ea8-f50fa543e4c0
+
+
 
 **New here or not technical?** Start with the plain-language overview: [docs/overview.md](docs/overview.md).
 
