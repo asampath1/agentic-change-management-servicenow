@@ -1,0 +1,2504 @@
+[
+ {
+  "key": "chg:0277",
+  "short_description": "Monthly Windows patching - vm-dc-02",
+  "family": "monthly windows patching",
+  "backout_in_notes": true,
+  "suggested_close_code": "unsuccessful",
+  "linked_incidents": [
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -2.1,
+    "same_ci": true,
+    "link_probability": 0.72,
+    "symptom_same_kind": 0.73,
+    "symptom_any_change": 0.18,
+    "reason": "same CI, -2.1 h from the end of the work, symptom like past change failures (0.73 same kind, 0.18 any); link likelihood 72%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -2.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": -0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 3.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 3.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 5.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 5.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 10.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 10.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 10.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 22.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0278",
+  "short_description": "Deploy release 6.15.3 to aks-platform-prod",
+  "family": "deploy release",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": -17.9,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": -16.0,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 0.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0295",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 23:20:52",
+    "short_description": "[Recovery Services] Backup failed for vm-dc-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 3.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0291",
+    "ci": "sql-hr-prod",
+    "opened_at": "2026-11-20 02:57:09",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+    "hours_after_end": 7.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-19 16:45:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0279",
+  "short_description": "AKS node pool upgrade on aks-platform-prod",
+  "family": "aks node pool upgrade",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": 1.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": 2.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": 5.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": 10.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": 15.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 20.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 21.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 31.1,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 33.0,
+    "same_ci": false,
+    "reason": "opened more than 24 h after the change"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-17 17:45:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0280",
+  "short_description": "AKS node pool upgrade on aks-platform-prod",
+  "family": "aks node pool upgrade",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 4.8,
+    "same_ci": true,
+    "link_probability": 0.465,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.17,
+    "reason": "same CI, +4.8 h from the end of the work, symptom like past change failures (0.00 same kind, 0.17 any); link likelihood 47%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -0.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -0.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 1.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 2.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 4.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 6.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 12.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 12.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 12.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 23.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 6.7,
+    "same_ci": false,
+    "link_probability": 0.31,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.27,
+    "reason": "related CI sql-ecom-catalog-prod but symptom unlike past change failures (link likelihood 31% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:00:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0281",
+  "short_description": "Index maintenance on sql-orders-prod",
+  "family": "index maintenance",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 3.9,
+    "same_ci": true,
+    "link_probability": 0.487,
+    "symptom_same_kind": 0.07,
+    "symptom_any_change": 0.07,
+    "reason": "same CI, +3.9 h from the end of the work, symptom like past change failures (0.07 same kind, 0.07 any); link likelihood 49%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": -15.9,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": -15.0,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -2.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 3.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": 8.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": 8.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 10.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 11.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 13.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 15.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 21.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 21.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 21.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 13.6,
+    "same_ci": true,
+    "link_probability": 0.299,
+    "symptom_same_kind": 0.05,
+    "symptom_any_change": 0.09,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 30% < 46%)"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 15.7,
+    "same_ci": true,
+    "link_probability": 0.265,
+    "symptom_same_kind": 0.07,
+    "symptom_any_change": 0.07,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 27% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 09:00:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0282",
+  "short_description": "NSG rule update for app-ecom-api-prod subnet",
+  "family": "nsg rule update",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": -22.1,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": -17.5,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -12.4,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -1.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": -0.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 1.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 3.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 3.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 5.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 10.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 22.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -1.9,
+    "same_ci": false,
+    "link_probability": 0.423,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.17,
+    "reason": "related CI vm-ecom-web-02 but symptom unlike past change failures (link likelihood 42% < 46%)"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 5.5,
+    "same_ci": false,
+    "link_probability": 0.331,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.27,
+    "reason": "related CI sql-ecom-catalog-prod but symptom unlike past change failures (link likelihood 33% < 46%)"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 10.7,
+    "same_ci": true,
+    "link_probability": 0.336,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.06,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 34% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 20:15:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0283",
+  "short_description": "Deploy release 6.1.8 to app-payments-prod",
+  "family": "deploy release",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 1.7,
+    "same_ci": true,
+    "link_probability": 0.549,
+    "symptom_same_kind": 0.08,
+    "symptom_any_change": 0.18,
+    "reason": "same CI, +1.7 h from the end of the work, symptom like past change failures (0.08 same kind, 0.18 any); link likelihood 55%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -1.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -1.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 0.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 3.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 3.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 5.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 5.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 11.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 11.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 22.7,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 20:00:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0284",
+  "short_description": "NSG rule update for vm-ecom-web-02 subnet",
+  "family": "nsg rule update",
+  "backout_in_notes": true,
+  "suggested_close_code": "unsuccessful",
+  "linked_incidents": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -1.1,
+    "same_ci": true,
+    "link_probability": 0.564,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.17,
+    "reason": "same CI, -1.1 h from the end of the work, symptom like past change failures (0.00 same kind, 0.17 any); link likelihood 56%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": -21.4,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -11.7,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -1.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 2.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 4.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 4.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 23.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "link_probability": 0.212,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.06,
+    "reason": "related CI app-ecom-api-prod but symptom unlike past change failures (link likelihood 21% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0285",
+  "short_description": "Rotate secrets in kv-payments-prod",
+  "family": "rotate secrets",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 2.2,
+    "same_ci": false,
+    "link_probability": 0.597,
+    "symptom_same_kind": 0.94,
+    "symptom_any_change": 0.18,
+    "reason": "related CI app-payments-prod, +2.2 h from the end of the work, symptom like past change failures (0.94 same kind, 0.18 any); link likelihood 60%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -1.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -1.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 4.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 4.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 23.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0286",
+  "short_description": "Configuration change on adf-analytics-prod: cache expiry",
+  "family": "configuration change",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": -1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": -0.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": 2.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": 7.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": 12.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 18.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": 23.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": 23.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 24.8,
+    "same_ci": false,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 28.3,
+    "same_ci": false,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 30.5,
+    "same_ci": false,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 18.6,
+    "same_ci": false,
+    "link_probability": 0.136,
+    "symptom_same_kind": 0.04,
+    "symptom_any_change": 0.07,
+    "reason": "related CI sql-orders-prod but symptom unlike past change failures (link likelihood 14% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-17 18:15:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0287",
+  "short_description": "Rotate secrets in kv-ecom-prod",
+  "family": "rotate secrets",
+  "backout_in_notes": true,
+  "suggested_close_code": "unsuccessful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 4.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 5.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": 9.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": 9.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 13.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 15.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 15.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 17.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 17.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 22.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 22.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -0.7,
+    "same_ci": false,
+    "link_probability": 0.419,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.14,
+    "reason": "related CI app-ecom-api-prod but symptom unlike past change failures (link likelihood 42% < 46%)"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 22.5,
+    "same_ci": false,
+    "link_probability": 0.099,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.06,
+    "reason": "related CI app-ecom-api-prod but symptom unlike past change failures (link likelihood 10% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 08:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0288",
+  "short_description": "Backup policy change on rsv-backup-prod",
+  "family": "backup policy change",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -1.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -1.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 0.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 2.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 3.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 4.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 6.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 6.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 11.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 11.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0295",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 23:20:52",
+    "short_description": "[Recovery Services] Backup failed for vm-dc-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 25.6,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.6,
+    "same_ci": true,
+    "link_probability": 0.316,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.03,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 32% < 46%)"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 22.9,
+    "same_ci": true,
+    "link_probability": 0.155,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.03,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 16% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 18:45:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0289",
+  "short_description": "Monthly Windows patching - vm-aadconnect-01",
+  "family": "monthly windows patching",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 2.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 4.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 4.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 6.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 11.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 11.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 23.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 11.5,
+    "same_ci": true,
+    "link_probability": 0.452,
+    "symptom_same_kind": 0.55,
+    "symptom_any_change": 0.13,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 45% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 20:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0290",
+  "short_description": "Index maintenance on sql-ecom-catalog-prod",
+  "family": "index maintenance",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 4.5,
+    "same_ci": true,
+    "link_probability": 0.681,
+    "symptom_same_kind": 0.88,
+    "symptom_any_change": 0.27,
+    "reason": "same CI, +4.5 h from the end of the work, symptom like past change failures (0.88 same kind, 0.27 any); link likelihood 68%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -13.4,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -2.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -2.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": -1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 2.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 4.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 9.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 10.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 21.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 2.6,
+    "same_ci": false,
+    "link_probability": 0.372,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.17,
+    "reason": "related CI aks-platform-prod but symptom unlike past change failures (link likelihood 37% < 46%)"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 9.7,
+    "same_ci": false,
+    "link_probability": 0.241,
+    "symptom_same_kind": 0.02,
+    "symptom_any_change": 0.06,
+    "reason": "related CI app-ecom-api-prod but symptom unlike past change failures (link likelihood 24% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 20:15:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0291",
+  "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+  "family": "database schema change",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": 1.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": 1.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 3.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 5.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 7.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 7.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 9.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 9.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 14.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 14.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 14.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0291",
+    "ci": "sql-hr-prod",
+    "opened_at": "2026-11-20 02:57:09",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+    "hours_after_end": 32.5,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 17:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0292",
+  "short_description": "Resize sql-orders-prod to Standard_D4s_v5",
+  "family": "resize",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 3.1,
+    "same_ci": true,
+    "link_probability": 0.515,
+    "symptom_same_kind": 0.11,
+    "symptom_any_change": 0.09,
+    "reason": "same CI, +3.1 h from the end of the work, symptom like past change failures (0.11 same kind, 0.09 any); link likelihood 52%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": -26.4,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": -25.5,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": -6.6,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -2.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -2.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": -0.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 3.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 5.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 10.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 10.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 10.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 22.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 5.2,
+    "same_ci": true,
+    "link_probability": 0.452,
+    "symptom_same_kind": 0.03,
+    "symptom_any_change": 0.07,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 45% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:30:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0293",
+  "short_description": "Backup policy change on rsv-backup-prod",
+  "family": "backup policy change",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful_issues",
+  "linked_incidents": [
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 2.9,
+    "same_ci": true,
+    "link_probability": 0.485,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.03,
+    "reason": "same CI, +2.9 h from the end of the work, symptom like past change failures (0.00 same kind, 0.03 any); link likelihood 48%"
+   }
+  ],
+  "ruled_out": [
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": -8.4,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0291",
+    "ci": "sql-hr-prod",
+    "opened_at": "2026-11-20 02:57:09",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+    "hours_after_end": 9.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0295",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 23:20:52",
+    "short_description": "[Recovery Services] Backup failed for vm-dc-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 5.6,
+    "same_ci": true,
+    "link_probability": 0.43,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.03,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 43% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-19 16:45:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0294",
+  "short_description": "Azure Firewall policy update on azfw-hub-prod",
+  "family": "azure firewall policy update",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": -1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": -0.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": 2.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": 7.5,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": 12.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 18.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 18.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": 23.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": 23.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-17 18:15:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0295",
+  "short_description": "Deploy release 5.19.3 to app-ecom-api-prod",
+  "family": "deploy release",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": -20.6,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": -16.0,
+    "same_ci": false,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": -10.9,
+    "same_ci": true,
+    "reason": "opened before the change started"
+   },
+   {
+    "key": "inc:0283",
+    "ci": "vm-dc-02",
+    "opened_at": "2026-11-18 20:24:00",
+    "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+    "hours_after_end": -0.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0296",
+    "ci": "sql-dwh-prod",
+    "opened_at": "2026-11-18 22:02:42",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-dwh-prod",
+    "hours_after_end": 1.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0287",
+    "ci": "app-payments-prod",
+    "opened_at": "2026-11-18 23:44:53",
+    "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+    "hours_after_end": 3.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0292",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 01:35:09",
+    "short_description": "[Azure Monitor] Sev2 - DTU percentage > 95% on sql-orders-prod",
+    "hours_after_end": 4.8,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0284",
+    "ci": "aks-platform-prod",
+    "opened_at": "2026-11-19 01:48:25",
+    "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+    "hours_after_end": 5.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0293",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-19 03:43:08",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 7.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0279",
+    "ci": "vm-aadconnect-01",
+    "opened_at": "2026-11-19 09:02:25",
+    "short_description": "[Entra Connect Health] Sync has not completed in 7 hours on vm-aadconnect-01",
+    "hours_after_end": 12.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 12.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 23.9,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0286",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 20:21:00",
+    "short_description": "E-Commerce Storefront cannot connect to backend",
+    "hours_after_end": -0.4,
+    "same_ci": false,
+    "link_probability": 0.453,
+    "symptom_same_kind": 0.13,
+    "symptom_any_change": 0.17,
+    "reason": "related CI vm-ecom-web-02 but symptom unlike past change failures (link likelihood 45% < 46%)"
+   },
+   {
+    "key": "inc:0290",
+    "ci": "sql-ecom-catalog-prod",
+    "opened_at": "2026-11-19 03:43:56",
+    "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-ecom-catalog-prod",
+    "hours_after_end": 7.0,
+    "same_ci": false,
+    "link_probability": 0.305,
+    "symptom_same_kind": 0.0,
+    "symptom_any_change": 0.27,
+    "reason": "related CI sql-ecom-catalog-prod but symptom unlike past change failures (link likelihood 30% < 46%)"
+   },
+   {
+    "key": "inc:0281",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-19 08:58:39",
+    "short_description": "Browser shows 'Your connection is not private' on E-Commerce Storefront",
+    "hours_after_end": 12.2,
+    "same_ci": true,
+    "link_probability": 0.321,
+    "symptom_same_kind": 0.06,
+    "symptom_any_change": 0.06,
+    "reason": "same CI but symptom unlike past change failures (link likelihood 32% < 46%)"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-18 19:45:00",
+   "to_end_plus_hours": 24
+  }
+ },
+ {
+  "key": "chg:0296",
+  "short_description": "Backup policy change on rsv-backup-prod",
+  "family": "backup policy change",
+  "backout_in_notes": false,
+  "suggested_close_code": "successful",
+  "linked_incidents": [],
+  "ruled_out": [
+   {
+    "key": "inc:0204",
+    "ci": "func-orders-processor",
+    "opened_at": "2026-11-17 20:03:15",
+    "short_description": "[Azure Monitor] Sev2 - Service Bus active messages > 5000 (orders-queue)",
+    "hours_after_end": 0.3,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0297",
+    "ci": "vm-orders-app-01",
+    "opened_at": "2026-11-17 20:59:56",
+    "short_description": "[Azure Monitor] Sev2 - Logical disk free space < 10% on vm-orders-app-01 (/var/log)",
+    "hours_after_end": 1.2,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0288",
+    "ci": "vm-ecom-web-02",
+    "opened_at": "2026-11-18 00:07:08",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-02 for 30 min",
+    "hours_after_end": 4.4,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0162",
+    "ci": "vm-ecom-web-01",
+    "opened_at": "2026-11-18 04:45:06",
+    "short_description": "[Azure Monitor] Sev2 - Percentage CPU > 90% on vm-ecom-web-01 for 30 min",
+    "hours_after_end": 9.0,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0289",
+    "ci": "app-ecom-api-prod",
+    "opened_at": "2026-11-18 09:49:00",
+    "short_description": "E-Commerce Storefront failing after maintenance",
+    "hours_after_end": 14.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0282",
+    "ci": "vm-dc-01",
+    "opened_at": "2026-11-18 15:21:42",
+    "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+    "hours_after_end": 19.6,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0285",
+    "ci": "sql-orders-prod",
+    "opened_at": "2026-11-18 15:53:45",
+    "short_description": "Orders screen timing out",
+    "hours_after_end": 20.1,
+    "same_ci": false,
+    "reason": "different CI, not related in the CMDB"
+   },
+   {
+    "key": "inc:0280",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 09:20:42",
+    "short_description": "[Recovery Services] Backup failed for vm-ecom-web-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 37.6,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0294",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 20:41:14",
+    "short_description": "[Recovery Services] Backup failed for vm-etl-01 (ExtensionSnapshotFailedNoNetwork)",
+    "hours_after_end": 48.9,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   },
+   {
+    "key": "inc:0295",
+    "ci": "rsv-backup-prod",
+    "opened_at": "2026-11-19 23:20:52",
+    "short_description": "[Recovery Services] Backup failed for vm-dc-01 (UserErrorVmNotInDesirableState)",
+    "hours_after_end": 51.6,
+    "same_ci": true,
+    "reason": "opened more than 24 h after the change"
+   }
+  ],
+  "threshold": 0.45864521448157397,
+  "window": {
+   "from": "2026-11-17 16:45:00",
+   "to_end_plus_hours": 24
+  }
+ }
+]

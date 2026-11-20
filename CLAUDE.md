@@ -29,6 +29,16 @@ Successor to `../agentic-aiops-servicenow-azure` (frozen at v1.0; do not edit it
 ```bash
 python -m agents --out runs/latest [--risk-mode point]   # default: conservative; also runs verification
 python -m evaluation.score runs/latest
-python -m pytest -q          # needs pytest; ../agentic-aiops-servicenow-azure/.venv has it
+python -m pytest -q          # .venv has pytest, requests, anthropic
+python -m agents --reasoner claude --out runs/claude      # Claude reads the change text; cached in runs/claude-cache.json
+python -m agents.text_reader --sample 10                  # Claude cost check on 10 history changes
+python -m agents --source servicenow [--write] --out runs/pdi   # live PDI (SN_INSTANCE, SN_USER, SN_PASSWORD)
 ```
+Live runs (PDI, Anthropic API) happen in the user's VS Code terminal, where the credentials are exported.
+
+## Status (2026-11-20): complete
+- M4: the one live `--write` ran on 2026-11-20 (60 changes, one AI note each). Never run `--write` again: work notes
+  are a journal.
+- M5: Claude text reader, one evaluation run (0/12 missed high, 78% recommendations, $0.83); results in
+  `evaluation/results/claude-conservative/`. Don't rerun to chase a better score.
 Never inspect individual answer-key entries to debug or tune agents; use only the scorer's aggregate report.

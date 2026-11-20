@@ -1,0 +1,411 @@
+{
+ "claude-opus-5-5:036c01021f06ab9ca391": {},
+ "claude-opus-5-5:037de16092ba0280d12c": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:038f24a6228a50eb857b": {},
+ "claude-opus-5-5:03b17e2f0d5d61188418": {},
+ "claude-opus-5-5:03f89950b36f1dd1f92d": {},
+ "claude-opus-5-5:043ef786bb70690a2553": {},
+ "claude-opus-5-5:05208c6e776e4bf8660c": {},
+ "claude-opus-5-5:0772c1e5e972ce56e316": {
+  "big_bang": "No staged rollout this time; the whole fleet moves in one go."
+ },
+ "claude-opus-5-5:0807c55247d0cf53fb1c": {},
+ "claude-opus-5-5:087dc24cf865ed6aea45": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:0982cfe5a77d5e0ff85f": {},
+ "claude-opus-5-5:09bd3eda2bcbe362c98f": {},
+ "claude-opus-5-5:0a04757e58452c8eef7c": {},
+ "claude-opus-5-5:0a35e0766996d50c548b": {},
+ "claude-opus-5-5:0bb6bb617e1e5965a88d": {},
+ "claude-opus-5-5:0bf9fb00e5432fb3edaf": {},
+ "claude-opus-5-5:0dafe7f07d3f81be4404": {
+  "big_bang": "Change applies to all instances at the same time."
+ },
+ "claude-opus-5-5:0ff3d95801145ba387bb": {},
+ "claude-opus-5-5:1007b8e711bcc5e9cec2": {},
+ "claude-opus-5-5:10acfd6f4ec07f88bfee": {},
+ "claude-opus-5-5:1120cc2cdc65ba67326f": {
+  "canary": "10% of traffic first via slot swap, then 100% after 30 minutes."
+ },
+ "claude-opus-5-5:11eb5e38b6e0963c98ce": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:14b58f84bccccb7e60df": {},
+ "claude-opus-5-5:1aefc6fcc11c5469d5f1": {},
+ "claude-opus-5-5:1c415fcc9fdf96411894": {},
+ "claude-opus-5-5:1c4c36f015b29316f733": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:1fdd5733956d8e8c6802": {
+  "canary": "10% of traffic first via slot swap, then 100% after 30 minutes."
+ },
+ "claude-opus-5-5:205a8761e98af1ea1039": {},
+ "claude-opus-5-5:20795922cb3466c9d11b": {
+  "irreversible": "This release migrates stored data; once applied it cannot be undone without a full restore."
+ },
+ "claude-opus-5-5:211865d9d554fcf9fb75": {},
+ "claude-opus-5-5:228e461cf0f1c5c377f9": {},
+ "claude-opus-5-5:24161ebe9ee58b84dc87": {},
+ "claude-opus-5-5:24237fe6c9e364ac0ccf": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:255c77262b7f4f629adb": {},
+ "claude-opus-5-5:25e659800385f68efbbc": {},
+ "claude-opus-5-5:27b0be66fe528c8b75a8": {},
+ "claude-opus-5-5:27d990acbcd697c99f26": {},
+ "claude-opus-5-5:2800008baf6c94ebd3cc": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:28185f22789b19cc210c": {},
+ "claude-opus-5-5:28f54dd34e250977be3a": {
+  "first_time": "First time this upgrade is done on production."
+ },
+ "claude-opus-5-5:291838e822c4c5d122eb": {},
+ "claude-opus-5-5:29359561462ac74e6901": {},
+ "claude-opus-5-5:299355c7a5d12c41f17b": {},
+ "claude-opus-5-5:2ba2ed480ea069f31ad7": {},
+ "claude-opus-5-5:2be13dbcecfedddbc465": {},
+ "claude-opus-5-5:2ce96103992b9538294c": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:30796b62f6a22668d4be": {
+  "irreversible": "This release migrates stored data; once applied it cannot be undone without a full restore."
+ },
+ "claude-opus-5-5:31f56cca719618f845a3": {
+  "first_time": "This is the first use of the new pipeline for this service."
+ },
+ "claude-opus-5-5:321b8023beb0e2527dd7": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:3286cca0523a78025c9e": {},
+ "claude-opus-5-5:33dc686897c47f9a7b10": {},
+ "claude-opus-5-5:344c0ff702def012cdda": {},
+ "claude-opus-5-5:3470ad0259aca7c47a3e": {},
+ "claude-opus-5-5:361504f2577cccf51bdf": {},
+ "claude-opus-5-5:37ab2a315e599807c7ea": {},
+ "claude-opus-5-5:39194117576066c271e1": {},
+ "claude-opus-5-5:3958b98ad20c2caf5b62": {},
+ "claude-opus-5-5:3a17229f4bdd7ca98bb5": {
+  "canary": "The first node gets the change; the others follow only if its error rate stays flat.",
+  "rehearsed": "Dry run done on Tuesday against a copy of production data; timings recorded."
+ },
+ "claude-opus-5-5:3ac846e9a13366bf1ecf": {},
+ "claude-opus-5-5:3b4dbfb7496972fa7f38": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:3de5727ea1175bfff979": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:3ee4d56a9fcdf3e19f09": {
+  "first_time": "This is the first use of the new pipeline for this service."
+ },
+ "claude-opus-5-5:4064faa1b161c25fb1b3": {},
+ "claude-opus-5-5:42b469d4e00ab59524d8": {},
+ "claude-opus-5-5:431e7b39547d614e0a63": {},
+ "claude-opus-5-5:45c5375f10185e0fa80d": {},
+ "claude-opus-5-5:45c9101d642cf1037229": {
+  "rehearsed": "The same steps were run in staging twice without issues."
+ },
+ "claude-opus-5-5:4642fb063947259a642f": {},
+ "claude-opus-5-5:46dbe1bb8395cb6374f0": {},
+ "claude-opus-5-5:4824a71eb62b4afd60be": {},
+ "claude-opus-5-5:4a1d7f7a6c30f5d14dc1": {
+  "canary": "10% of traffic first via slot swap, then 100% after 30 minutes."
+ },
+ "claude-opus-5-5:4a47a711aa88f8968ffd": {},
+ "claude-opus-5-5:4ae2a8da55753075c850": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:4b84a7ba0314c168dcf2": {},
+ "claude-opus-5-5:4cc4c58077b006d867f6": {},
+ "claude-opus-5-5:4dd114d48e3a848f2e4c": {},
+ "claude-opus-5-5:4e21de94c4e75146ad89": {},
+ "claude-opus-5-5:4fe80329779e7d36d0cd": {},
+ "claude-opus-5-5:517527987eccc2854371": {},
+ "claude-opus-5-5:51c32b87777ab9caae5e": {},
+ "claude-opus-5-5:5331ec16073081d7fe80": {},
+ "claude-opus-5-5:54a1e465339843158ec5": {},
+ "claude-opus-5-5:5660c2795b7d2b694af3": {},
+ "claude-opus-5-5:569310f2b2322d15d597": {},
+ "claude-opus-5-5:56a88872ef74cac6b202": {},
+ "claude-opus-5-5:57b9a57026f166f03a3a": {},
+ "claude-opus-5-5:580b3a536682a65c474f": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:58d558335b96fdc642cc": {},
+ "claude-opus-5-5:5b1c07e1f83952a37bcf": {},
+ "claude-opus-5-5:5c71677e56a9b83cecbd": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:5ccc969e687f4aeb074d": {},
+ "claude-opus-5-5:5e7364e764df37eca9bb": {
+  "big_bang": "Change applies to all instances at the same time."
+ },
+ "claude-opus-5-5:6346be04721c29d9d052": {},
+ "claude-opus-5-5:636725af6547c62fc2bc": {},
+ "claude-opus-5-5:6432e4ace67028dbb720": {
+  "irreversible": "This release migrates stored data; once applied it cannot be undone without a full restore."
+ },
+ "claude-opus-5-5:64c56aa810f1805b6dd2": {},
+ "claude-opus-5-5:67ca95a47dfe3478a019": {},
+ "claude-opus-5-5:68d1776fdbf5fe6e42f8": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:6a6094158841b65a4a03": {},
+ "claude-opus-5-5:6af1e83622eceef33985": {},
+ "claude-opus-5-5:6b9279d79d08650924d6": {},
+ "claude-opus-5-5:6cf0ba16628383b5d4b4": {},
+ "claude-opus-5-5:6e39e2ebbffaa8bda340": {},
+ "claude-opus-5-5:6e6f4f3af61beb93c50e": {
+  "canary": "10% of traffic first via slot swap, then 100% after 30 minutes."
+ },
+ "claude-opus-5-5:6ea28580008691c9f6d4": {},
+ "claude-opus-5-5:700ef67474ba9701437b": {},
+ "claude-opus-5-5:70afd256d10bbd36c772": {},
+ "claude-opus-5-5:711e16cf239ea7714c96": {},
+ "claude-opus-5-5:73d00dc0a4afa3bf8dd4": {},
+ "claude-opus-5-5:7440eb58580f25e57849": {},
+ "claude-opus-5-5:7529ab4f247d5afdd9be": {},
+ "claude-opus-5-5:75835acbe045cb3e693b": {
+  "big_bang": "Both regions are updated in the same run.",
+  "vendor": "The Microsoft partner will carry out the work over a screen-share while our engineer observes."
+ },
+ "claude-opus-5-5:767fb194219376de6a86": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:77f546c7e2113765cd16": {},
+ "claude-opus-5-5:78c4d6c9e92c964e8c91": {},
+ "claude-opus-5-5:79932c1cec76a3d56198": {},
+ "claude-opus-5-5:7998bfbd2eae5dbf49bb": {},
+ "claude-opus-5-5:79c86021594edb206fbb": {},
+ "claude-opus-5-5:7a3ffe9ca38a4ffaa263": {},
+ "claude-opus-5-5:7a9ca691d25fb87d8d1e": {},
+ "claude-opus-5-5:7b18ae40ad109db45641": {
+  "first_time": "First time this upgrade is done on production."
+ },
+ "claude-opus-5-5:7b550e56f89f6fd8f62d": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:7e35343b7f109a3f3bab": {},
+ "claude-opus-5-5:7e763e4c2aec40b98df5": {},
+ "claude-opus-5-5:7f9b214bb738c7697cb0": {},
+ "claude-opus-5-5:81c03bf61e5a0527d10e": {},
+ "claude-opus-5-5:81e421bcaf495987f163": {},
+ "claude-opus-5-5:82dc92c8365c6c3eb934": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:83bc106d57d430fdb95a": {},
+ "claude-opus-5-5:83d122c7cb9ca3bebb54": {},
+ "claude-opus-5-5:83d6e9b9cc922383b77f": {},
+ "claude-opus-5-5:8480c1389147e384a9ec": {},
+ "claude-opus-5-5:84aa45ba6705a43c1a9b": {},
+ "claude-opus-5-5:84b4db7a19b10610d780": {},
+ "claude-opus-5-5:84f9ef106abb2c8e67e9": {},
+ "claude-opus-5-5:8601e05c1c5d4a906945": {},
+ "claude-opus-5-5:865cc1f2a8ba0c06d937": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:8915e21f24b66ff7f13d": {},
+ "claude-opus-5-5:8cc23718e122c67d8835": {},
+ "claude-opus-5-5:8ce21ef7df5884feb2fb": {},
+ "claude-opus-5-5:8dee048ca1742cc193ee": {},
+ "claude-opus-5-5:8ef4252e2ae455acec4f": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:8f9eaf19df291c8fdb25": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:904652a747d57fed9743": {},
+ "claude-opus-5-5:90e72e091cd095078672": {},
+ "claude-opus-5-5:9168aefd94dbebf28aef": {},
+ "claude-opus-5-5:921c20a955d2d3b11376": {
+  "irreversible": "This release migrates stored data; once applied it cannot be undone without a full restore."
+ },
+ "claude-opus-5-5:92dce4f17e499c30edba": {},
+ "claude-opus-5-5:9374f85679943a2b2e78": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:93e69bd961cb79d3a329": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:96988a4a013a90266d49": {},
+ "claude-opus-5-5:96f9661c13c38bdaa710": {},
+ "claude-opus-5-5:97c4ef2a0d2550c405d7": {},
+ "claude-opus-5-5:9927c134cf7384bc6843": {},
+ "claude-opus-5-5:9a3e1cd8db9ee3ce6ac2": {},
+ "claude-opus-5-5:9a59c2ca6b70982c5823": {},
+ "claude-opus-5-5:9a7c7fe88538e0e2cda8": {
+  "big_bang": "Both regions are updated in the same run.",
+  "first_time": "The team has never run this procedure before"
+ },
+ "claude-opus-5-5:9b67fbc3eb7e89d31733": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:9c7ae3b7def4d24f71aa": {},
+ "claude-opus-5-5:9dd4fb540f0d5cc21205": {},
+ "claude-opus-5-5:9e6915c21d6cee4dcc87": {},
+ "claude-opus-5-5:9f448a074226a0d178d5": {},
+ "claude-opus-5-5:9fd7d5070338d75a4713": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:9ff95a7be2dd6b21ab33": {},
+ "claude-opus-5-5:a11d729cd00238242cf4": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:a4030e72332e7c1ee1c7": {},
+ "claude-opus-5-5:a562a036248639b02da5": {},
+ "claude-opus-5-5:a59912ba1a6ff677d13e": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:a5d33c62b359f07afc5f": {},
+ "claude-opus-5-5:a60f144a1dee87b21fc8": {},
+ "claude-opus-5-5:a77e49d38c72a2f06e57": {
+  "irreversible": "Old secret versions are deleted at cut-over, so we cannot revert."
+ },
+ "claude-opus-5-5:aa8e45626c7d28e6a980": {},
+ "claude-opus-5-5:ab1f014b8d4136ebe8fe": {
+  "big_bang": "All nodes will be updated at once."
+ },
+ "claude-opus-5-5:ab763b2b2dcdc79f44f6": {},
+ "claude-opus-5-5:abb70c63b2cb7d7d8aeb": {},
+ "claude-opus-5-5:ac369ea8f4b20f44b3b1": {},
+ "claude-opus-5-5:ad6a42f21d311652bf2f": {},
+ "claude-opus-5-5:adcaa12833c1142b3340": {},
+ "claude-opus-5-5:ae79c9f7b9561f0051d0": {},
+ "claude-opus-5-5:aee53323e9b251e27fa8": {},
+ "claude-opus-5-5:af36874f84005c38f0e6": {},
+ "claude-opus-5-5:af503cbcdf598ce8758a": {},
+ "claude-opus-5-5:b19a83f291c544311510": {},
+ "claude-opus-5-5:b21ab5788fb7d2ee0354": {},
+ "claude-opus-5-5:b2204a56fff7fb38fcc7": {},
+ "claude-opus-5-5:b247aa980207c4b10740": {},
+ "claude-opus-5-5:b380ed84ebaf58744f8c": {},
+ "claude-opus-5-5:b3b1cc1eaef7e215f60f": {
+  "big_bang": "Change applies to all instances at the same time."
+ },
+ "claude-opus-5-5:b3c326cd14f65b584b3a": {},
+ "claude-opus-5-5:b5c4fc477ea8d21d0e95": {
+  "canary": "10% of traffic first via slot swap, then 100% after 30 minutes."
+ },
+ "claude-opus-5-5:b64a061096defd68baa9": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:b7f9ae7adb8d0e6b550f": {},
+ "claude-opus-5-5:b89610aded7c6eb2b02d": {},
+ "claude-opus-5-5:b92c8ec2a4eab43108fe": {
+  "canary": "Staged rollout: one node first, then the rest after health checks."
+ },
+ "claude-opus-5-5:bceef1df474e8f64b4e8": {},
+ "claude-opus-5-5:bd141be4796471819cba": {},
+ "claude-opus-5-5:bdbd820352c1572b52db": {},
+ "claude-opus-5-5:bdc9992c34771bd238dd": {},
+ "claude-opus-5-5:be76ba984ea295a84e56": {},
+ "claude-opus-5-5:bed836fae7818368f182": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:c0a95c5136d1cbb5ae79": {},
+ "claude-opus-5-5:c0c719f304e24fd9616b": {},
+ "claude-opus-5-5:c14a92687225c3d6423d": {},
+ "claude-opus-5-5:c2603d9d2a278110fe9e": {
+  "first_time": "This is the first use of the new pipeline for this service."
+ },
+ "claude-opus-5-5:c33846384da6ce34bac7": {},
+ "claude-opus-5-5:c3ededcdc3afdb00d4a0": {},
+ "claude-opus-5-5:c3f026837effbd3c6ef0": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:c487edcb73e19b9d0063": {},
+ "claude-opus-5-5:c50ea15fe8715f18a1e7": {},
+ "claude-opus-5-5:c514fcbb225688cd8dcd": {},
+ "claude-opus-5-5:c6755cfcc01220695cfa": {},
+ "claude-opus-5-5:c689ebdf7a66da1f9c15": {},
+ "claude-opus-5-5:c6eebc39ae389beead2d": {
+  "first_time": "This is the first use of the new pipeline for this service."
+ },
+ "claude-opus-5-5:c7cb2354444bc7ef4299": {},
+ "claude-opus-5-5:c9838078cef2ccb41376": {},
+ "claude-opus-5-5:cb279475e68f73d18a52": {},
+ "claude-opus-5-5:cb31a76dc6fe9c8c20ed": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:cc2a3538c5a993e91dcb": {},
+ "claude-opus-5-5:cc9707b5db2c14f6e894": {},
+ "claude-opus-5-5:cd0c25342f716e445b76": {},
+ "claude-opus-5-5:ce53532e394dcf5f4fdb": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:ceab9403d74cc6fef371": {},
+ "claude-opus-5-5:cf61fbfcdf0eac78eb92": {},
+ "claude-opus-5-5:d0f9f6c018d248d5a1ea": {},
+ "claude-opus-5-5:d2c39dbaeae05dd9a29b": {},
+ "claude-opus-5-5:d3a0d060704b3e2cd18d": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:d3d7acad336ab7bd783f": {},
+ "claude-opus-5-5:d6f5b0b516ec0bd51a63": {
+  "big_bang": "Change applies to all instances at the same time."
+ },
+ "claude-opus-5-5:d8a61fb195c16824e763": {},
+ "claude-opus-5-5:d9032e36b677925eda14": {
+  "big_bang": "Change applies to all instances at the same time."
+ },
+ "claude-opus-5-5:d9a0882cf53d3b28eb68": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:da357c264b064b153f94": {},
+ "claude-opus-5-5:da496b9980d92ef3fea4": {},
+ "claude-opus-5-5:dc42798335c26dbff341": {},
+ "claude-opus-5-5:dc51b3a5a1ff547a82e1": {},
+ "claude-opus-5-5:dffd69cf2685045613f5": {},
+ "claude-opus-5-5:e1500a9623cd2dbb03e9": {
+  "irreversible": "This release migrates stored data; once applied it cannot be undone without a full restore."
+ },
+ "claude-opus-5-5:e3a0c0304e78b583167b": {},
+ "claude-opus-5-5:e40e96d5459c2532303d": {},
+ "claude-opus-5-5:e5f0f08ecee6b457e815": {},
+ "claude-opus-5-5:e6090d5a47821e4f3470": {},
+ "claude-opus-5-5:e74708095319de119086": {},
+ "claude-opus-5-5:e749590ab67c64793815": {},
+ "claude-opus-5-5:e9f859c25b2999d8c061": {},
+ "claude-opus-5-5:ea7ef875cf378b007980": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:eb6d901dbd9b2d7eeda6": {},
+ "claude-opus-5-5:ec6105047629863048b3": {
+  "rehearsed": "Rehearsed in pre-prod last week."
+ },
+ "claude-opus-5-5:ecb8b43bd4862f2ada97": {},
+ "claude-opus-5-5:ed901c750b4326fe2511": {},
+ "claude-opus-5-5:edbf763e82bd2eb958a1": {},
+ "claude-opus-5-5:ee5bc708fc3ed2d69644": {},
+ "claude-opus-5-5:f0df8ba059f5fefd71d5": {},
+ "claude-opus-5-5:f1d2f272371af054681b": {
+  "vendor": "Vendor engineer will perform the steps remotely."
+ },
+ "claude-opus-5-5:f269965f3630299862d0": {},
+ "claude-opus-5-5:f52ddcceb868321cd881": {},
+ "claude-opus-5-5:f63d1f7f9a4033e58604": {},
+ "claude-opus-5-5:f66f8951b6ca7249007a": {
+  "first_time": "This is the first use of the new pipeline for this service."
+ },
+ "claude-opus-5-5:f6ab87b81a6140f3b1f4": {},
+ "claude-opus-5-5:f6b3999afafda281fafa": {},
+ "claude-opus-5-5:f831e2f8c6bed6b52a44": {},
+ "claude-opus-5-5:f8b841999f37933cda46": {},
+ "claude-opus-5-5:fa96930e2ade6e058fe3": {
+  "irreversible": "Stored records are converted in place to the new format; the previous version of the service cannot read them afterwards."
+ },
+ "claude-opus-5-5:fb22f0855318c1ccb19b": {},
+ "claude-opus-5-5:fbae660732b91a23e8cf": {},
+ "claude-opus-5-5:fc8a3bfeee2b800d0cf1": {},
+ "claude-opus-5-5:fccc5bddafbe6abe00dc": {},
+ "claude-opus-5-5:fcd07089c0fffc513d31": {},
+ "claude-opus-5-5:fd7c891fcf3bf08ea4db": {},
+ "claude-opus-5-5:fe54e6ec274d3e89fdbc": {},
+ "claude-opus-5-5:fe62096d77135b369fd2": {},
+ "claude-opus-5-5:ffbe4507fa8d72a340ee": {},
+ "claude-opus-5-5:ffcd092003a595463f07": {}
+}

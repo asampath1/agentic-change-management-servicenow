@@ -129,8 +129,8 @@ Not reused: the incident triage, diagnostics and remediation agents, the Azure A
 | M2 | Quality, Impact, History, Schedule and Risk agents; scoring; heuristic baseline committed. **Done 2026-11-19** ([results](../evaluation/README.md)) | offline |
 | M3 | Verification agent and its eval. **Done 2026-11-19** ([results](../evaluation/README.md#post-implementation-verification)) | offline |
 | M4 | Load to PDI, live run, work notes on changes. **Done 2026-11-20** ([write-up](live-pdi.md)) | PDI |
-| M5 | (optional) Claude reasoner comparison | API key, about $2–5 |
-| M6 | README, plain-language overview, short demo video, tag v1.0 | — |
+| M5 | Claude reasoner comparison. **Done 2026-11-20**: Claude reads the change text (six factors, quoted evidence); 0 of 12 high risk missed, $0.83 ([results](../evaluation/README.md#claude-text-reader-m5)) | API key |
+| M6 | README, plain-language overview, tag v1.0. **Done 2026-11-20** (demo video skipped) | — |
 
 ## 9. Decisions
 

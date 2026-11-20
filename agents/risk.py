@@ -66,7 +66,9 @@ def text_of(ch) -> str:
     return " ".join([ch.description, ch.implementation_plan, ch.backout_plan, ch.test_plan])
 
 
-def features(ch, quality: dict, impact: dict, history: dict, schedule: dict) -> dict[str, float]:
+def features(ch, quality: dict, impact: dict, history: dict, schedule: dict,
+             clues: Optional[dict] = None) -> dict[str, float]:
+    """``clues``: text factors found by a reader (``agents.text_reader``); default: the history regexes."""
     x = {n: 0.0 for n in NAMES}
     x["intercept"] = 1.0
     base = logit(history["overall_rate"])
@@ -88,9 +90,13 @@ def features(ch, quality: dict, impact: dict, history: dict, schedule: dict) -> 
     x["open_problem"] = float(bool(history.get("open_problems")))
     x["open_incident"] = float(bool(history.get("open_incidents")))
     x["short_lead"] = float(bool(schedule.get("short_lead")))
-    text = text_of(ch)
-    for name, rx in CLUES.items():
-        x[name] = float(bool(rx.search(text)))
+    if clues is None:
+        text = text_of(ch)
+        for name, rx in CLUES.items():
+            x[name] = float(bool(rx.search(text)))
+    else:
+        for name in CLUES:
+            x[name] = float(name in clues)
     return x
 
 
@@ -193,8 +199,9 @@ class RiskAgent:
             raise ValueError(mode)
         self.model, self.mode = model, mode
 
-    def run(self, ch, quality: dict, impact: dict, history: dict, schedule: dict) -> dict:
-        x = features(ch, quality, impact, history, schedule)
+    def run(self, ch, quality: dict, impact: dict, history: dict, schedule: dict,
+            clues: Optional[dict] = None) -> dict:
+        x = features(ch, quality, impact, history, schedule, clues)
         p, contrib = self.model.predict(x)
         z = math.log(p / (1 - p))
         p_hi = 1 / (1 + math.exp(-(z + self.Z80 * self.model.sd(x))))
@@ -205,4 +212,5 @@ class RiskAgent:
                 "band": band(basis),
                 "requester_risk": {"2": "high", "3": "moderate", "4": "low"}.get(ch.risk or "", "unknown"),
                 "drivers": [{"factor": n, "label": LABELS.get(n, n), "log_odds": round(c, 2)} for n, c in drivers],
-                "text_clues": [n for n in CLUES if x[n]], "features": x}
+                "text_clues": [n for n in CLUES if x[n]],
+                "text_evidence": {n: q for n, q in (clues or {}).items() if n in CLUES}, "features": x}

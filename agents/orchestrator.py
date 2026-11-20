@@ -14,7 +14,7 @@ from .impact import ImpactAgent
 from .models import Assessment, Change
 from .policy import recommend
 from .quality import QualityAgent
-from .risk import RiskAgent, RiskModel, features
+from .risk import LABELS, RiskAgent, RiskModel, features
 from .schedule import ScheduleAgent
 from .verification import REVIEW_STATE, VerificationAgent
 
@@ -25,8 +25,12 @@ REC_TEXT = {"approve": "Approve (change manager)", "approve_with_conditions": "A
 
 
 class ChangeOrchestrator:
-    def __init__(self, itsm: ITSMClient, model: Optional[RiskModel] = None, risk_mode: str = "conservative"):
+    def __init__(self, itsm: ITSMClient, model: Optional[RiskModel] = None, risk_mode: str = "conservative",
+                 reader=None):
+        """``reader``: None = the history regexes (heuristic); or ``agents.text_reader.ClaudeReader``."""
         self.itsm = itsm
+        self.reader = reader
+        self.clues: dict[str, dict] = {}
         self.history = HistoryAgent(itsm)
         self.quality = QualityAgent(self.history.closed)
         self.impact = ImpactAgent(itsm)
@@ -39,12 +43,18 @@ class ChangeOrchestrator:
     def training_rows(self) -> list[tuple[dict, int]]:
         rows = []
         closed = self.history.closed
+        self.read_text(closed)
         for c in closed:
             q, imp = self.quality.run(c), self.impact.run(c)
             hist = self.history.run(c, at=c.start_dt, exclude=c.key)      # leave-one-out rates
             sch = self.schedule.run(c, pool=closed)
-            rows.append((features(c, q, imp, hist, sch), int(self.history.failed(c))))
+            rows.append((features(c, q, imp, hist, sch, self.clues.get(c.key) if self.reader else None),
+                         int(self.history.failed(c))))
         return rows
+
+    def read_text(self, changes) -> None:
+        if self.reader:
+            self.clues.update(self.reader.read([c for c in changes if c.key not in self.clues]))
 
     def train(self) -> RiskModel:
         return RiskModel().fit(self.training_rows())
@@ -53,7 +63,9 @@ class ChangeOrchestrator:
     def assess(self, ch: Change) -> Assessment:
         q, imp = self.quality.run(ch), self.impact.run(ch)
         hist, sch = self.history.run(ch), self.schedule.run(ch)
-        risk = self.risk.run(ch, q, imp, hist, sch)
+        if self.reader:
+            self.read_text([ch])
+        risk = self.risk.run(ch, q, imp, hist, sch, self.clues.get(ch.key) if self.reader else None)
         statuses = {s: r["status"] for s, r in q.items()}
         rec = recommend(risk["band"], statuses, bool(sch["freeze"]), ch.type)
         a = Assessment(change_key=ch.key, change_number=ch.number, short_description=ch.short_description,
@@ -107,6 +119,9 @@ class ChangeOrchestrator:
         win = {"maint": f"inside {sch.get('maintenance_window')}", "business": "in business hours",
                "off_hours": "outside the maintenance window"}.get(sch["window"], sch["window"])
         lines.append(f"Planned {sch.get('start')} to {sch.get('end')} UTC, {win}.")
+        if r.get("text_evidence"):
+            lines.append("From the change text (Claude): " + "; ".join(
+                f'{LABELS.get(n, n)}: "{q}"' for n, q in r["text_evidence"].items()) + ".")
         if r["drivers"]:
             lines.append("Main risk drivers: " + "; ".join(f"{d['label']} ({d['log_odds']:+.2f})" for d in r["drivers"][:5]) + ".")
         lines.append(f"Recommendation: {REC_TEXT[a.recommendation]}.")
@@ -120,9 +135,9 @@ class ChangeOrchestrator:
 
     def run(self, write: bool = True, keys: Optional[set[str]] = None) -> list[Assessment]:
         out = []
-        for ch in self.itsm.changes_in_state(ASSESS_STATE):
-            if keys and ch.key not in keys:
-                continue
+        todo = [ch for ch in self.itsm.changes_in_state(ASSESS_STATE) if not keys or ch.key in keys]
+        self.read_text(todo)                     # one batched read for all of them
+        for ch in todo:
             a = self.assess(ch)
             if write:
                 self.itsm.update_change(ch, {"u_ai_risk": a.risk["band"], "u_ai_recommendation": a.recommendation},

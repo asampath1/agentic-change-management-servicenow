@@ -1,0 +1,141 @@
+{
+ "assess": {
+  "n": 40,
+  "missing_predictions": [],
+  "risk_band": {
+   "accuracy": 0.625,
+   "macro_f1": 0.625,
+   "confusion (truth -> predicted)": {
+    "low": {
+     "low": 6,
+     "moderate": 7,
+     "high": 0
+    },
+    "moderate": {
+     "low": 1,
+     "moderate": 8,
+     "high": 6
+    },
+    "high": {
+     "low": 0,
+     "moderate": 1,
+     "high": 11
+    }
+   }
+  },
+  "safety": {
+   "missed_high_risk": 0,
+   "missed_high_risk_changes": [],
+   "high_rated_low": 0,
+   "high_rated_low_changes": [],
+   "true_high": 12,
+   "over_escalated_low_to_cab": 0
+  },
+  "recommendation": {
+   "accuracy": 0.775,
+   "macro_f1": 0.777,
+   "confusion (truth -> predicted)": {
+    "approve": {
+     "approve": 6,
+     "approve_with_conditions": 5,
+     "cab": 0,
+     "send_back": 0
+    },
+    "approve_with_conditions": {
+     "approve": 1,
+     "approve_with_conditions": 6,
+     "cab": 3,
+     "send_back": 0
+    },
+    "cab": {
+     "approve": 0,
+     "approve_with_conditions": 0,
+     "cab": 10,
+     "send_back": 0
+    },
+    "send_back": {
+     "approve": 0,
+     "approve_with_conditions": 0,
+     "cab": 0,
+     "send_back": 9
+    }
+   }
+  },
+  "quality": {
+   "section_accuracy": 1.0,
+   "not_ok_detection": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 12,
+    "fp": 0,
+    "fn": 0
+   },
+   "missing_detection": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0
+   }
+  },
+  "conflicts": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0
+  },
+  "freeze": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "tp": 4,
+   "fp": 0,
+   "fn": 0
+  },
+  "window_accuracy": 1.0,
+  "messy_subset": {
+   "n": 6,
+   "risk_band_correct": 6,
+   "missed_high_risk": 0
+  }
+ },
+ "verify": {
+  "n": 20,
+  "missing_predictions": [],
+  "outcome_accuracy": 0.9,
+  "outcome_confusion (truth -> predicted)": {
+   "successful": {
+    "successful": 10,
+    "successful_issues": 2,
+    "unsuccessful": 0
+   },
+   "successful_issues": {
+    "successful": 0,
+    "successful_issues": 5,
+    "unsuccessful": 0
+   },
+   "unsuccessful": {
+    "successful": 0,
+    "successful_issues": 0,
+    "unsuccessful": 3
+   }
+  },
+  "missed_failures": 0,
+  "true_failures": 8,
+  "false_alarms": 2,
+  "incident_links": {
+   "precision": 0.778,
+   "recall": 0.7,
+   "f1": 0.737,
+   "tp": 7,
+   "fp": 2,
+   "fn": 3
+  },
+  "distractors_linked": 1,
+  "distractors": 5
+ }
+}

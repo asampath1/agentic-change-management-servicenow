@@ -1,0 +1,6451 @@
+[
+ {
+  "change_key": "chg:0297",
+  "change_number": null,
+  "short_description": "Database schema change on sql-dwh-prod: add a delivery-slot column",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-dwh-prod",
+   "known_ci": true,
+   "description": "Data warehouse Azure SQL DB",
+   "service": "SKR Data & Analytics",
+   "tier": 2,
+   "dependents": [
+    "adf-analytics-prod"
+   ],
+   "services": [
+    "SKR Data & Analytics"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 5,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.095,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0077",
+     "short_description": "Resize sql-dwh-prod to S4",
+     "ci": "sql-dwh-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 20.83
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-28 19:00:00",
+   "end": "2026-11-28 22:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "conflicts": [],
+   "lead_time_hours": 274.3,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.161,
+   "probability_upper80": 0.244,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "freeze",
+     "label": "inside a freeze",
+     "log_odds": 0.53
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Reschedule outside the freeze: SKR Black Friday Mega Sale freeze.",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 16% chance of failure or an incident (up to 24% allowing for uncertainty) (requester rated it low).\nsql-dwh-prod is in SKR Data & Analytics (tier 2); 1 CI(s) depend on it: adf-analytics-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-28 19:00:00 to 2026-11-28 22:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: inside a freeze (+0.53); resolver group's track record (+0.32); CIs that depend on it (+0.21); service tier (+0.19); how often this kind of change failed before (+0.11).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0298",
+  "change_number": null,
+  "short_description": "Rotate secrets in kv-payments-prod",
+  "quality": {
+   "implementation": {
+    "status": "weak",
+    "reason": "vague: \"Implement as discussed with the team.\""
+   },
+   "backout": {
+    "status": "weak",
+    "reason": "only 1 word(s): \"Revert.\""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "kv-payments-prod",
+   "known_ci": true,
+   "description": "Key Vault - payment API keys",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [
+    "app-payments-prod"
+   ],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "rotate secrets",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 23,
+    "failed": 1,
+    "rate": 0.043,
+    "smoothed_rate": 0.066,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "ci_stats": {
+    "n": 16,
+    "failed": 1,
+    "rate": 0.062,
+    "smoothed_rate": 0.094,
+    "failed_examples": [
+     "chg:0165"
+    ]
+   },
+   "group_stats": {
+    "n": 25,
+    "failed": 1,
+    "rate": 0.04,
+    "smoothed_rate": 0.075,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0004",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0052",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0109",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0126",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0150",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 19:45:00",
+   "end": "2026-11-21 22:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 92.5,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.133,
+   "probability_upper80": 0.211,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "implementation_weak",
+     "label": "implementation_weak",
+     "log_odds": 0.51
+    },
+    {
+     "factor": "backout_weak",
+     "label": "backout_weak",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.3
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Make the implementation plan specific (vague: \"Implement as discussed with the team.\").",
+   "Make the backout plan specific (only 1 word(s): \"Revert.\").",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 13% chance of failure or an incident (up to 21% allowing for uncertainty) (requester rated it moderate).\nkv-payments-prod is in SKR Payments Integration (tier 1); 1 CI(s) depend on it: app-payments-prod.\nSimilar past changes ('rotate secrets'): 1 of 23 failed or caused incidents, e.g. chg:0152.\nPlanned 2026-11-21 19:45:00 to 2026-11-21 22:45:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: implementation_weak (+0.51); backout_weak (+0.42); service tier (+0.38); resolver group's track record (-0.30); CIs that depend on it (+0.21).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0299",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-jump-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-jump-01",
+   "known_ci": true,
+   "description": "Jump host for operations",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Azure Infra Ops"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 11,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.077,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 49.83
+    },
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 18:00:00",
+   "end": "2026-11-21 20:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 76.0,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.06,
+   "probability_upper80": 0.092,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "emergency",
+     "label": "emergency change",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.17
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve",
+  "conditions": [],
+  "summary": "LOW risk: estimated 6% chance of failure or an incident (up to 9% allowing for uncertainty) (requester rated it moderate).\nvm-jump-01 is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-11-21 18:00:00 to 2026-11-21 20:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: emergency change (+0.19); service tier (+0.19); this CI's change track record (-0.17).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0300",
+  "change_number": null,
+  "short_description": "NSG rule update for app-hrportal-prod subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-hrportal-prod",
+   "known_ci": true,
+   "description": "Employee HR self-service portal",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.082,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0239",
+     "short_description": "NSG rule update for app-hrportal-prod subnet",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0248",
+     "short_description": "NSG rule update for app-hrportal-prod subnet",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0098",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "unsuccessful",
+     "caused_incidents": [],
+     "score": 39.64
+    },
+    {
+     "key": "chg:0217",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 39.64
+    },
+    {
+     "key": "chg:0016",
+     "short_description": "NSG rule update for app-ecom-api-prod subnet",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 39.56
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-07 16:30:00",
+   "end": "2026-12-07 18:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [
+    {
+     "key": "chg:0264",
+     "relation": "same_ci",
+     "ci": "app-hrportal-prod",
+     "short_description": "Renew TLS certificate on app-hrportal-prod",
+     "start": "2026-12-07 17:00:00",
+     "end": "2026-12-07 18:00:00",
+     "state": "-2"
+    }
+   ],
+   "lead_time_hours": 435.7,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.117,
+   "probability_upper80": 0.178,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "high",
+   "drivers": [
+    {
+     "factor": "conflict_same_ci",
+     "label": "overlaps another change on the same CI",
+     "log_odds": 1.09
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.14
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Re-sequence with chg:0264 on the same CI (Renew TLS certificate on app-hrportal-prod, 2026-12-07 17:00:00 UTC)."
+  ],
+  "summary": "MODERATE risk: estimated 12% chance of failure or an incident (up to 18% allowing for uncertainty) (requester rated it high).\napp-hrportal-prod is in SKR HR Portal (tier 3); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-12-07 16:30:00 to 2026-12-07 18:30:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: overlaps another change on the same CI (+1.09); this CI's change track record (-0.14).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0301",
+  "change_number": null,
+  "short_description": "Deploy release 3.16.4 to app-payments-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-payments-prod",
+   "known_ci": true,
+   "description": "Payments gateway adapter (App Service)",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 14,
+    "failed": 3,
+    "rate": 0.214,
+    "smoothed_rate": 0.158,
+    "failed_examples": [
+     "chg:0114",
+     "chg:0157",
+     "chg:0255"
+    ]
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0244",
+     "short_description": "Deploy release 4.16.1 to vm-payments-01",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 35.04
+    },
+    {
+     "key": "chg:0032",
+     "short_description": "Deploy release 4.12.0 to app-payments-prod",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 31.23
+    },
+    {
+     "key": "chg:0114",
+     "short_description": "Deploy release 5.15.1 to app-payments-prod",
+     "ci": "app-payments-prod",
+     "outcome": "unsuccessful",
+     "caused_incidents": [
+      "inc:0275"
+     ],
+     "score": 31.23
+    },
+    {
+     "key": "chg:0167",
+     "short_description": "Deploy release 6.9.4 to app-payments-prod",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 31.23
+    },
+    {
+     "key": "chg:0136",
+     "short_description": "Deploy release 5.10.2 to app-payments-prod",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.68
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0287",
+     "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+     "opened_at": "2026-11-18 23:44:53"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 07:00:00",
+   "end": "2026-11-21 10:00:00",
+   "window": "off_hours",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 40.5,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.221,
+   "probability_upper80": 0.349,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "high",
+   "drivers": [
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "outside_window",
+     "label": "outside the maintenance window",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "emergency",
+     "label": "emergency change",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST).",
+   "Hold until inc:0287 on app-payments-prod is resolved ([App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payme).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 22% chance of failure or an incident (up to 35% allowing for uncertainty) (requester rated it high).\napp-payments-prod is in SKR Payments Integration (tier 1); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-11-21 07:00:00 to 2026-11-21 10:00:00 UTC, outside the maintenance window.\nMain risk drivers: service tier (+0.38); resolver group's track record (+0.37); outside the maintenance window (+0.32); open incident on the CI (+0.20); emergency change (+0.19).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0302",
+  "change_number": null,
+  "short_description": "Configuration change on adf-analytics-prod: retry policy",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "weak",
+    "reason": "only 3 word(s): \"Restore if needed.\""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "adf-analytics-prod",
+   "known_ci": true,
+   "description": "Azure Data Factory - analytics pipelines",
+   "service": "SKR Data & Analytics",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Data & Analytics"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Data Platform Ops"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 3,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.104,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 5,
+    "failed": 1,
+    "rate": 0.2,
+    "smoothed_rate": 0.135,
+    "failed_examples": [
+     "chg:0110"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0158",
+     "short_description": "Configuration change on adf-analytics-prod: autoscale rule",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 47.69
+    },
+    {
+     "key": "chg:0196",
+     "short_description": "Configuration change on adf-analytics-prod: feature flag express-checkout",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.0
+    },
+    {
+     "key": "chg:0205",
+     "short_description": "Configuration change on adf-analytics-prod: connection pool size",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 41.64
+    },
+    {
+     "key": "chg:0232",
+     "short_description": "Configuration change on app-payments-prod: retry policy",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.84
+    },
+    {
+     "key": "chg:0071",
+     "short_description": "Configuration change on func-orders-processor: retry policy",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 20.06
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-04 18:15:00",
+   "end": "2026-12-04 21:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 379.5,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.092,
+   "probability_upper80": 0.132,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "backout_weak",
+     "label": "backout_weak",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Make the backout plan specific (only 3 word(s): \"Restore if needed.\")."
+  ],
+  "summary": "MODERATE risk: estimated 9% chance of failure or an incident (up to 13% allowing for uncertainty) (requester rated it low).\nadf-analytics-prod is in SKR Data & Analytics (tier 2); nothing else depends on it.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-12-04 18:15:00 to 2026-12-04 21:15:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: backout_weak (+0.42); service tier (+0.19).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0303",
+  "change_number": null,
+  "short_description": "Deploy release 3.17.7 to vm-orders-app-01",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "missing",
+    "reason": "empty or placeholder (\"TBD\")"
+   }
+  },
+  "impact": {
+   "ci": "vm-orders-app-01",
+   "known_ci": true,
+   "description": "Order management app server (Ubuntu 22.04)",
+   "service": "SKR Order Processing",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Order Processing"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 16,
+    "failed": 2,
+    "rate": 0.125,
+    "smoothed_rate": 0.122,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0098"
+    ]
+   },
+   "group_stats": {
+    "n": 44,
+    "failed": 3,
+    "rate": 0.068,
+    "smoothed_rate": 0.084,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0103",
+     "chg:0138"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0056",
+     "short_description": "Deploy release 4.20.3 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.99
+    },
+    {
+     "key": "chg:0060",
+     "short_description": "Deploy release 5.4.1 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "unsuccessful",
+     "caused_incidents": [],
+     "score": 37.99
+    },
+    {
+     "key": "chg:0119",
+     "short_description": "Deploy release 4.18.7 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.99
+    },
+    {
+     "key": "chg:0192",
+     "short_description": "Deploy release 5.10.7 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.99
+    },
+    {
+     "key": "chg:0122",
+     "short_description": "Deploy release 6.18.3 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 29.42
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-23 20:00:00",
+   "end": "2026-11-23 21:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 157.6,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.108,
+   "probability_upper80": 0.169,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "test_missing",
+     "label": "test_missing",
+     "log_odds": 0.57
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.23
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Add a test plan (empty or placeholder (\"TBD\"))."
+  ],
+  "summary": "MODERATE risk: estimated 11% chance of failure or an incident (up to 17% allowing for uncertainty) (requester rated it moderate).\nvm-orders-app-01 is in SKR Order Processing (tier 1); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-11-23 20:00:00 to 2026-11-23 21:00:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: test_missing (+0.57); service tier (+0.38); resolver group's track record (-0.23).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0304",
+  "change_number": null,
+  "short_description": "Database schema change on sql-hr-prod: partition the order history table",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-hr-prod",
+   "known_ci": true,
+   "description": "HR Azure SQL DB",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [
+    "app-hrportal-prod"
+   ],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.088,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 67.52
+    },
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 27.6
+    },
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0036",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 15.45
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0291",
+     "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+     "opened_at": "2026-11-20 02:57:09"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-25 17:15:00",
+   "end": "2026-11-25 18:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 148.3,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.1,
+   "probability_upper80": 0.162,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.12
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Hold until inc:0291 on sql-hr-prod is resolved ([Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod)."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nsql-hr-prod is in SKR HR Portal (tier 3); 1 CI(s) depend on it: app-hrportal-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-25 17:15:00 to 2026-11-25 18:15:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (+0.32); CIs that depend on it (+0.21); open incident on the CI (+0.20); this CI's change track record (-0.12); how often this kind of change failed before (+0.11).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0305",
+  "change_number": null,
+  "short_description": "Database schema change on sql-hr-prod: add a delivery-slot column",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-hr-prod",
+   "known_ci": true,
+   "description": "HR Azure SQL DB",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [
+    "app-hrportal-prod"
+   ],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.088,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 27.6
+    },
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0036",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 15.45
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0291",
+     "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+     "opened_at": "2026-11-20 02:57:09"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-03 17:15:00",
+   "end": "2026-12-03 18:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 334.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.1,
+   "probability_upper80": 0.162,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.12
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Hold until inc:0291 on sql-hr-prod is resolved ([Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod)."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nsql-hr-prod is in SKR HR Portal (tier 3); 1 CI(s) depend on it: app-hrportal-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-12-03 17:15:00 to 2026-12-03 18:15:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (+0.32); CIs that depend on it (+0.21); open incident on the CI (+0.20); this CI's change track record (-0.12); how often this kind of change failed before (+0.11).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0306",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-ecom-web-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-ecom-web-01",
+   "known_ci": true,
+   "description": "Storefront IIS web node 1 (Windows 2019)",
+   "service": "SKR E-Commerce Storefront",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR E-Commerce Storefront"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 5,
+    "failed": 1,
+    "rate": 0.2,
+    "smoothed_rate": 0.135,
+    "failed_examples": [
+     "chg:0092"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": [
+    {
+     "key": "prb:PRB_STOREFRONT_LEAK",
+     "short_description": "Recurring memory leak in Storefront IIS app pool",
+     "known_error": true
+    }
+   ]
+  },
+  "schedule": {
+   "start": "2026-11-21 20:15:00",
+   "end": "2026-11-21 22:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 42.4,
+   "short_lead": true
+  },
+  "risk": {
+   "probability": 0.137,
+   "probability_upper80": 0.206,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "open_problem",
+     "label": "open problem on the CI",
+     "log_odds": 0.5
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "short_lead",
+     "label": "raised less than 48 h before start",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Open problem prb:PRB_STOREFRONT_LEAK on vm-ecom-web-01: confirm this change does not make it worse.",
+   "Raised 42.4 h before start (policy: at least 48 h).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 14% chance of failure or an incident (up to 21% allowing for uncertainty) (requester rated it moderate).\nvm-ecom-web-01 is in SKR E-Commerce Storefront (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-11-21 20:15:00 to 2026-11-21 22:15:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: open problem on the CI (+0.50); service tier (+0.38); raised less than 48 h before start (+0.19).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0307",
+  "change_number": null,
+  "short_description": "Deploy release 5.14.9 to func-orders-processor",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "func-orders-processor",
+   "known_ci": true,
+   "description": "Azure Function - order confirmation processor",
+   "service": "SKR Order Processing",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Order Processing"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 15,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.068,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 44,
+    "failed": 3,
+    "rate": 0.068,
+    "smoothed_rate": 0.084,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0103",
+     "chg:0138"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0093",
+     "short_description": "Deploy release 4.14.7 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.03
+    },
+    {
+     "key": "chg:0014",
+     "short_description": "Deploy release 3.12.6 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.98
+    },
+    {
+     "key": "chg:0048",
+     "short_description": "Deploy release 5.20.3 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.43
+    },
+    {
+     "key": "chg:0054",
+     "short_description": "Deploy release 4.16.0 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.43
+    },
+    {
+     "key": "chg:0061",
+     "short_description": "Deploy release 3.12.4 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 39.67
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-23 20:30:00",
+   "end": "2026-11-23 23:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 139.7,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.133,
+   "probability_upper80": 0.206,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "irreversible",
+     "label": "text says it cannot easily be undone",
+     "log_odds": 1.04
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.23
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.21
+    }
+   ],
+   "text_clues": [
+    "irreversible"
+   ],
+   "text_evidence": {
+    "irreversible": "Stored records are converted in place to the new format; the previous version of the service cannot read them afterwards."
+   }
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Backout relies on a restore: confirm restore time and data loss are acceptable.",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 13% chance of failure or an incident (up to 21% allowing for uncertainty) (requester rated it moderate).\nfunc-orders-processor is in SKR Order Processing (tier 1); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-11-23 20:30:00 to 2026-11-23 23:30:00 UTC, inside SKR Tier-1 maintenance window.\nFrom the change text (Claude): text says it cannot easily be undone: \"Stored records are converted in place to the new format; the previous version of the service cannot read them afterwards.\".\nMain risk drivers: text says it cannot easily be undone (+1.04); service tier (+0.38); resolver group's track record (-0.23); this CI's change track record (-0.21).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0308",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-dc-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-dc-01",
+   "known_ci": true,
+   "description": "Domain controller 1 (Azure)",
+   "service": "SKR Identity Services",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Identity Services"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Identity & Access Mgmt"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.082,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0282",
+     "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+     "opened_at": "2026-11-18 15:21:42"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-28 19:45:00",
+   "end": "2026-11-28 21:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "conflicts": [],
+   "lead_time_hours": 265.9,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.12,
+   "probability_upper80": 0.199,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "freeze",
+     "label": "inside a freeze",
+     "log_odds": 0.53
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.14
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Reschedule outside the freeze: SKR Black Friday Mega Sale freeze.",
+   "Hold until inc:0282 on vm-dc-01 is resolved (Application on vm-dc-01 throwing 'disk full' errors).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 12% chance of failure or an incident (up to 20% allowing for uncertainty) (requester rated it moderate).\nvm-dc-01 is in SKR Identity Services (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-11-28 19:45:00 to 2026-11-28 21:45:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: inside a freeze (+0.53); service tier (+0.38); open incident on the CI (+0.20); this CI's change track record (-0.14).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0309",
+  "change_number": null,
+  "short_description": "AKS node pool upgrade on aks-platform-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "aks-platform-prod",
+   "known_ci": true,
+   "description": "AKS cluster - inventory/pricing microservices",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Cloud Platform Engineering"
+  },
+  "history": {
+   "family": "aks node pool upgrade",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.07,
+    "failed_examples": []
+   },
+   "ci_stats": {
+    "n": 21,
+    "failed": 3,
+    "rate": 0.143,
+    "smoothed_rate": 0.131,
+    "failed_examples": [
+     "chg:0100",
+     "chg:0191",
+     "chg:0209"
+    ]
+   },
+   "group_stats": {
+    "n": 21,
+    "failed": 3,
+    "rate": 0.143,
+    "smoothed_rate": 0.131,
+    "failed_examples": [
+     "chg:0100",
+     "chg:0191",
+     "chg:0209"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0002",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0013",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0025",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0097",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0170",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0284",
+     "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+     "opened_at": "2026-11-19 01:48:25"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-07 16:30:00",
+   "end": "2026-12-07 18:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 443.9,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.291,
+   "probability_upper80": 0.44,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "big_bang",
+     "label": "text says everything changes at once",
+     "log_odds": 0.92
+    },
+    {
+     "factor": "vendor",
+     "label": "text says a vendor does the work",
+     "log_odds": 0.7
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [
+    "vendor",
+    "big_bang"
+   ],
+   "text_evidence": {
+    "vendor": "The Microsoft partner will carry out the work over a screen-share while our engineer observes.",
+    "big_bang": "Both regions are updated in the same run."
+   }
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Hold until inc:0284 on aks-platform-prod is resolved ([Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 ).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 29% chance of failure or an incident (up to 44% allowing for uncertainty) (requester rated it low).\naks-platform-prod is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('aks node pool upgrade'): 0 of 7 failed or caused incidents.\nPlanned 2026-12-07 16:30:00 to 2026-12-07 18:30:00 UTC, inside SKR Standard maintenance window.\nFrom the change text (Claude): text says a vendor does the work: \"The Microsoft partner will carry out the work over a screen-share while our engineer observes.\"; text says everything changes at once: \"Both regions are updated in the same run.\".\nMain risk drivers: text says everything changes at once (+0.92); text says a vendor does the work (+0.70); open incident on the CI (+0.20); service tier (+0.19).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0310",
+  "change_number": null,
+  "short_description": "NSG rule update for app-hrportal-prod subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "weak",
+    "reason": "only 3 word(s): \"Rollback if required.\""
+   },
+   "test": {
+    "status": "weak",
+    "reason": "only 2 word(s): \"Smoke test.\""
+   }
+  },
+  "impact": {
+   "ci": "app-hrportal-prod",
+   "known_ci": true,
+   "description": "Employee HR self-service portal",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.082,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0239",
+     "short_description": "NSG rule update for app-hrportal-prod subnet",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0248",
+     "short_description": "NSG rule update for app-hrportal-prod subnet",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0098",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "unsuccessful",
+     "caused_incidents": [],
+     "score": 39.64
+    },
+    {
+     "key": "chg:0217",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 39.64
+    },
+    {
+     "key": "chg:0016",
+     "short_description": "NSG rule update for app-ecom-api-prod subnet",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 39.56
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-24 16:45:00",
+   "end": "2026-11-24 19:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 128.3,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.098,
+   "probability_upper80": 0.166,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "test_weak",
+     "label": "test_weak",
+     "log_odds": 0.46
+    },
+    {
+     "factor": "backout_weak",
+     "label": "backout_weak",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.14
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Make the backout plan specific (only 3 word(s): \"Rollback if required.\").",
+   "Make the test plan specific (only 2 word(s): \"Smoke test.\")."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 17% allowing for uncertainty) (requester rated it low).\napp-hrportal-prod is in SKR HR Portal (tier 3); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-11-24 16:45:00 to 2026-11-24 19:45:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: test_weak (+0.46); backout_weak (+0.42); this CI's change track record (-0.14).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0311",
+  "change_number": null,
+  "short_description": "Rotate secrets in kv-payments-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "kv-payments-prod",
+   "known_ci": true,
+   "description": "Key Vault - payment API keys",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [
+    "app-payments-prod"
+   ],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "rotate secrets",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 23,
+    "failed": 1,
+    "rate": 0.043,
+    "smoothed_rate": 0.066,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "ci_stats": {
+    "n": 16,
+    "failed": 1,
+    "rate": 0.062,
+    "smoothed_rate": 0.094,
+    "failed_examples": [
+     "chg:0165"
+    ]
+   },
+   "group_stats": {
+    "n": 25,
+    "failed": 1,
+    "rate": 0.04,
+    "smoothed_rate": 0.075,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0004",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0052",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0109",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0126",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0150",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-05 19:45:00",
+   "end": "2026-12-05 20:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 445.4,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.056,
+   "probability_upper80": 0.076,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.3
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve",
+  "conditions": [],
+  "summary": "LOW risk: estimated 6% chance of failure or an incident (up to 8% allowing for uncertainty) (requester rated it low).\nkv-payments-prod is in SKR Payments Integration (tier 1); 1 CI(s) depend on it: app-payments-prod.\nSimilar past changes ('rotate secrets'): 1 of 23 failed or caused incidents, e.g. chg:0152.\nPlanned 2026-12-05 19:45:00 to 2026-12-05 20:45:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: service tier (+0.38); resolver group's track record (-0.30); CIs that depend on it (+0.21).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0312",
+  "change_number": null,
+  "short_description": "Azure Firewall policy update on azfw-hub-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "missing",
+    "reason": "empty or placeholder (\"N/A\")"
+   }
+  },
+  "impact": {
+   "ci": "azfw-hub-prod",
+   "known_ci": true,
+   "description": "Azure Firewall - hub VNet",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "azure firewall policy update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 9,
+    "failed": 1,
+    "rate": 0.111,
+    "smoothed_rate": 0.115,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "ci_stats": {
+    "n": 6,
+    "failed": 1,
+    "rate": 0.167,
+    "smoothed_rate": 0.13,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0094",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.09
+    },
+    {
+     "key": "chg:0184",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.09
+    },
+    {
+     "key": "chg:0037",
+     "short_description": "Azure Firewall policy update on vpngw-hub-prod",
+     "ci": "vpngw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 35.01
+    },
+    {
+     "key": "chg:0166",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    },
+    {
+     "key": "chg:0250",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-08 18:00:00",
+   "end": "2026-12-08 20:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 470.4,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.106,
+   "probability_upper80": 0.157,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "test_missing",
+     "label": "test_missing",
+     "log_odds": 0.57
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Add a test plan (empty or placeholder (\"N/A\"))."
+  ],
+  "summary": "MODERATE risk: estimated 11% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nazfw-hub-prod is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('azure firewall policy update'): 1 of 9 failed or caused incidents, e.g. chg:0099.\nPlanned 2026-12-08 18:00:00 to 2026-12-08 20:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: test_missing (+0.57); service tier (+0.19).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0313",
+  "change_number": null,
+  "short_description": "Deploy release 3.10.7 to app-hrportal-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-hrportal-prod",
+   "known_ci": true,
+   "description": "Employee HR self-service portal",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.082,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 44,
+    "failed": 3,
+    "rate": 0.068,
+    "smoothed_rate": 0.084,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0103",
+     "chg:0138"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0111",
+     "short_description": "Deploy release 6.20.8 to app-hrportal-prod",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.72
+    },
+    {
+     "key": "chg:0143",
+     "short_description": "Deploy release 3.2.8 to app-hrportal-prod",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.72
+    },
+    {
+     "key": "chg:0164",
+     "short_description": "Deploy release 6.5.8 to app-hrportal-prod",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.72
+    },
+    {
+     "key": "chg:0056",
+     "short_description": "Deploy release 4.20.3 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 27.42
+    },
+    {
+     "key": "chg:0060",
+     "short_description": "Deploy release 5.4.1 to vm-orders-app-01",
+     "ci": "vm-orders-app-01",
+     "outcome": "unsuccessful",
+     "caused_incidents": [],
+     "score": 27.42
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-02 17:45:00",
+   "end": "2026-12-02 20:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 344.6,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.039,
+   "probability_upper80": 0.059,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.23
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.14
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve",
+  "conditions": [],
+  "summary": "LOW risk: estimated 4% chance of failure or an incident (up to 6% allowing for uncertainty) (requester rated it low).\napp-hrportal-prod is in SKR HR Portal (tier 3); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-12-02 17:45:00 to 2026-12-02 20:45:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (-0.23); this CI's change track record (-0.14).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0314",
+  "change_number": null,
+  "short_description": "Database schema change on sql-hr-prod: widen the address columns",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-hr-prod",
+   "known_ci": true,
+   "description": "HR Azure SQL DB",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [
+    "app-hrportal-prod"
+   ],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.088,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 60.83
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 60.83
+    },
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 27.6
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0036",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 15.45
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0291",
+     "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+     "opened_at": "2026-11-20 02:57:09"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-04 16:30:00",
+   "end": "2026-12-04 19:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 396.6,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.1,
+   "probability_upper80": 0.162,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.12
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Hold until inc:0291 on sql-hr-prod is resolved ([Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod)."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nsql-hr-prod is in SKR HR Portal (tier 3); 1 CI(s) depend on it: app-hrportal-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-12-04 16:30:00 to 2026-12-04 19:30:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (+0.32); CIs that depend on it (+0.21); open incident on the CI (+0.20); this CI's change track record (-0.12); how often this kind of change failed before (+0.11).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0315",
+  "change_number": null,
+  "short_description": "Rotate secrets in kv-payments-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "kv-payments-prod",
+   "known_ci": true,
+   "description": "Key Vault - payment API keys",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [
+    "app-payments-prod"
+   ],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "rotate secrets",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 23,
+    "failed": 1,
+    "rate": 0.043,
+    "smoothed_rate": 0.066,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "ci_stats": {
+    "n": 16,
+    "failed": 1,
+    "rate": 0.062,
+    "smoothed_rate": 0.094,
+    "failed_examples": [
+     "chg:0165"
+    ]
+   },
+   "group_stats": {
+    "n": 25,
+    "failed": 1,
+    "rate": 0.04,
+    "smoothed_rate": 0.075,
+    "failed_examples": [
+     "chg:0152"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0004",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0052",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0109",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0126",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    },
+    {
+     "key": "chg:0150",
+     "short_description": "Rotate secrets in kv-payments-prod",
+     "ci": "kv-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.56
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-28 19:30:00",
+   "end": "2026-11-28 21:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "conflicts": [],
+   "lead_time_hours": 248.1,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.092,
+   "probability_upper80": 0.144,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "freeze",
+     "label": "inside a freeze",
+     "log_odds": 0.53
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.3
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Reschedule outside the freeze: SKR Black Friday Mega Sale freeze."
+  ],
+  "summary": "MODERATE risk: estimated 9% chance of failure or an incident (up to 14% allowing for uncertainty) (requester rated it moderate).\nkv-payments-prod is in SKR Payments Integration (tier 1); 1 CI(s) depend on it: app-payments-prod.\nSimilar past changes ('rotate secrets'): 1 of 23 failed or caused incidents, e.g. chg:0152.\nPlanned 2026-11-28 19:30:00 to 2026-11-28 21:30:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: inside a freeze (+0.53); service tier (+0.38); resolver group's track record (-0.30); CIs that depend on it (+0.21).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0316",
+  "change_number": null,
+  "short_description": "Configuration change on redis-ecom-cache: request timeout",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "redis-ecom-cache",
+   "known_ci": true,
+   "description": "Azure Cache for Redis - sessions",
+   "service": "SKR E-Commerce Storefront",
+   "tier": 1,
+   "dependents": [
+    "app-ecom-api-prod"
+   ],
+   "services": [
+    "SKR E-Commerce Storefront"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 3,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.104,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0240",
+     "short_description": "Configuration change on redis-ecom-cache: request timeout",
+     "ci": "redis-ecom-cache",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 54.56
+    },
+    {
+     "key": "chg:0043",
+     "short_description": "Configuration change on redis-ecom-cache: connection pool size",
+     "ci": "redis-ecom-cache",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 36.47
+    },
+    {
+     "key": "chg:0203",
+     "short_description": "Configuration change on app-ecom-api-prod: request timeout",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 35.76
+    },
+    {
+     "key": "chg:0219",
+     "short_description": "Configuration change on redis-ecom-cache: feature flag express-checkout",
+     "ci": "redis-ecom-cache",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 35.11
+    },
+    {
+     "key": "chg:0026",
+     "short_description": "Configuration change on sb-orders-queue: request timeout",
+     "ci": "sb-orders-queue",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 26.81
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-07 19:30:00",
+   "end": "2026-12-07 21:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 434.0,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.248,
+   "probability_upper80": 0.34,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "big_bang",
+     "label": "text says everything changes at once",
+     "log_odds": 0.92
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    }
+   ],
+   "text_clues": [
+    "big_bang"
+   ],
+   "text_evidence": {
+    "big_bang": "No staged rollout this time; the whole fleet moves in one go."
+   }
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 25% chance of failure or an incident (up to 34% allowing for uncertainty) (requester rated it moderate).\nredis-ecom-cache is in SKR E-Commerce Storefront (tier 1); 1 CI(s) depend on it: app-ecom-api-prod.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-12-07 19:30:00 to 2026-12-07 21:30:00 UTC, inside SKR Tier-1 maintenance window.\nFrom the change text (Claude): text says everything changes at once: \"No staged rollout this time; the whole fleet moves in one go.\".\nMain risk drivers: text says everything changes at once (+0.92); service tier (+0.38); resolver group's track record (+0.37); CIs that depend on it (+0.21).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0317",
+  "change_number": null,
+  "short_description": "Database schema change on sql-hr-prod: add a delivery-slot column",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "missing",
+    "reason": "empty or placeholder"
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-hr-prod",
+   "known_ci": true,
+   "description": "HR Azure SQL DB",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [
+    "app-hrportal-prod"
+   ],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.088,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 27.6
+    },
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 21.94
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0036",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 15.45
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0291",
+     "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+     "opened_at": "2026-11-20 02:57:09"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-23 17:30:00",
+   "end": "2026-11-23 18:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 96.0,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.161,
+   "probability_upper80": 0.274,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "backout_missing",
+     "label": "backout_missing",
+     "log_odds": 0.55
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.12
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Add a backout plan (empty or placeholder).",
+   "Hold until inc:0291 on sql-hr-prod is resolved ([Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 16% chance of failure or an incident (up to 27% allowing for uncertainty) (requester rated it low).\nsql-hr-prod is in SKR HR Portal (tier 3); 1 CI(s) depend on it: app-hrportal-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-23 17:30:00 to 2026-11-23 18:30:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: backout_missing (+0.55); resolver group's track record (+0.32); CIs that depend on it (+0.21); open incident on the CI (+0.20); this CI's change track record (-0.12).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0318",
+  "change_number": null,
+  "short_description": "Deploy release 5.20.6 to func-orders-processor",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "func-orders-processor",
+   "known_ci": true,
+   "description": "Azure Function - order confirmation processor",
+   "service": "SKR Order Processing",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Order Processing"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 15,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.068,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 44,
+    "failed": 3,
+    "rate": 0.068,
+    "smoothed_rate": 0.084,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0103",
+     "chg:0138"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0014",
+     "short_description": "Deploy release 3.12.6 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 38.72
+    },
+    {
+     "key": "chg:0048",
+     "short_description": "Deploy release 5.20.3 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 38.72
+    },
+    {
+     "key": "chg:0054",
+     "short_description": "Deploy release 4.16.0 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 38.72
+    },
+    {
+     "key": "chg:0061",
+     "short_description": "Deploy release 3.12.4 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.99
+    },
+    {
+     "key": "chg:0168",
+     "short_description": "Deploy release 5.15.6 to func-orders-processor",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.99
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-02 19:15:00",
+   "end": "2026-12-02 20:15:00",
+   "window": "off_hours",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [
+    {
+     "key": "chg:0272",
+     "relation": "related_ci",
+     "ci": "sb-orders-queue",
+     "short_description": "Configuration change on sb-orders-queue: feature flag express-checkout",
+     "start": "2026-12-02 19:45:00",
+     "end": "2026-12-02 21:45:00",
+     "state": "-2"
+    }
+   ],
+   "lead_time_hours": 354.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.1,
+   "probability_upper80": 0.166,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "conflict_related_ci",
+     "label": "overlaps a change on a dependent CI",
+     "log_odds": 0.39
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "outside_window",
+     "label": "outside the maintenance window",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": -0.23
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.21
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST).",
+   "Re-sequence with chg:0272 on dependent CI sb-orders-queue (Configuration change on sb-orders-queue: feature flag express-checkout, 2026-12-02 19:45:00 UTC)."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 17% allowing for uncertainty) (requester rated it moderate).\nfunc-orders-processor is in SKR Order Processing (tier 1); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-12-02 19:15:00 to 2026-12-02 20:15:00 UTC, outside the maintenance window.\nMain risk drivers: overlaps a change on a dependent CI (+0.39); service tier (+0.38); outside the maintenance window (+0.32); resolver group's track record (-0.23); this CI's change track record (-0.21).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0319",
+  "change_number": null,
+  "short_description": "AKS node pool upgrade on aks-platform-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "aks-platform-prod",
+   "known_ci": true,
+   "description": "AKS cluster - inventory/pricing microservices",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Cloud Platform Engineering"
+  },
+  "history": {
+   "family": "aks node pool upgrade",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.07,
+    "failed_examples": []
+   },
+   "ci_stats": {
+    "n": 21,
+    "failed": 3,
+    "rate": 0.143,
+    "smoothed_rate": 0.131,
+    "failed_examples": [
+     "chg:0100",
+     "chg:0191",
+     "chg:0209"
+    ]
+   },
+   "group_stats": {
+    "n": 21,
+    "failed": 3,
+    "rate": 0.143,
+    "smoothed_rate": 0.131,
+    "failed_examples": [
+     "chg:0100",
+     "chg:0191",
+     "chg:0209"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0002",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0013",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0025",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0097",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    },
+    {
+     "key": "chg:0170",
+     "short_description": "AKS node pool upgrade on aks-platform-prod",
+     "ci": "aks-platform-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 57.85
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0284",
+     "short_description": "[Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 restarts) on aks-platform-prod",
+     "opened_at": "2026-11-19 01:48:25"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-28 19:15:00",
+   "end": "2026-11-28 22:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [
+    "SKR Black Friday Mega Sale freeze"
+   ],
+   "conflicts": [],
+   "lead_time_hours": 222.0,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.121,
+   "probability_upper80": 0.202,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "freeze",
+     "label": "inside a freeze",
+     "log_odds": 0.53
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Reschedule outside the freeze: SKR Black Friday Mega Sale freeze.",
+   "Hold until inc:0284 on aks-platform-prod is resolved ([Container Insights] Sev2 - Pod inventory-svc in CrashLoopBackOff (49 ).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 12% chance of failure or an incident (up to 20% allowing for uncertainty) (requester rated it low).\naks-platform-prod is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('aks node pool upgrade'): 0 of 7 failed or caused incidents.\nPlanned 2026-11-28 19:15:00 to 2026-11-28 22:15:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: inside a freeze (+0.53); open incident on the CI (+0.20); service tier (+0.19).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0320",
+  "change_number": null,
+  "short_description": "Deploy release 6.7.4 to vm-payments-01",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-payments-01",
+   "known_ci": true,
+   "description": "Payments reconciliation batch (RHEL 9)",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "deploy release",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 55,
+    "failed": 11,
+    "rate": 0.2,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "ci_stats": {
+    "n": 8,
+    "failed": 1,
+    "rate": 0.125,
+    "smoothed_rate": 0.121,
+    "failed_examples": [
+     "chg:0257"
+    ]
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0068",
+     "short_description": "Deploy release 6.6.1 to vm-payments-01",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.76
+    },
+    {
+     "key": "chg:0188",
+     "short_description": "Deploy release 6.16.2 to vm-payments-01",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.76
+    },
+    {
+     "key": "chg:0255",
+     "short_description": "Deploy release 4.1.3 to app-payments-prod",
+     "ci": "app-payments-prod",
+     "outcome": "successful_issues",
+     "caused_incidents": [
+      "inc:0246"
+     ],
+     "score": 30.67
+    },
+    {
+     "key": "chg:0009",
+     "short_description": "Deploy release 4.12.7 to vm-payments-01",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.19
+    },
+    {
+     "key": "chg:0195",
+     "short_description": "Deploy release 4.8.7 to vm-payments-01",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.19
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-02 20:30:00",
+   "end": "2026-12-02 21:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 351.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.277,
+   "probability_upper80": 0.412,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "big_bang",
+     "label": "text says everything changes at once",
+     "log_odds": 0.92
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "first_time",
+     "label": "text says it is done for the first time",
+     "log_odds": 0.2
+    }
+   ],
+   "text_clues": [
+    "first_time",
+    "big_bang"
+   ],
+   "text_evidence": {
+    "first_time": "The team has never run this procedure before",
+    "big_bang": "Both regions are updated in the same run."
+   }
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 28% chance of failure or an incident (up to 41% allowing for uncertainty) (requester rated it moderate).\nvm-payments-01 is in SKR Payments Integration (tier 1); nothing else depends on it.\nSimilar past changes ('deploy release'): 11 of 55 failed or caused incidents, e.g. chg:0251, chg:0255, chg:0257.\nPlanned 2026-12-02 20:30:00 to 2026-12-02 21:30:00 UTC, inside SKR Tier-1 maintenance window.\nFrom the change text (Claude): text says it is done for the first time: \"The team has never run this procedure before\"; text says everything changes at once: \"Both regions are updated in the same run.\".\nMain risk drivers: text says everything changes at once (+0.92); service tier (+0.38); resolver group's track record (+0.37); text says it is done for the first time (+0.20).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0321",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-dc-02 subnet",
+  "quality": {
+   "implementation": {
+    "status": "weak",
+    "reason": "only 3 word(s): \"Apply the change.\""
+   },
+   "backout": {
+    "status": "weak",
+    "reason": "only 3 word(s): \"Restore if needed.\""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-dc-02",
+   "known_ci": true,
+   "description": "Domain controller 2 (Azure)",
+   "service": "SKR Identity Services",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Identity Services"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Identity & Access Mgmt"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 10,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.079,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0283",
+     "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+     "opened_at": "2026-11-18 20:24:00"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-07 20:30:00",
+   "end": "2026-12-07 23:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 468.7,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.168,
+   "probability_upper80": 0.278,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "implementation_weak",
+     "label": "implementation_weak",
+     "log_odds": 0.51
+    },
+    {
+     "factor": "backout_weak",
+     "label": "backout_weak",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.16
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Make the implementation plan specific (only 3 word(s): \"Apply the change.\").",
+   "Make the backout plan specific (only 3 word(s): \"Restore if needed.\").",
+   "Hold until inc:0283 on vm-dc-02 is resolved ([Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 17% chance of failure or an incident (up to 28% allowing for uncertainty) (requester rated it moderate).\nvm-dc-02 is in SKR Identity Services (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-12-07 20:30:00 to 2026-12-07 23:30:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: implementation_weak (+0.51); backout_weak (+0.42); service tier (+0.38); open incident on the CI (+0.20); this CI's change track record (-0.16).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0322",
+  "change_number": null,
+  "short_description": "Configuration change on redis-ecom-cache: feature flag express-checkout",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "redis-ecom-cache",
+   "known_ci": true,
+   "description": "Azure Cache for Redis - sessions",
+   "service": "SKR E-Commerce Storefront",
+   "tier": 1,
+   "dependents": [
+    "app-ecom-api-prod"
+   ],
+   "services": [
+    "SKR E-Commerce Storefront"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 3,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.104,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0219",
+     "short_description": "Configuration change on redis-ecom-cache: feature flag express-checkout",
+     "ci": "redis-ecom-cache",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 72.65
+    },
+    {
+     "key": "chg:0021",
+     "short_description": "Configuration change on app-ecom-api-prod: feature flag express-checkout",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.66
+    },
+    {
+     "key": "chg:0007",
+     "short_description": "Configuration change on sb-orders-queue: feature flag express-checkout",
+     "ci": "sb-orders-queue",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 42.98
+    },
+    {
+     "key": "chg:0103",
+     "short_description": "Configuration change on sb-orders-queue: feature flag express-checkout",
+     "ci": "sb-orders-queue",
+     "outcome": "successful_issues",
+     "caused_incidents": [
+      "inc:0266"
+     ],
+     "score": 42.98
+    },
+    {
+     "key": "chg:0172",
+     "short_description": "Configuration change on func-orders-processor: feature flag express-checkout",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 42.98
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-30 20:30:00",
+   "end": "2026-11-30 23:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 301.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.116,
+   "probability_upper80": 0.153,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [],
+  "summary": "MODERATE risk: estimated 12% chance of failure or an incident (up to 15% allowing for uncertainty) (requester rated it moderate).\nredis-ecom-cache is in SKR E-Commerce Storefront (tier 1); 1 CI(s) depend on it: app-ecom-api-prod.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-11-30 20:30:00 to 2026-11-30 23:30:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: service tier (+0.38); resolver group's track record (+0.37); CIs that depend on it (+0.21).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0323",
+  "change_number": null,
+  "short_description": "Database schema change on sql-ecom-catalog-prod: new index for usp_GetOrderHistory",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-ecom-catalog-prod",
+   "known_ci": true,
+   "description": "Product catalog Azure SQL DB",
+   "service": "SKR E-Commerce Storefront",
+   "tier": 1,
+   "dependents": [
+    "aks-platform-prod",
+    "app-ecom-api-prod"
+   ],
+   "services": [
+    "SKR E-Commerce Storefront",
+    "SKR Shared Platform"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 6,
+    "failed": 2,
+    "rate": 0.333,
+    "smoothed_rate": 0.169,
+    "failed_examples": [
+     "chg:0041",
+     "chg:0182"
+    ]
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 63.04
+    },
+    {
+     "key": "chg:0033",
+     "short_description": "Index maintenance on sql-ecom-catalog-prod",
+     "ci": "sql-ecom-catalog-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.05
+    },
+    {
+     "key": "chg:0041",
+     "short_description": "Index maintenance on sql-ecom-catalog-prod",
+     "ci": "sql-ecom-catalog-prod",
+     "outcome": "unsuccessful",
+     "caused_incidents": [
+      "inc:0248",
+      "inc:0247"
+     ],
+     "score": 30.05
+    },
+    {
+     "key": "chg:0095",
+     "short_description": "Index maintenance on sql-ecom-catalog-prod",
+     "ci": "sql-ecom-catalog-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.05
+    },
+    {
+     "key": "chg:0182",
+     "short_description": "Index maintenance on sql-ecom-catalog-prod",
+     "ci": "sql-ecom-catalog-prod",
+     "outcome": "unsuccessful",
+     "caused_incidents": [
+      "inc:0242"
+     ],
+     "score": 30.05
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 05:30:00",
+   "end": "2026-11-21 07:30:00",
+   "window": "off_hours",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 68.9,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.262,
+   "probability_upper80": 0.381,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "high",
+   "drivers": [
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "outside_window",
+     "label": "outside the maintenance window",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "emergency",
+     "label": "emergency change",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.14
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 26% chance of failure or an incident (up to 38% allowing for uncertainty) (requester rated it high).\nsql-ecom-catalog-prod is in SKR E-Commerce Storefront (tier 1); 2 CI(s) depend on it: aks-platform-prod, app-ecom-api-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-21 05:30:00 to 2026-11-21 07:30:00 UTC, outside the maintenance window.\nMain risk drivers: CIs that depend on it (+0.42); service tier (+0.38); outside the maintenance window (+0.32); resolver group's track record (+0.32); emergency change (+0.19).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0324",
+  "change_number": null,
+  "short_description": "Database schema change on sql-dwh-prod: widen the address columns",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-dwh-prod",
+   "known_ci": true,
+   "description": "Data warehouse Azure SQL DB",
+   "service": "SKR Data & Analytics",
+   "tier": 2,
+   "dependents": [
+    "adf-analytics-prod"
+   ],
+   "services": [
+    "SKR Data & Analytics"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 5,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.095,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 60.83
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 60.83
+    },
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0077",
+     "short_description": "Resize sql-dwh-prod to S4",
+     "ci": "sql-dwh-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 20.83
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-02 17:00:00",
+   "end": "2026-12-02 18:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 352.3,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.101,
+   "probability_upper80": 0.137,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 14% allowing for uncertainty) (requester rated it low).\nsql-dwh-prod is in SKR Data & Analytics (tier 2); 1 CI(s) depend on it: adf-analytics-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-12-02 17:00:00 to 2026-12-02 18:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (+0.32); CIs that depend on it (+0.21); service tier (+0.19); how often this kind of change failed before (+0.11).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0325",
+  "change_number": null,
+  "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-hr-prod",
+   "known_ci": true,
+   "description": "HR Azure SQL DB",
+   "service": "SKR HR Portal",
+   "tier": 3,
+   "dependents": [
+    "app-hrportal-prod"
+   ],
+   "services": [
+    "SKR HR Portal"
+   ],
+   "max_tier": 3,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 7,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.088,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 69.64
+    },
+    {
+     "key": "chg:0036",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 22.56
+    },
+    {
+     "key": "chg:0045",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 22.56
+    },
+    {
+     "key": "chg:0057",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 22.56
+    },
+    {
+     "key": "chg:0063",
+     "short_description": "Index maintenance on sql-hr-prod",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 22.56
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0291",
+     "short_description": "[Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod",
+     "opened_at": "2026-11-20 02:57:09"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 16:30:00",
+   "end": "2026-11-21 17:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 100.4,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.1,
+   "probability_upper80": 0.162,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.12
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Hold until inc:0291 on sql-hr-prod is resolved ([Azure Monitor] Sev2 - Blocked processes > 5 on sql-hr-prod)."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nsql-hr-prod is in SKR HR Portal (tier 3); 1 CI(s) depend on it: app-hrportal-prod.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-21 16:30:00 to 2026-11-21 17:30:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: resolver group's track record (+0.32); CIs that depend on it (+0.21); open incident on the CI (+0.20); this CI's change track record (-0.12); how often this kind of change failed before (+0.11).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0326",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-dc-02 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-dc-02",
+   "known_ci": true,
+   "description": "Domain controller 2 (Azure)",
+   "service": "SKR Identity Services",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Identity Services"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Identity & Access Mgmt"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 10,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.079,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0283",
+     "short_description": "[Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min",
+     "opened_at": "2026-11-18 20:24:00"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-09 19:15:00",
+   "end": "2026-12-09 20:15:00",
+   "window": "off_hours",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [
+    {
+     "key": "chg:0271",
+     "relation": "same_ci",
+     "ci": "vm-dc-02",
+     "short_description": "Resize vm-dc-02 to P2",
+     "start": "2026-12-09 19:45:00",
+     "end": "2026-12-09 22:45:00",
+     "state": "-2"
+    }
+   ],
+   "lead_time_hours": 502.8,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.244,
+   "probability_upper80": 0.377,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "conflict_same_ci",
+     "label": "overlaps another change on the same CI",
+     "log_odds": 1.09
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "outside_window",
+     "label": "outside the maintenance window",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.16
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST).",
+   "Re-sequence with chg:0271 on the same CI (Resize vm-dc-02 to P2, 2026-12-09 19:45:00 UTC).",
+   "Hold until inc:0283 on vm-dc-02 is resolved ([Azure Monitor] Sev1 - Heartbeat missing from vm-dc-02 for 10 min).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 24% chance of failure or an incident (up to 38% allowing for uncertainty) (requester rated it moderate).\nvm-dc-02 is in SKR Identity Services (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-12-09 19:15:00 to 2026-12-09 20:15:00 UTC, outside the maintenance window.\nMain risk drivers: overlaps another change on the same CI (+1.09); service tier (+0.38); outside the maintenance window (+0.32); open incident on the CI (+0.20); this CI's change track record (-0.16).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0327",
+  "change_number": null,
+  "short_description": "Azure Firewall policy update on azfw-hub-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "azfw-hub-prod",
+   "known_ci": true,
+   "description": "Azure Firewall - hub VNet",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "azure firewall policy update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 9,
+    "failed": 1,
+    "rate": 0.111,
+    "smoothed_rate": 0.115,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "ci_stats": {
+    "n": 6,
+    "failed": 1,
+    "rate": 0.167,
+    "smoothed_rate": 0.13,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0094",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.09
+    },
+    {
+     "key": "chg:0184",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.09
+    },
+    {
+     "key": "chg:0037",
+     "short_description": "Azure Firewall policy update on vpngw-hub-prod",
+     "ci": "vpngw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 35.01
+    },
+    {
+     "key": "chg:0166",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    },
+    {
+     "key": "chg:0250",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-03 18:00:00",
+   "end": "2026-12-03 21:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 394.7,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.063,
+   "probability_upper80": 0.079,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve",
+  "conditions": [],
+  "summary": "LOW risk: estimated 6% chance of failure or an incident (up to 8% allowing for uncertainty) (requester rated it low).\nazfw-hub-prod is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('azure firewall policy update'): 1 of 9 failed or caused incidents, e.g. chg:0099.\nPlanned 2026-12-03 18:00:00 to 2026-12-03 21:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: service tier (+0.19).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0328",
+  "change_number": null,
+  "short_description": "Configuration change on app-payments-prod: request timeout",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-payments-prod",
+   "known_ci": true,
+   "description": "Payments gateway adapter (App Service)",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 14,
+    "failed": 3,
+    "rate": 0.214,
+    "smoothed_rate": 0.158,
+    "failed_examples": [
+     "chg:0114",
+     "chg:0157",
+     "chg:0255"
+    ]
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0047",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 44.55
+    },
+    {
+     "key": "chg:0073",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 44.55
+    },
+    {
+     "key": "chg:0249",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 44.55
+    },
+    {
+     "key": "chg:0203",
+     "short_description": "Configuration change on app-ecom-api-prod: request timeout",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 30.91
+    },
+    {
+     "key": "chg:0026",
+     "short_description": "Configuration change on sb-orders-queue: request timeout",
+     "ci": "sb-orders-queue",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 26.81
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0287",
+     "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+     "opened_at": "2026-11-18 23:44:53"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-02 20:30:00",
+   "end": "2026-12-02 23:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 373.6,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.051,
+   "probability_upper80": 0.098,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "canary",
+     "label": "text describes a staged rollout",
+     "log_odds": -0.64
+    },
+    {
+     "factor": "rehearsed",
+     "label": "text says it was rehearsed",
+     "log_odds": -0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [
+    "canary",
+    "rehearsed"
+   ],
+   "text_evidence": {
+    "canary": "The first node gets the change; the others follow only if its error rate stays flat.",
+    "rehearsed": "Dry run done on Tuesday against a copy of production data; timings recorded."
+   }
+  },
+  "recommendation": "approve",
+  "conditions": [
+   "Hold until inc:0287 on app-payments-prod is resolved ([App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payme)."
+  ],
+  "summary": "LOW risk: estimated 5% chance of failure or an incident (up to 10% allowing for uncertainty) (requester rated it moderate).\napp-payments-prod is in SKR Payments Integration (tier 1); nothing else depends on it.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-12-02 20:30:00 to 2026-12-02 23:30:00 UTC, inside SKR Tier-1 maintenance window.\nFrom the change text (Claude): text describes a staged rollout: \"The first node gets the change; the others follow only if its error rate stays flat.\"; text says it was rehearsed: \"Dry run done on Tuesday against a copy of production data; timings recorded.\".\nMain risk drivers: text describes a staged rollout (-0.64); text says it was rehearsed (-0.42); service tier (+0.38); resolver group's track record (+0.37); open incident on the CI (+0.20).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0329",
+  "change_number": null,
+  "short_description": "Configuration change on app-payments-prod: retry policy",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-payments-prod",
+   "known_ci": true,
+   "description": "Payments gateway adapter (App Service)",
+   "service": "SKR Payments Integration",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Payments Integration"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 14,
+    "failed": 3,
+    "rate": 0.214,
+    "smoothed_rate": 0.158,
+    "failed_examples": [
+     "chg:0114",
+     "chg:0157",
+     "chg:0255"
+    ]
+   },
+   "group_stats": {
+    "n": 36,
+    "failed": 9,
+    "rate": 0.25,
+    "smoothed_rate": 0.203,
+    "failed_examples": [
+     "chg:0251",
+     "chg:0255",
+     "chg:0257"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0232",
+     "short_description": "Configuration change on app-payments-prod: retry policy",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 37.8
+    },
+    {
+     "key": "chg:0012",
+     "short_description": "Configuration change on app-payments-prod: cache expiry",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 23.64
+    },
+    {
+     "key": "chg:0047",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 23.64
+    },
+    {
+     "key": "chg:0073",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 23.64
+    },
+    {
+     "key": "chg:0249",
+     "short_description": "Configuration change on app-payments-prod: request timeout",
+     "ci": "app-payments-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 23.64
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0287",
+     "short_description": "[App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payments-prod",
+     "opened_at": "2026-11-18 23:44:53"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-25 08:30:00",
+   "end": "2026-11-25 11:30:00",
+   "window": "business",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 124.6,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.195,
+   "probability_upper80": 0.297,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "business_hours",
+     "label": "planned in business hours",
+     "log_odds": 0.46
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.37
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST), out of business hours.",
+   "Hold until inc:0287 on app-payments-prod is resolved ([App Insights] Sev1 - Exceptions: Key Vault 403 Forbidden on app-payme).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 20% chance of failure or an incident (up to 30% allowing for uncertainty) (requester rated it moderate).\napp-payments-prod is in SKR Payments Integration (tier 1); nothing else depends on it.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-11-25 08:30:00 to 2026-11-25 11:30:00 UTC, in business hours.\nMain risk drivers: planned in business hours (+0.46); service tier (+0.38); resolver group's track record (+0.37); open incident on the CI (+0.20); this CI's change track record (+0.11).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0330",
+  "change_number": null,
+  "short_description": "Renew TLS certificate on app-ecom-api-prod",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "app-ecom-api-prod",
+   "known_ci": true,
+   "description": "Storefront REST API (App Service, .NET 8)",
+   "service": "SKR E-Commerce Storefront",
+   "tier": 1,
+   "dependents": [
+    "vm-ecom-web-01",
+    "vm-ecom-web-02"
+   ],
+   "services": [
+    "SKR E-Commerce Storefront"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - eCommerce"
+  },
+  "history": {
+   "family": "renew tls certificate",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 12,
+    "failed": 2,
+    "rate": 0.167,
+    "smoothed_rate": 0.145,
+    "failed_examples": [
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "ci_stats": {
+    "n": 17,
+    "failed": 5,
+    "rate": 0.294,
+    "smoothed_rate": 0.2,
+    "failed_examples": [
+     "chg:0161",
+     "chg:0208",
+     "chg:0251"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0074",
+     "short_description": "Renew TLS certificate on app-ecom-api-prod",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 48.64
+    },
+    {
+     "key": "chg:0117",
+     "short_description": "Renew TLS certificate on app-ecom-api-prod",
+     "ci": "app-ecom-api-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 48.64
+    },
+    {
+     "key": "chg:0116",
+     "short_description": "Renew TLS certificate on kv-ecom-prod",
+     "ci": "kv-ecom-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 45.3
+    },
+    {
+     "key": "chg:0144",
+     "short_description": "Renew TLS certificate on kv-ecom-prod",
+     "ci": "kv-ecom-prod",
+     "outcome": "unsuccessful",
+     "caused_incidents": [
+      "inc:0252"
+     ],
+     "score": 45.3
+    },
+    {
+     "key": "chg:0174",
+     "short_description": "Renew TLS certificate on kv-ecom-prod",
+     "ci": "kv-ecom-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 45.3
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0289",
+     "short_description": "E-Commerce Storefront failing after maintenance",
+     "opened_at": "2026-11-18 09:49:00"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-05 20:30:00",
+   "end": "2026-12-05 21:30:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 423.8,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.157,
+   "probability_upper80": 0.229,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.21
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Hold until inc:0289 on app-ecom-api-prod is resolved (E-Commerce Storefront failing after maintenance).",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 16% chance of failure or an incident (up to 23% allowing for uncertainty) (requester rated it moderate).\napp-ecom-api-prod is in SKR E-Commerce Storefront (tier 1); 2 CI(s) depend on it: vm-ecom-web-01, vm-ecom-web-02.\nSimilar past changes ('renew tls certificate'): 2 of 12 failed or caused incidents, e.g. chg:0144, chg:0165.\nPlanned 2026-12-05 20:30:00 to 2026-12-05 21:30:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: CIs that depend on it (+0.42); service tier (+0.38); this CI's change track record (+0.21); open incident on the CI (+0.20).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0331",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-orders-app-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-orders-app-01",
+   "known_ci": true,
+   "description": "Order management app server (Ubuntu 22.04)",
+   "service": "SKR Order Processing",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Order Processing"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR App Support - Enterprise Apps"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 16,
+    "failed": 2,
+    "rate": 0.125,
+    "smoothed_rate": 0.122,
+    "failed_examples": [
+     "chg:0060",
+     "chg:0098"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0098",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "unsuccessful",
+     "caused_incidents": [],
+     "score": 46.79
+    },
+    {
+     "key": "chg:0217",
+     "short_description": "NSG rule update for vm-orders-app-01 subnet",
+     "ci": "vm-orders-app-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 46.79
+    },
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-07 19:45:00",
+   "end": "2026-12-07 22:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 465.1,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.071,
+   "probability_upper80": 0.09,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve",
+  "conditions": [],
+  "summary": "LOW risk: estimated 7% chance of failure or an incident (up to 9% allowing for uncertainty) (requester rated it moderate).\nvm-orders-app-01 is in SKR Order Processing (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-12-07 19:45:00 to 2026-12-07 22:45:00 UTC, inside SKR Tier-1 maintenance window.\nMain risk drivers: service tier (+0.38).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0332",
+  "change_number": null,
+  "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "sql-orders-prod",
+   "known_ci": true,
+   "description": "Orders Azure SQL DB (S3)",
+   "service": "SKR Order Processing",
+   "tier": 1,
+   "dependents": [
+    "adf-analytics-prod",
+    "func-orders-processor",
+    "vm-orders-app-01"
+   ],
+   "services": [
+    "SKR Data & Analytics",
+    "SKR Order Processing"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Azure Database Ops"
+  },
+  "history": {
+   "family": "database schema change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 4,
+    "failed": 2,
+    "rate": 0.5,
+    "smoothed_rate": 0.228,
+    "failed_examples": [
+     "chg:0039",
+     "chg:0256"
+    ]
+   },
+   "ci_stats": {
+    "n": 12,
+    "failed": 5,
+    "rate": 0.417,
+    "smoothed_rate": 0.231,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "group_stats": {
+    "n": 30,
+    "failed": 7,
+    "rate": 0.233,
+    "smoothed_rate": 0.188,
+    "failed_examples": [
+     "chg:0198",
+     "chg:0242",
+     "chg:0256"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0019",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 65.31
+    },
+    {
+     "key": "chg:0039",
+     "short_description": "Database schema change on sql-orders-prod: widen the address columns",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0258"
+     ],
+     "score": 65.31
+    },
+    {
+     "key": "chg:0256",
+     "short_description": "Database schema change on sql-orders-prod: partition the order history table",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [
+      "inc:0274",
+      "inc:0273"
+     ],
+     "score": 25.32
+    },
+    {
+     "key": "chg:0010",
+     "short_description": "Database schema change on sql-hr-prod: new index for usp_GetOrderHistory",
+     "ci": "sql-hr-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.0
+    },
+    {
+     "key": "chg:0030",
+     "short_description": "Index maintenance on sql-orders-prod",
+     "ci": "sql-orders-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 12.86
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": [
+    {
+     "key": "prb:PRB_ORDERS_DTU",
+     "short_description": "Recurring DTU exhaustion on sql-orders-prod",
+     "known_error": true
+    }
+   ]
+  },
+  "schedule": {
+   "start": "2026-11-25 04:30:00",
+   "end": "2026-11-25 06:30:00",
+   "window": "business",
+   "maintenance_window": null,
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 154.8,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.437,
+   "probability_upper80": 0.562,
+   "mode": "conservative",
+   "band": "high",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "dependents",
+     "label": "CIs that depend on it",
+     "log_odds": 0.63
+    },
+    {
+     "factor": "open_problem",
+     "label": "open problem on the CI",
+     "log_odds": 0.5
+    },
+    {
+     "factor": "business_hours",
+     "label": "planned in business hours",
+     "log_odds": 0.46
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "group_dev",
+     "label": "resolver group's track record",
+     "log_odds": 0.32
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": 0.28
+    },
+    {
+     "factor": "family_logit",
+     "label": "how often this kind of change failed before",
+     "log_odds": 0.11
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "cab",
+  "conditions": [
+   "Move into the maintenance window (Tue, Thu or Sun 01:00-05:00 IST), out of business hours.",
+   "Open problem prb:PRB_ORDERS_DTU on sql-orders-prod: confirm this change does not make it worse.",
+   "Resolver group and service owner on standby for the whole window."
+  ],
+  "summary": "HIGH risk: estimated 44% chance of failure or an incident (up to 56% allowing for uncertainty) (requester rated it moderate).\nsql-orders-prod is in SKR Order Processing (tier 1); 3 CI(s) depend on it: adf-analytics-prod, func-orders-processor, vm-orders-app-01.\nSimilar past changes ('database schema change'): 2 of 4 failed or caused incidents, e.g. chg:0039, chg:0256.\nPlanned 2026-11-25 04:30:00 to 2026-11-25 06:30:00 UTC, in business hours.\nMain risk drivers: CIs that depend on it (+0.63); open problem on the CI (+0.50); planned in business hours (+0.46); service tier (+0.38); resolver group's track record (+0.32).\nRecommendation: Refer to CAB."
+ },
+ {
+  "change_key": "chg:0333",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-dc-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-dc-01",
+   "known_ci": true,
+   "description": "Domain controller 1 (Azure)",
+   "service": "SKR Identity Services",
+   "tier": 1,
+   "dependents": [],
+   "services": [
+    "SKR Identity Services"
+   ],
+   "max_tier": 1,
+   "support_group": "SKR Identity & Access Mgmt"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.082,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [
+    {
+     "key": "inc:0282",
+     "short_description": "Application on vm-dc-01 throwing 'disk full' errors",
+     "opened_at": "2026-11-18 15:21:42"
+    }
+   ],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 19:45:00",
+   "end": "2026-11-21 21:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Tier-1 maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 58.7,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.05,
+   "probability_upper80": 0.087,
+   "mode": "conservative",
+   "band": "low",
+   "requester_risk": "moderate",
+   "drivers": [
+    {
+     "factor": "rehearsed",
+     "label": "text says it was rehearsed",
+     "log_odds": -0.42
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.38
+    },
+    {
+     "factor": "open_incident",
+     "label": "open incident on the CI",
+     "log_odds": 0.2
+    },
+    {
+     "factor": "ci_dev",
+     "label": "this CI's change track record",
+     "log_odds": -0.14
+    }
+   ],
+   "text_clues": [
+    "rehearsed"
+   ],
+   "text_evidence": {
+    "rehearsed": "The same steps were run in staging twice without issues."
+   }
+  },
+  "recommendation": "approve",
+  "conditions": [
+   "Hold until inc:0282 on vm-dc-01 is resolved (Application on vm-dc-01 throwing 'disk full' errors)."
+  ],
+  "summary": "LOW risk: estimated 5% chance of failure or an incident (up to 9% allowing for uncertainty) (requester rated it moderate).\nvm-dc-01 is in SKR Identity Services (tier 1); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-11-21 19:45:00 to 2026-11-21 21:45:00 UTC, inside SKR Tier-1 maintenance window.\nFrom the change text (Claude): text says it was rehearsed: \"The same steps were run in staging twice without issues.\".\nMain risk drivers: text says it was rehearsed (-0.42); service tier (+0.38); open incident on the CI (+0.20); this CI's change track record (-0.14).\nRecommendation: Approve (change manager)."
+ },
+ {
+  "change_key": "chg:0334",
+  "change_number": null,
+  "short_description": "Azure Firewall policy update on azfw-hub-prod",
+  "quality": {
+   "implementation": {
+    "status": "missing",
+    "reason": "empty or placeholder (\"TBD\")"
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "azfw-hub-prod",
+   "known_ci": true,
+   "description": "Azure Firewall - hub VNet",
+   "service": "SKR Shared Platform",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Shared Platform"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Network & Security Ops"
+  },
+  "history": {
+   "family": "azure firewall policy update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 9,
+    "failed": 1,
+    "rate": 0.111,
+    "smoothed_rate": 0.115,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "ci_stats": {
+    "n": 6,
+    "failed": 1,
+    "rate": 0.167,
+    "smoothed_rate": 0.13,
+    "failed_examples": [
+     "chg:0099"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0250",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 47.76
+    },
+    {
+     "key": "chg:0215",
+     "short_description": "Azure Firewall policy update on vpngw-hub-prod",
+     "ci": "vpngw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 36.68
+    },
+    {
+     "key": "chg:0094",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    },
+    {
+     "key": "chg:0166",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    },
+    {
+     "key": "chg:0184",
+     "short_description": "Azure Firewall policy update on azfw-hub-prod",
+     "ci": "azfw-hub-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 34.47
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-11-21 18:45:00",
+   "end": "2026-11-21 19:45:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 104.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.103,
+   "probability_upper80": 0.155,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "implementation_missing",
+     "label": "implementation_missing",
+     "log_odds": 0.55
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Add a implementation plan (empty or placeholder (\"TBD\"))."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 16% allowing for uncertainty) (requester rated it low).\nazfw-hub-prod is in SKR Shared Platform (tier 2); nothing else depends on it.\nSimilar past changes ('azure firewall policy update'): 1 of 9 failed or caused incidents, e.g. chg:0099.\nPlanned 2026-11-21 18:45:00 to 2026-11-21 19:45:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: implementation_missing (+0.55); service tier (+0.19).\nRecommendation: Send back to the requester."
+ },
+ {
+  "change_key": "chg:0335",
+  "change_number": null,
+  "short_description": "Configuration change on adf-analytics-prod: autoscale rule",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "ok",
+    "reason": ""
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "adf-analytics-prod",
+   "known_ci": true,
+   "description": "Azure Data Factory - analytics pipelines",
+   "service": "SKR Data & Analytics",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Data & Analytics"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Data Platform Ops"
+  },
+  "history": {
+   "family": "configuration change",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 39,
+    "failed": 4,
+    "rate": 0.103,
+    "smoothed_rate": 0.106,
+    "failed_examples": [
+     "chg:0103",
+     "chg:0138",
+     "chg:0157"
+    ]
+   },
+   "ci_stats": {
+    "n": 3,
+    "failed": 0,
+    "rate": 0.0,
+    "smoothed_rate": 0.104,
+    "failed_examples": []
+   },
+   "group_stats": {
+    "n": 5,
+    "failed": 1,
+    "rate": 0.2,
+    "smoothed_rate": 0.135,
+    "failed_examples": [
+     "chg:0110"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0158",
+     "short_description": "Configuration change on adf-analytics-prod: autoscale rule",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 60.88
+    },
+    {
+     "key": "chg:0196",
+     "short_description": "Configuration change on adf-analytics-prod: feature flag express-checkout",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 43.0
+    },
+    {
+     "key": "chg:0205",
+     "short_description": "Configuration change on adf-analytics-prod: connection pool size",
+     "ci": "adf-analytics-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 41.64
+    },
+    {
+     "key": "chg:0220",
+     "short_description": "Configuration change on app-hrportal-prod: autoscale rule",
+     "ci": "app-hrportal-prod",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 21.2
+    },
+    {
+     "key": "chg:0128",
+     "short_description": "Configuration change on func-orders-processor: autoscale rule",
+     "ci": "func-orders-processor",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 19.35
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-06 17:00:00",
+   "end": "2026-12-06 18:00:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [
+    {
+     "key": "chg:0276",
+     "relation": "related_ci",
+     "ci": "sql-dwh-prod",
+     "short_description": "Resize sql-dwh-prod to S4",
+     "start": "2026-12-06 17:00:00",
+     "end": "2026-12-06 19:00:00",
+     "state": "-2"
+    }
+   ],
+   "lead_time_hours": 459.2,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.089,
+   "probability_upper80": 0.127,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "conflict_related_ci",
+     "label": "overlaps a change on a dependent CI",
+     "log_odds": 0.39
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "approve_with_conditions",
+  "conditions": [
+   "Re-sequence with chg:0276 on dependent CI sql-dwh-prod (Resize sql-dwh-prod to S4, 2026-12-06 17:00:00 UTC)."
+  ],
+  "summary": "MODERATE risk: estimated 9% chance of failure or an incident (up to 13% allowing for uncertainty) (requester rated it low).\nadf-analytics-prod is in SKR Data & Analytics (tier 2); nothing else depends on it.\nSimilar past changes ('configuration change'): 4 of 39 failed or caused incidents, e.g. chg:0103, chg:0138, chg:0157.\nPlanned 2026-12-06 17:00:00 to 2026-12-06 18:00:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: overlaps a change on a dependent CI (+0.39); service tier (+0.19).\nRecommendation: Approve with conditions (change manager)."
+ },
+ {
+  "change_key": "chg:0336",
+  "change_number": null,
+  "short_description": "NSG rule update for vm-etl-01 subnet",
+  "quality": {
+   "implementation": {
+    "status": "ok",
+    "reason": ""
+   },
+   "backout": {
+    "status": "missing",
+    "reason": "empty or placeholder (\"N/A\")"
+   },
+   "test": {
+    "status": "ok",
+    "reason": ""
+   }
+  },
+  "impact": {
+   "ci": "vm-etl-01",
+   "known_ci": true,
+   "description": "Legacy SSIS ETL server",
+   "service": "SKR Data & Analytics",
+   "tier": 2,
+   "dependents": [],
+   "services": [
+    "SKR Data & Analytics"
+   ],
+   "max_tier": 2,
+   "support_group": "SKR Data Platform Ops"
+  },
+  "history": {
+   "family": "nsg rule update",
+   "overall_rate": 0.119,
+   "family_stats": {
+    "n": 13,
+    "failed": 1,
+    "rate": 0.077,
+    "smoothed_rate": 0.095,
+    "failed_examples": [
+     "chg:0098"
+    ]
+   },
+   "ci_stats": {
+    "n": 9,
+    "failed": 1,
+    "rate": 0.111,
+    "smoothed_rate": 0.117,
+    "failed_examples": [
+     "chg:0110"
+    ]
+   },
+   "group_stats": {
+    "n": 34,
+    "failed": 4,
+    "rate": 0.118,
+    "smoothed_rate": 0.118,
+    "failed_examples": [
+     "chg:0099",
+     "chg:0144",
+     "chg:0165"
+    ]
+   },
+   "similar": [
+    {
+     "key": "chg:0145",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0147",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0160",
+     "short_description": "NSG rule update for vm-etl-01 subnet",
+     "ci": "vm-etl-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 50.38
+    },
+    {
+     "key": "chg:0086",
+     "short_description": "NSG rule update for vm-payments-01 subnet",
+     "ci": "vm-payments-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    },
+    {
+     "key": "chg:0229",
+     "short_description": "NSG rule update for vm-jump-01 subnet",
+     "ci": "vm-jump-01",
+     "outcome": "successful",
+     "caused_incidents": [],
+     "score": 40.97
+    }
+   ],
+   "open_incidents": [],
+   "open_problems": []
+  },
+  "schedule": {
+   "start": "2026-12-08 19:15:00",
+   "end": "2026-12-08 20:15:00",
+   "window": "maint",
+   "maintenance_window": "SKR Standard maintenance window",
+   "freeze": [],
+   "conflicts": [],
+   "lead_time_hours": 452.5,
+   "short_lead": false
+  },
+  "risk": {
+   "probability": 0.097,
+   "probability_upper80": 0.145,
+   "mode": "conservative",
+   "band": "moderate",
+   "requester_risk": "low",
+   "drivers": [
+    {
+     "factor": "backout_missing",
+     "label": "backout_missing",
+     "log_odds": 0.55
+    },
+    {
+     "factor": "criticality",
+     "label": "service tier",
+     "log_odds": 0.19
+    }
+   ],
+   "text_clues": [],
+   "text_evidence": {}
+  },
+  "recommendation": "send_back",
+  "conditions": [
+   "Add a backout plan (empty or placeholder (\"N/A\"))."
+  ],
+  "summary": "MODERATE risk: estimated 10% chance of failure or an incident (up to 14% allowing for uncertainty) (requester rated it low).\nvm-etl-01 is in SKR Data & Analytics (tier 2); nothing else depends on it.\nSimilar past changes ('nsg rule update'): 1 of 13 failed or caused incidents, e.g. chg:0098.\nPlanned 2026-12-08 19:15:00 to 2026-12-08 20:15:00 UTC, inside SKR Standard maintenance window.\nMain risk drivers: backout_missing (+0.55); service tier (+0.19).\nRecommendation: Send back to the requester."
+ }
+]

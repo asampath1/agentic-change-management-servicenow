@@ -46,11 +46,59 @@ What this shows:
 - **All missed high-risk changes are in the messy subset.** The built-in rules recognise only free-text clues worded
   like the history ("one-way", "first time", "vendor"). The held-out wording, for example "the legacy columns are
   dropped and their data is not copied anywhere", gets past them. Reading that text is the job of the Claude
-  reasoner (milestone M5).
+  reader ([below](#claude-text-reader-m5)).
 - **Conservative mode trades accuracy for safety.** It catches 2 more high-risk changes but sends more low and
   moderate changes up a level.
 - **Estimates lean low.** The history under-records failures: some failed changes were closed as "successful" and
   their incidents never linked. A model trained on it inherits that optimism, which is a realistic problem.
+
+## Claude text reader (M5)
+
+One change from the baseline: **Claude reads each change's description and plans** in place of the regular
+expressions, and reports the same six free-text factors (cannot be undone, first time, vendor, all at once, staged
+rollout, rehearsed). Everything else is identical: the same Quality, Impact, History and Schedule agents, the same
+policy, conservative mode. The Risk model is retrained with Claude's reading of the 260 history changes, so its
+weights match how the factors are read.
+
+```bash
+python -m agents --reasoner claude --out runs/claude     # needs ANTHROPIC_API_KEY; cached in runs/claude-cache.json
+python -m evaluation.score runs/claude
+```
+
+| | Heuristic (regexes) | Claude (`claude-opus-5-5`) |
+|---|---|---|
+| **Missed high risk** | **1 of 12** | **0 of 12** |
+| High rated low | 1 of 12 | 0 of 12 |
+| Low sent to CAB | 1 | 0 |
+| Risk band accuracy / macro F1 | 50% / 0.49 | 62% / 0.62 |
+| Recommendation accuracy / macro F1 | 65% / 0.66 | 78% / 0.78 |
+| Messy subset: band correct | 1 of 6 | **6 of 6** |
+| Plan quality, conflicts, freeze, window | 100% | 100% |
+| Verification (unchanged) | 0 of 8 missed, 90% | 0 of 8 missed, 90% |
+
+What this shows:
+- **The whole gain is in reading new wording.** On the history, Claude and the regexes agree: the six learned text
+  weights moved by at most 0.05 (for example "cannot be undone" +1.04 in both). On the evaluation changes, Claude
+  recognised the held-out phrasings the regexes missed, and all 6 messy changes got the right band.
+- **Safety and accuracy both improved.** Conservative mode no longer has to trade one for the other here: no missed
+  high-risk change, and no low-risk change sent to the CAB.
+- **Every factor is checkable.** Claude must quote the change text as evidence; a quote not found in the change is
+  rejected. 0 of 300 changes had a rejected quote. The quotes appear in the work note ("From the change text").
+- **Cost and time.** 300 changes in 30 calls of 10: 96,863 input and 21,945 output tokens, about $0.83 at
+  $4 / $20 per million tokens. 3.4 minutes. A 10-change sample run beforehand cost $0.03.
+
+Honest limits:
+- **One run.** Claude's output can vary between runs; I ran the evaluation set once and report that run.
+- **The factor definitions are mine.** I wrote them once, before the run, from the policy's list of warning signs,
+  and did not change them afterwards. But I had already seen one held-out phrasing (it is quoted above in the
+  baseline section), and the "cannot be undone" definition mentions data being lost or removed. That concerns at
+  most 1 of the 6 messy changes.
+- **Remaining errors lean cautious.** 15 of 40 bands are wrong, and 13 of those are one band too high (7 low rated
+  moderate, 6 moderate rated high): the price of conservative mode. Only 1 high change was rated moderate, and it
+  still went to the CAB or got conditions.
+
+Results: [`results/claude-conservative/`](results/claude-conservative/report.md), including every factor Claude
+found with its quote (`claude_text_factors.json`).
 
 ## Post-implementation verification
 

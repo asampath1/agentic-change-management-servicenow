@@ -53,19 +53,22 @@ out which warning signs really mattered.
 I tested it on **40 change requests waiting for a decision** and **20 changes already carried out**. The correct
 answers were known in advance and hidden from the AI.
 
-| Question | Result |
-|---|---|
-| High-risk changes waved through without review | **1 of 12** |
-| Missing or vague plans spotted | all of them |
-| Clashes with other changes and sale freezes spotted | all of them |
-| Changes that caused problems, caught afterwards | **8 of 8** |
-| Changes that went fine, but were wrongly flagged | 2 of 12 |
+| Question | Rules only | With Claude reading the text |
+|---|---|---|
+| High-risk changes waved through without review | 1 of 12 | **0 of 12** |
+| Recommendations matching the right answer | 65% | 78% |
+| Missing or vague plans spotted | all of them | all of them |
+| Clashes with other changes and sale freezes spotted | all of them | all of them |
+| Changes that caused problems, caught afterwards | **8 of 8** | **8 of 8** |
+| Changes that went fine, but were wrongly flagged | 2 of 12 | 2 of 12 |
 
 **The most interesting finding** is the one high-risk change it missed. That change, like the others it found
 hardest, had its risk hidden in the wording rather than in the form fields. One example: "the old columns are
 deleted and their data is not copied anywhere". In plain words, there is no way back. Rules learned from past
-records struggle with this; it is the kind of reading a language model such as Claude should be good at. Testing
-that is the next step.
+records struggle with this, so I let **Claude**, a language model, do just that one job: read each request and
+point out warning signs, quoting the exact words as proof. With that, the tool missed no high-risk change, and its
+recommendations matched the right answer 78% of the time instead of 65%. Reading all 300 requests cost under one
+US dollar.
 
 It also ran against a **real ServiceNow system** with the same data loaded (about 900 records) and made exactly the
 same recommendations as the offline test. It wrote its assessment as a note on each of the 60 change requests,
@@ -81,10 +84,10 @@ where a change manager would see it ([screenshots](live-pdi.md)).
 ## Honest limits
 
 - The test data comes from a model I wrote, so real-world accuracy would be lower. Real change requests are messier.
-- The tool is deliberately cautious. It rates many changes one level riskier than they really are (9 of 13
-  low-risk changes and 6 of 15 medium-risk ones), so the board sees more than strictly necessary. That is a choice,
+- The tool is deliberately cautious. It rates many changes one level riskier than they really are (with Claude:
+  7 of 13 low-risk changes and 6 of 15 medium-risk ones), so the board sees more than strictly necessary. That is a choice,
   and it can be dialled down.
-- It has not yet been compared with a language model reading the same requests.
+- Claude was tested in one run. A language model's answers can vary a little from run to run.
 
 ## Why it matters
 
