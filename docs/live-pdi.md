@@ -9,6 +9,9 @@ python -m agents --source servicenow --write --out runs/pdi-write
 python -m evaluation.score runs/pdi-write --truth synthetic-data/data/ground_truth.loaded.json
 ```
 
+**Video (1:47):** a captioned walk-through of these screens, the Claude comparison and the results:
+[demo/change-demo.mp4](demo/change-demo.mp4).
+
 ## What was written
 
 | | Changes | Written to ServiceNow |

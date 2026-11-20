@@ -130,7 +130,7 @@ Not reused: the incident triage, diagnostics and remediation agents, the Azure A
 | M3 | Verification agent and its eval. **Done 2026-11-19** ([results](../evaluation/README.md#post-implementation-verification)) | offline |
 | M4 | Load to PDI, live run, work notes on changes. **Done 2026-11-20** ([write-up](live-pdi.md)) | PDI |
 | M5 | Claude reasoner comparison. **Done 2026-11-20**: Claude reads the change text (six factors, quoted evidence); 0 of 12 high risk missed, $0.83 ([results](../evaluation/README.md#claude-text-reader-m5)) | API key |
-| M6 | README, plain-language overview, tag v1.0. **Done 2026-11-20** (demo video skipped) | — |
+| M6 | README, plain-language overview, demo video ([1:47](demo/change-demo.mp4)), tag v1.0. **Done 2026-11-20** | — |
 
 ## 9. Decisions
 

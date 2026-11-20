@@ -10,6 +10,9 @@ and checks afterwards whether the change caused incidents. A person makes every 
 > **Status: complete (2026-11-20).** Dataset, assessment and verification agents, live ServiceNow run
 > ([write-up](docs/live-pdi.md)) and the Claude comparison are done. Plan: [docs/design.md](docs/design.md).
 
+**Video (1:47):** the agents' notes on the live ServiceNow changes, Claude reading the text, and the results:
+[docs/demo/change-demo.mp4](docs/demo/change-demo.mp4).
+
 **New here or not technical?** Start with the plain-language overview: [docs/overview.md](docs/overview.md).
 
 ## Quick start (offline, no credentials)

@@ -97,5 +97,7 @@ every recommendation shows its evidence, it is safe enough to trust.
 
 ---
 
+A short captioned video shows it working: [demo/change-demo.mp4](demo/change-demo.mp4).
+
 For more detail: [project README](../README.md) · [how accuracy is measured](../evaluation/README.md) ·
 [design](design.md)
