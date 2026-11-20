@@ -12,6 +12,8 @@ python -m evaluation.score runs/pdi-write --truth synthetic-data/data/ground_tru
 **Video (1:47):** a captioned walk-through of these screens, the Claude comparison and the results:
 [demo/change-demo.mp4](demo/change-demo.mp4).
 
+https://github.com/user-attachments/assets/2c86c177-ef63-46e6-9ea8-f50fa543e4c0
+
 ## What was written
 
 | | Changes | Written to ServiceNow |
